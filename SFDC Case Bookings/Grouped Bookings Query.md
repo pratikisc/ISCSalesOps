@@ -25,7 +25,7 @@ SELECT
 	rank() OVER(     
 		PARTITION BY id_h
 		ORDER BY
-			net_bookings_value__c DESC
+		net_bookings_value__c DESC
 	) AS rank
 	FROM
 		salesforce_case
