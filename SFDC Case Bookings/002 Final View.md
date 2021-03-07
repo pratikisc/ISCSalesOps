@@ -26,7 +26,7 @@ WITH caselist AS (
             salesforce_case
             WHERE
                 (
-                    type not in ('Renewal', 'Amendment') and
+                    type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
                     finance_sub_status__c = 'Booked'
                 )
                 or
@@ -49,6 +49,8 @@ select
  a.mrr_change_local_grouped,
  COALESCE(a.mrr_change_local_grouped, b.mrrchangelocal) as mrrchangelocaloverride,
  COALESCE(a.nbv_local_grouped,b.net_bookings_value__c) as nbvlocaloverride,
+ COALESCE(a.Previous_Monthly_Subscription_Fee__c_grouped,b.Previous_Monthly_Subscription_Fee__c) as Previous_Monthly_Subscription_Fee__c_override,
+ COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c) as Current_Monthly_Subscription_Fee__c_override,
  a.calculationflag,
  b.*
  
