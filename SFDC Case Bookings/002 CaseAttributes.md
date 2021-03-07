@@ -104,9 +104,8 @@ where
 
 | Column | Description |
 | --- | --- |
-
-recordtypeid,
-|`casenumber |  |
+|`recordtypeid`|  |
+|`casenumber` |  |
 |`dm__c` | hg |
 |`net_bookings_value__c` |  |
 |`exchange_rate_to_usd__c` |  |
