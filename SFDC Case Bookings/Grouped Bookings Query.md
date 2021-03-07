@@ -39,10 +39,17 @@ SELECT
 		net_bookings_value__c DESC
 )
 
+-- Use Base Table to obtain Case KPI Grouped Values
 
-
-
-
+WITH OppId_CaseKPIGrouped AS (
+	SELECT
+	id_h,
+	sum(net_bookings_value__c) AS nbv_local_grouped
+	FROM
+	basetable
+	GROUP BY
+	id_h
+)
 
 
 
