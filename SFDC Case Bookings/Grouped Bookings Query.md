@@ -1,7 +1,7 @@
 ---
 title: Opportunity to Case Metrics Mapping
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
-requirements: Collect the `Opportunity`, `Case` objects with the Panoply Salesforce data source.
+View Name: `SFDC-CASE-W0001-T0001-GROUPED-CASES`
 Status: Interim View
 usage: This is an interim view for downstream calculations on Salesforce booking can be used in many different salesforce reports for a quick connection between `accountid` and the relevant `email`.
 ---
