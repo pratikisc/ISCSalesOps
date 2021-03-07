@@ -83,9 +83,9 @@ basetable.opportunity__c is not null
 
 | Column | Description |
 | --- | --- |
-| `id_h`| Hybrid Opportunity ID |
+| `id_h` `key`| Hybrid Opportunity ID |
 | `opportunity__c`| Opportunity ID |
-| `casenumber`| Case Number of the Top Case |
+| `casenumber` `key`| Case Number of the Top Case |
 | `nbv_local_grouped` | Sum of All NBV Local for `id_h` |
 | `mrr_change_local_grouped` | Sum of All MRR Change Local for `id_h` |
 | `calculationflag` | To know if case calculation was grouped or not downstream |
