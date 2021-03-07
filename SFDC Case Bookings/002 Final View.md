@@ -47,7 +47,7 @@ WITH caselist AS (
  
  -- Start Joins
  select
- x.casenumber
+ x.casenumber,
  a.*
  from
  caselist x,
