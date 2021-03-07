@@ -49,7 +49,8 @@ basetable.id_h,
 basetable.opportunity__c,
 basetable.casenumber,
 t1.nbv_local_grouped,
-t1.mrr_change_local_grouped
+t1.mrr_change_local_grouped,
+'Grouped Booking Value' AS calculationflag
 from
 basetable
 left outer join
@@ -87,6 +88,7 @@ basetable.opportunity__c is not null
 | `casenumber`| Case Number of the Top Case |
 | `nbv_local_grouped` | Sum of All NBV Local for `id_h` |
 | `mrr_change_local_grouped` | Sum of All MRR Change Local for `id_h` |
+| `calculationflag` | To know if case calculation was grouped or not downstream |
 
 ## Example: New Opportunities Summary
 
