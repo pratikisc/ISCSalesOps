@@ -93,6 +93,6 @@ basetable.opportunity__c is not null
 | `mrr_change_local_grouped` | Sum of All MRR Change Local grouped by `id_h` |
 | `Previous_Monthly_Subscription_Fee__c_grouped`| Sum of Previous MRR Local grouped by `id_h` |
 | `Current_Monthly_Subscription_Fee__c_grouped` | Sum of Current MRR Local grouped by `id_h` |
-| `calculationflag` | To know if case calculation was grouped or not downstream |
+| `calculationflag` | To know if case calculation was grouped by Opportunity |
 
 
