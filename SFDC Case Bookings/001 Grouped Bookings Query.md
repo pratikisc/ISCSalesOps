@@ -20,6 +20,8 @@ SELECT
 	inet_type__c,
 	net_bookings_value__c,
 	Contract_Length__c,
+	Current_Monthly_Subscription_Fee__c,
+	Previous_Monthly_Subscription_Fee__c,
 	Current_Monthly_Subscription_Fee__c - Previous_Monthly_Subscription_Fee__c as MRRChangeLocal,
 	to_char( booked_date__c, 'YYYY') AS y,
 	to_char( booked_date__c, 'MM') AS m,
@@ -57,7 +59,9 @@ left outer join
 		SELECT
 		basetable.id_h,
 		sum(basetable.net_bookings_value__c) AS nbv_local_grouped,
-		sum(basetable.MRRChangeLocal) AS mrr_change_local_grouped
+		sum(basetable.MRRChangeLocal) AS mrr_change_local_grouped,
+		sum(basetable.Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
+		sum(basetable.Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped
 		FROM
 		basetable	
 		GROUP BY
