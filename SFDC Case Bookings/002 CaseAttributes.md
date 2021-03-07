@@ -1,5 +1,5 @@
 ---
-title: Dimensional Table for Booked used for reporting and grouping (Booked)
+title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
 Status: Interim View
 ---
