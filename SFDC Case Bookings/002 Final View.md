@@ -1,8 +1,8 @@
 ---
-title: Final View for CIQ
-description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
+title: Final View for CIQ / Power BI Sales Team
+description: Final view to calculate Subscription Bookings
 Status: Final View
-usage: This is an interim view for downstream calculations on Salesforce booking can be used in many different salesforce reports for a quick connection between `accountid` and the relevant `email`.
+
 ---
 
 ```sql
@@ -47,10 +47,10 @@ select
  a.Previous_Monthly_Subscription_Fee__c_grouped	,
  a.Current_Monthly_Subscription_Fee__c_grouped,
  a.mrr_change_local_grouped,
- COALESCE(a.mrr_change_local_grouped, b.mrrchangelocal) as mrrchangelocaloverride,
- COALESCE(a.nbv_local_grouped,b.net_bookings_value__c) as nbvlocaloverride,
- COALESCE(a.Previous_Monthly_Subscription_Fee__c_grouped,b.Previous_Monthly_Subscription_Fee__c) as Previous_Monthly_Subscription_Fee__c_override,
- COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c) as Current_Monthly_Subscription_Fee__c_override,
+ COALESCE(a.mrr_change_local_grouped, b.mrrchangelocal,0) as mrrchangelocaloverride,
+ COALESCE(a.nbv_local_grouped,b.net_bookings_value__c,0) as nbvlocaloverride,
+ COALESCE(a.Previous_Monthly_Subscription_Fee__c_grouped,b.Previous_Monthly_Subscription_Fee__c,0) as Previous_Monthly_Subscription_Fee__c_override,
+ COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
  a.calculationflag,
  b.*
  
