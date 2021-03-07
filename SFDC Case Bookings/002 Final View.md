@@ -45,6 +45,8 @@ select
  x.casenumber,
  a.nbv_local_grouped,
  a.mrr_change_local_grouped,
+ COALESCE(mrr_change_local_grouped, mrrchangelocal) as mrrchangelocaloverride,
+ COALESCE(nbv_local_grouped,net_bookings_value__c) as nbvlocaloverride,
  a.calculationflag,
  b.*
  
