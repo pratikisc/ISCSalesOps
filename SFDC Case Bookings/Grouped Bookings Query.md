@@ -10,7 +10,6 @@ modifications: The table in the `FROM` might need to be changed based on Schema 
 -- CREATE VIEW salesforce_account_to_email AS
 
 -- Base Table for all booked case with an opporunity id
-
 WITH basetable AS (
 SELECT
 	opportunity__c,
@@ -20,6 +19,7 @@ SELECT
 	casenumber,
 	inet_type__c,
 	net_bookings_value__c,
+	Contract_Length__c,
 	Current_Monthly_Subscription_Fee__c - Previous_Monthly_Subscription_Fee__c as MRRChangeLocal,
 	to_char( booked_date__c, 'YYYY') AS y,
 	to_char( booked_date__c, 'MM') AS m,
@@ -43,7 +43,6 @@ SELECT
 )
 
 -- Use Base Table to obtain Case KPI Grouped Values
-
 WITH CaseKPIGrouped AS (
 	SELECT
 	id_h,
@@ -53,8 +52,11 @@ WITH CaseKPIGrouped AS (
 	basetable
 	GROUP BY
 	id_h
+	HAVING
+	nbv_local_grouped <> 0
 )
 
+-- Use Base Table to obtain Primary Case against the opportunity
 WITH PrimaryCaseByOpp AS (
 	SELECT distinct
 	id_h,
@@ -64,6 +66,16 @@ WITH PrimaryCaseByOpp AS (
 	where
 	rank = 1
 )
+
+-- Join CaseKPIGrouped with PrimaryCaseByOpp to obtain Case Number of the Case with top rank
+
+SELECT
+    b.casenumber,
+    a.nbv_local_grouped,
+    'Grouped Booking Value' AS calculationflag
+FROM
+    CaseKPIGrouped a
+    LEFT JOIN PrimaryCaseByOpp b ON a.id_h = b.id_h
 
 
 
