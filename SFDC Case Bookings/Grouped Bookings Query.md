@@ -13,15 +13,17 @@ modifications: The table in the `FROM` might need to be changed based on Schema 
 
 WITH OppId_CaseKPIGrouped AS (
 	SELECT
-	dt1.opportunity__c || '-' || dt1.inet_type__c || '-' || dt1.y || '-' || dt1.m AS id,
+	dt1.id_h as id,
 	sum(dt1.net_bookings_value__c) AS nbv_local_grouped
 	FROM
 	    (
 		SELECT
-		    salesforce_case.opportunity__c,
-		    salesforce_case.casenumber,
-		    salesforce_case.inet_type__c,
-		    salesforce_case.net_bookings_value__c,
+		    opportunity__c,
+		    -- Create hybrid opportunity key for a given case
+		    opportunity__c || '-' || inet_type__c || '-' || to_char( booked_date__c, 'YYYY') || '-' || to_char( booked_date__c, 'MM') AS id_h,
+		    casenumber,
+		    inet_type__c,
+		    net_bookings_value__c,
 		    to_char( booked_date__c, 'YYYY') AS y,
 		    to_char( booked_date__c, 'MM') AS m,
 		    -- for a given Opportunity Key, determine the case with the top rank as determined by highest NBV
@@ -48,10 +50,7 @@ WITH OppId_CaseKPIGrouped AS (
 	WHERE
 	    opportunity__c IS NOT NULL
 	GROUP BY
-	    dt1.opportunity__c,
-	    dt1.y,
-	    dt1.m,
-	    dt1.inet_type__c
+	    dt1.id_h
 )
 
 
