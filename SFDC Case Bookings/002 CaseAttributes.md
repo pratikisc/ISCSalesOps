@@ -8,28 +8,29 @@ Status: Interim View
 -- CREATE VIEW "SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES" AS
  
  
- WITH OpportunityAttributes AS (
-        select
+WITH
+    dim_opportunity AS (
+        select distinct
         id,
         name,
         opportunity_number__c
         from
-        salesforce_opportunity
- )
- 
- WITH AccountAttributes AS (
-        select
+        sfdc_opportunity
+    ),
+    dim_account AS (
+        select distinct
         id,
         name
         from
         salesforce_account
- )
- 
- 
- 
- -- Define Case Attributes for booked cases needed For Later Joins
- 
- 
+    )
+-- ,
+-- Add Later
+--    dim_contract AS (
+--        select
+--        id,
+--        Special_Terms_List__c  -- check if this is nested data column
+--    )
  
  
 SELECT
@@ -87,9 +88,9 @@ SELECT
       
 from
       salesforce_case as a
-      left outer join OpportunityAttributes as b ON a.opportunity__c = b.id
-      left outer join AccountAttributes as c ON a.accountid = c.id
-      left outer join AccountAttributes as d ON a.firstin_partner_account__c = d.id
+      left outer join dim_opportunity as b ON a.opportunity__c = b.id
+      left outer join dim_account as c ON a.accountid = c.id
+      left outer join dim_account as d ON a.firstin_partner_account__c = d.id
 where
       finance_sub_status__c = 'Booked'
  
