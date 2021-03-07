@@ -107,7 +107,7 @@ where
 
 recordtypeid,
 |`casenumber |  |
-|`dm__c` |  |
+|`dm__c` | hg |
 |`net_bookings_value__c` |  |
 |`exchange_rate_to_usd__c` |  |
 |`booked_date__c` |  |
