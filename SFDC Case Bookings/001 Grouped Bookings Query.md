@@ -35,7 +35,6 @@ SELECT
 		salesforce_case
 	WHERE
 		type in ('Renewal', 'Amendment') and
-		net_bookings_value__c <> 0 and
 		finance_sub_status__c = 'Booked' and
 		opportunity__c is not null
 
@@ -63,8 +62,6 @@ left outer join
 		basetable	
 		GROUP BY
 		id_h
-		HAVING
-		nbv_local_grouped <> 0
 	) t1
 	on t1.id_h = basetable.id_h
 where
@@ -90,6 +87,4 @@ basetable.opportunity__c is not null
 | `mrr_change_local_grouped` | Sum of All MRR Change Local for `id_h` |
 | `calculationflag` | To know if case calculation was grouped or not downstream |
 
-## Example: New Opportunities Summary
 
-[See Query Details Here](https://github.com/panoplyio/sql-library/blob/master/salesforce/queries/new_opps_summary.md)
