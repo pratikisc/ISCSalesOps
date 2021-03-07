@@ -87,7 +87,6 @@ WITH caselist AS (
                 team_7_net_booking_value_case_currency__c,
                 team_territory_assignment_8__c,
                 team_8_net_booking_value_case_currency__c,
-                b.calculationflag,
                 commission_processing_flag__c,
                 oracle_order_number__c,
                 oracle_system_number__c
