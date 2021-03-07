@@ -45,6 +45,7 @@ SELECT
       contract_length__c,
       current_monthly_subscription_fee__c,
       previous_monthly_subscription_fee__c,
+      current_monthly_subscription_fee__c - previous_monthly_subscription_fee__c as mrrchangelocal,
       distributor_commission__c,
       spiff_commission__c,
       type,
