@@ -9,6 +9,8 @@ modifications: The table in the `FROM` might need to be changed based on Schema 
 ```sql
 -- CREATE VIEW salesforce_account_to_email AS
 
+-- Base Table for all booked case with an opporunity id
+
 WITH basetable AS (
 SELECT
 	opportunity__c,
@@ -18,6 +20,7 @@ SELECT
 	casenumber,
 	inet_type__c,
 	net_bookings_value__c,
+	Current_Monthly_Subscription_Fee__c - Previous_Monthly_Subscription_Fee__c as MRRChangeLocal,
 	to_char( booked_date__c, 'YYYY') AS y,
 	to_char( booked_date__c, 'MM') AS m,
 	
@@ -41,14 +44,25 @@ SELECT
 
 -- Use Base Table to obtain Case KPI Grouped Values
 
-WITH OppId_CaseKPIGrouped AS (
+WITH CaseKPIGrouped AS (
 	SELECT
 	id_h,
-	sum(net_bookings_value__c) AS nbv_local_grouped
+	sum(net_bookings_value__c) AS nbv_local_grouped,
+	sum(MRRChangeLocal) AS mrr_change_local_grouped
 	FROM
 	basetable
 	GROUP BY
 	id_h
+)
+
+WITH PrimaryCaseByOpp AS (
+	SELECT distinct
+	id_h,
+	casenumber
+	from
+	basetable
+	where
+	rank = 1
 )
 
 
