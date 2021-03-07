@@ -98,16 +98,37 @@ WITH caselist AS (
                 
  )
  
+ WITH OpportunityAttributes AS (
+        select
+        id,
+        name,
+        opportunity_number__c
+        from
+        salesforce_opportunity
+ )
  
+ WITH AccountAttributes AS (
+        select
+        id,
+        name
+        from
+        salesforce_account
+ )
  
  -- Start Joins
- select
+select
  x.casenumber,
- a.*
- from
- caselist x
- left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" a on x.casenumber = a.casenumber
+ a.nbv_local_grouped,
+ a.mrr_change_local_grouped,
+ a.calculationflag,
+ b.*
  
+from
+ caselist as x
+ left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
+ left outer join CaseAttributes as b ON x.casenumber = b.casenumber
+ left outer join AccountAttributes as c ON b.accountid = c.id
+ left outer join OpportunityAttributes as d ON b.opportunity__c = d.id
  
  
  -- Use later.. COALESCE(b.net_bookings_value__c_override, net_bookings_value__c) AS 
