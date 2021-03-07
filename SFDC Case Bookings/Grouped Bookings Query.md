@@ -9,8 +9,7 @@ modifications: The table in the `FROM` might need to be changed based on Schema 
 ```sql
 -- CREATE VIEW salesforce_account_to_email AS
 
--- The first WITH returns a table for All Cases grouped by a hybrid Opportunity Key (Opp ID, iNet Type, Booked Date Year, Booked Date Month)
-
+-- Case KPIs grouped by a hybrid Opportunity Key (Opp ID, iNet Type, Booked Date Year, Booked Date Month)
 WITH OppId_CaseKPIGrouped AS (
 	SELECT
 	dt1.id_h as id,
