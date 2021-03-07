@@ -28,10 +28,7 @@ WITH OppId_CaseKPIGrouped AS (
 		    to_char( booked_date__c, 'MM') AS m,
 		    -- for a given Opportunity Key, determine the case with the top rank as determined by highest NBV
 		    rank() OVER(     
-			PARTITION BY opportunity__c,
-			to_char( booked_date__c, 'YYYY'),
-			to_char( booked_date__c, 'MM'),
-			inet_type__c
+			PARTITION BY id_h
 			ORDER BY
 			net_bookings_value__c DESC
 		    ) AS rank
