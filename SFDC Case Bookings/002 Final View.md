@@ -50,7 +50,7 @@ WITH caselist AS (
  x.casenumber,
  a.*
  from
- caselist x,
+ caselist x
  left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" a on x.casenumber = a.casenumber
  
  
