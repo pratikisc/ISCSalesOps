@@ -6,7 +6,7 @@ usage: This is an interim view for downstream calculations on Salesforce booking
 ---
 
 ```sql
--- CREATE VIEW ___ AS
+-- CREATE VIEW SFDC-CASE-W0001-T0001-GROUPED-CASES AS
 
 
 -- Base Table for all booked case with an opporunity id
