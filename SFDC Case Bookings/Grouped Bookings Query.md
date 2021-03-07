@@ -84,8 +84,8 @@ basetable.opportunity__c is not null
 | `id_h`| Hybrid Opportunity ID |
 | `opportunity__c`| Opportunity ID |
 | `casenumber`| Case Number of the Top Case |
-| `nbv_local_grouped` | Sum of All NBV Local for the id_h |
-| `mrr_change_local_grouped` | Sum of All MRR Change Local for the id_h |
+| `nbv_local_grouped` | Sum of All NBV Local for `id_h` |
+| `mrr_change_local_grouped` | Sum of All MRR Change Local for `id_h` |
 
 ## Example: New Opportunities Summary
 
