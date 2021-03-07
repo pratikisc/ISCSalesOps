@@ -24,7 +24,8 @@ WITH OppId_CaseKPIGrouped AS (
 		    salesforce_case.net_bookings_value__c,
 		    to_char( booked_date__c, 'YYYY') AS y,
 		    to_char( booked_date__c, 'MM') AS m,
-		    rank() OVER(
+		    -- for a given Opportunity Key, determine the case with the top rank as determined by highest NBV
+		    rank() OVER(     
 			PARTITION BY opportunity__c,
 			to_char( booked_date__c, 'YYYY'),
 			to_char( booked_date__c, 'MM'),
