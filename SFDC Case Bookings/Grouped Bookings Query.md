@@ -49,6 +49,45 @@ WITH OppId_CaseKPIGrouped AS (
 	    dt1.id_h
 )
 
+-- Same query as above, except to obtain Case Number for Opportunity ID (Hybrid) with rop rank (Distinct)
+
+SELECT DISTINCT
+	dt1.id_h as id,
+	dt1.casenumber
+	FROM
+	    (
+		SELECT
+		    opportunity__c,
+		    -- Create hybrid opportunity key for a given case
+		    opportunity__c || '-' || inet_type__c || '-' || to_char( booked_date__c, 'YYYY') || '-' || to_char( booked_date__c, 'MM') AS id_h,
+		    casenumber,
+		    inet_type__c,
+		    net_bookings_value__c,
+		    to_char( booked_date__c, 'YYYY') AS y,
+		    to_char( booked_date__c, 'MM') AS m,
+		    -- for a given Opportunity Key, determine the case with the top rank as determined by highest NBV
+		    rank() OVER(     
+			PARTITION BY id_h
+			ORDER BY
+			net_bookings_value__c DESC
+		    ) AS rank
+		FROM
+		    salesforce_case
+		WHERE
+		    type in ('Renewal', 'Amendment') and
+		    net_bookings_value__c <> 0 and
+		    finance_sub_status__c = 'Booked'
+
+		ORDER BY
+		    rank DESC,
+		    opportunity__c,
+		    net_bookings_value__c DESC
+	    ) dt1
+	WHERE
+	    dt1.opportunity__c IS NOT NULL and
+	    dt1.rank = 1
+	    
+	    
 
 ```
 
