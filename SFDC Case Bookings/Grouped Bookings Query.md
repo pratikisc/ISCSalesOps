@@ -37,7 +37,7 @@ WITH OppId_CaseKPIGrouped AS (
 		    salesforce_case
 		WHERE
 		    type in ('Renewal', 'Amendment') and
-		    net_bookings_value__c <> (0) and
+		    net_bookings_value__c <> 0 and
 		    finance_sub_status__c = 'Booked'
 
 		ORDER BY
