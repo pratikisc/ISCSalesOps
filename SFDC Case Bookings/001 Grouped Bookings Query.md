@@ -36,7 +36,8 @@ SELECT
 	FROM
 		salesforce_case
 	WHERE
-		type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    -- Remember to check this same list in SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES
+		-- Remember to check this same list in the WITH ( CaseList ) table in Final View
+		type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    
 		finance_sub_status__c = 'Booked' and
 		opportunity__c is not null
 
