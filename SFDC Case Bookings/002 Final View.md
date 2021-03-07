@@ -15,7 +15,7 @@ WITH caselist AS (
             SELECT
                 casenumber
             FROM
-                "SFDC-CASE-W0001-T0001-GROUPED-CASES"
+                "SFDC-CASE-W0001-T0001-GROUPED-CASES" -- Grouped Renewal and Amendment cases by Opportunity
     
         )
         UNION
@@ -27,8 +27,7 @@ WITH caselist AS (
             WHERE
                 (
                     type not in ('Renewal', 'Amendment') and
-                    finance_sub_status__c = 'Booked' and
-                    opportunity__c is null
+                    finance_sub_status__c = 'Booked'
                 )
                 or
                 (
