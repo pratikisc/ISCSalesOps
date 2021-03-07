@@ -1,6 +1,6 @@
 ---
 title: Opportunity to Case Metrics Mapping
-description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
+description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewal, Amendment and Transfer% cases are included in the grouping.
 Status: Interim View
 usage: This is an interim view for downstream calculations on Salesforce booking can be used in many different salesforce reports for a quick connection between `accountid` and the relevant `email`.
 ---
@@ -36,7 +36,7 @@ SELECT
 	FROM
 		salesforce_case
 	WHERE
-		type in ('Renewal', 'Amendment') and
+		type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    -- Remember to check this same list in SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES
 		finance_sub_status__c = 'Booked' and
 		opportunity__c is not null
 
