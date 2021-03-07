@@ -51,7 +51,7 @@ WITH caselist AS (
  a.*
  from
  caselist x,
- left join "SFDC-CASE-W0001-T0001-GROUPED-CASES" a on x.casenumber = a.casenumber
+ left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" a on x.casenumber = a.casenumber
  
  
 
