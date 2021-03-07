@@ -106,7 +106,7 @@ where
 | --- | --- |
 |`recordtypeid`|  |
 |`casenumber` |  |
-|`dm__c` | hg |
+|`dm__c` |  |
 |`net_bookings_value__c` |  |
 |`exchange_rate_to_usd__c` |  |
 |`booked_date__c` |  |
