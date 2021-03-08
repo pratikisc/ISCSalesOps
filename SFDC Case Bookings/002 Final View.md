@@ -175,7 +175,7 @@ from
 |`team_7_net_booking_value_case_currency__c` |  |
 |`team_territory_assignment_8__c` |  |
 |`team_8_net_booking_value_case_currency__c` |  |
-|`commission_processing_flag__c` | Used by finance to flag cases that are not assigned any negative credit Sales Reps. Only when the value on this picklist is `Adjustment: Negative Amount - No Sales Rep` then negative commissions are not attributed. For other adjustment values, negative or positive values are allocated |
+|`commission_processing_flag__c` | Used by finance to flag cases that are not assigned any negative credit Sales Reps. If there is a picklist value selected in this field, then it is excluded from grouping calculations (Cases grouped by opportunity). If there are cases without opportunities AND `commission_processing_flag__c` has a value, then it will need to be excluded |
 |`oracle_order_number__c` |  |
 |`oracle_system_number__c` |  |
 |`opportunityname` |  |
