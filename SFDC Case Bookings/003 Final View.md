@@ -42,7 +42,7 @@ WITH caselist AS (
 
  -- Start Joins
 select
-        x.casenumber,
+        text(x.casenumber) as casenumber,
         a.nbv_local_grouped,
         1 as allocation,
         a.Previous_Monthly_Subscription_Fee__c_grouped,
@@ -53,7 +53,7 @@ select
         COALESCE(a.Previous_Monthly_Subscription_Fee__c_grouped,b.Previous_Monthly_Subscription_Fee__c,0) as Previous_Monthly_Subscription_Fee__c_override,
         COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
         text(coalesce(a.calculationflag,'Case Value')) as calculationflag,
-        b.recordtypeid,
+        text(b.recordtypeid) as recordtypeid,
         text(b.dm__c) as dm__c,
         b.net_bookings_value__c,
         b.exchange_rate_to_usd__c,
@@ -70,16 +70,16 @@ select
         b.inet_type__c,
         COALESCE(b.inet_now_licenses__c,0) as inet_now_licenses__c,
         b.finance_sub_status__c,
-        b.incentive_program_competitive_takeaway__c,
-        b.incentive_program_qualification__c,
-        b.shipping_outside_of_owners_territory__c,
+        text(b.incentive_program_competitive_takeaway__c) as incentive_program_competitive_takeaway__c,
+        text(b.incentive_program_qualification__c) as incentive_program_qualification__c,
+        text(b.shipping_outside_of_owners_territory__c) as shipping_outside_of_owners_territory__c,
         b.accountid,
         b.firstin_partner_account__c,
         b.billing_agent__c,
         b.inet_safer_synergy__c,
         b.nam__c,
         b.key_account_manager__c,
-        left(b.opportunity__c,15) as opp_id__c,
+        text(left(b.opportunity__c,15)) as opp_id__c,
         b.oracle_organization__c,
         null as team_territory_assignment_1__c,
         null as team_1_net_booking_value_case_currency__c,
@@ -100,7 +100,7 @@ select
         commission_processing_flag__c,
         b.oracle_order_number__c,
         b.oracle_system_number__c,
-        b.opportunityname,
+        text(b.opportunityname) as opportunityname,
         b.opportunity_number,
         b.accountname,
         b.partnername,
@@ -110,7 +110,7 @@ select
         b.msastartdate,
         b.msaownerid,
         b.msaownername,
-        b.msaname,
+        text(b.msaname) as msaname,
         b.msanumber
  
 from
