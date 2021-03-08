@@ -56,7 +56,7 @@ select
         text(b.recordtypeid) as recordtypeid,
         text(b.dm__c) as dm__c,
         b.net_bookings_value__c,
-        b.exchange_rate_to_usd__c,
+        text(b.exchange_rate_to_usd__c) as exchange_rate_to_usd__c,
         b.booked_date__c,
         b.casecurrency__c,
         b.contract__c,
