@@ -1,3 +1,9 @@
+---
+title: Adding attributes (Case Data)
+View Name: sfdc-w003-t005-key-value-def1
+Status: Interim View
+---
+
 ```sql
 
 
