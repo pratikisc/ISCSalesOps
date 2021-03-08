@@ -40,6 +40,9 @@ SELECT
 		type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    
 		finance_sub_status__c = 'Booked' and
 		opportunity__c is not null and
+		
+		-- !!!! Commission Processing Flag excluded here
+		
 		Commission_Processing_Flag__c IN ('Adjustment: Negative Amount - No Sales Rep')
 
 	ORDER BY
