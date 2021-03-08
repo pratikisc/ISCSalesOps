@@ -11,7 +11,7 @@ select
         nbvlocaloverride,
         Previous_Monthly_Subscription_Fee__c_override,
         Current_Monthly_Subscription_Fee__c_override,
-        calculationflag,
+        coalesce(calculationflag,'Case Value') as calculationflag,
         recordtypeid,
         dm__c,
         net_bookings_value__c,
