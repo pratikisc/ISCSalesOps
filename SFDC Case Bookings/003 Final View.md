@@ -78,7 +78,7 @@ select
         b.inet_safer_synergy__c,
         b.nam__c,
         b.key_account_manager__c,
-        left(b.opportunity__c,15) as opportunity__c,
+        left(b.opportunity__c,15) as opp_id__c,
         b.oracle_organization__c,
         null as team_territory_assignment_1__c,
         null as team_1_net_booking_value_case_currency__c,
@@ -164,7 +164,7 @@ j1.casenumber is null
 |`inet_safer_synergy__c` |  |
 |`nam__c` |  |
 |`key_account_manager__c` |  |
-|`opportunity__c` | left 15 chars taken to match opp_id__c |
+|`opp_id__c` | left 15 chars taken to match opp_id__c |
 |`oracle_organization__c` |  |
 |`team_territory_assignment_1__c` | null |
 |`team_1_net_booking_value_case_currency__c` | null |
