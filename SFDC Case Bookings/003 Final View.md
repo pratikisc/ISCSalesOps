@@ -44,7 +44,7 @@ WITH caselist AS (
 select
         x.casenumber,
         a.nbv_local_grouped,
-        a.Previous_Monthly_Subscription_Fee__c_grouped	,
+        a.Previous_Monthly_Subscription_Fee__c_grouped,
         a.Current_Monthly_Subscription_Fee__c_grouped,
         a.mrr_change_local_grouped,
         COALESCE(a.mrr_change_local_grouped, b.mrrchangelocal,0) as mrrchangelocaloverride,
