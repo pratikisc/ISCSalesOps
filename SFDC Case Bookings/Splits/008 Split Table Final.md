@@ -76,6 +76,7 @@ from
 | --- | --- |
 | `casenumber__s`| Unique identifier |
 | `allocation`| % value used to derive MRR change, NBV while maintaining contract lenght of main case |
+| `teamname`| Team Name (Split Table Team on SFDC) |
 | `mrrchangelocaloverride`| Override case metrics |
 | `nbvlocaloverride`| Override case metrics |
 | `Previous_Monthly_Subscription_Fee__c_override`| Override case metrics |
