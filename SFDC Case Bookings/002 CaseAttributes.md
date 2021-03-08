@@ -169,3 +169,9 @@ where
 |`opportunity_number` |  |
 |`accountname` |  |
 |`partnername` |  |
+|`Special_Terms_List__c` | |
+|`MSAOwnerId` | |
+|`MSAStatus` | |
+|`MSAEndDate` | |
+|`MSAStartDate` | |
+|`MSAOwnerName` | |
