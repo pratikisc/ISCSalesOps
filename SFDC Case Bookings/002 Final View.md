@@ -176,7 +176,7 @@ from
 |`opportunity_number` |  |
 |`accountname` |  |
 |`partnername` |  |
-|`Special_Terms_List__c` | Used for Accelerators |
+|`Special_Terms_List__c` | Used for Accelerators, value = Auto Renew contracts |
 |`MSAOwnerId` | MSA items used to determine automatic overlay policies per Governing Policy |
 |`MSAStatus` | MSA has to be active |
 |`MSAEndDate` | MSA End Date must be after booked date |
