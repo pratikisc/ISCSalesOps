@@ -1,6 +1,7 @@
 ---
 title: Adding final attributes to layer over bookings
 View Name: sfdc-w003-t006-splits-final-table
+Caution: MUST ensure that finance ALL numbers in the split section add up to 100% of NBV of case (Overlay reps not included).
 Note: This view will UNION with bookings final table. It needs to have the same columns.
 Status: Final View
 ---
