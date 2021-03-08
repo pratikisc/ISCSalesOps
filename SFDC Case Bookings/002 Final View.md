@@ -122,6 +122,8 @@ from
 | --- | --- |
 | `id_h`| Hybrid Opportunity ID |
 | `opportunity__c`| Opportunity ID |
-| `casenumber`| Case Number of the Top Case |
-| `nbv_local_grouped` | Sum of All NBV Local for `id_h` |
-| `mrr_change_local_grouped` | Sum of All MRR Change Local for `id_h` |
+| `casenumber`| Case Number of the Top Case if grouped by opportunity, else standalone `casenumber` |
+| `nbvlocaloverride` | NBV Local override value, grouped by `id_h` |
+| `mrrchangelocaloverride` | MRR Change Local override value, grouped by `id_h` |
+| `Previous_Monthly_Subscription_Fee__c_override`| Previous Monthly Local Override value, grouped by `id_h` |
+| `Current_Monthly_Subscription_Fee__c_override` | Current Monthly Local Override value, grouped by `id_h` |
