@@ -8,12 +8,12 @@ SFDC-CASE-W0001-T0004-FINAL-UNION-BASE-AND-SPLIT
 
 select
         casenumber,
-        1 as allocation,
+        allocation,
         mrrchangelocaloverride,
         nbvlocaloverride,
         Previous_Monthly_Subscription_Fee__c_override,
         Current_Monthly_Subscription_Fee__c_override,
-        coalesce(calculationflag,'Case Value') as calculationflag,
+        calculationflag,
         recordtypeid,
         dm__c,
         net_bookings_value__c,
