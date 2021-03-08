@@ -8,14 +8,7 @@ Status: Interim View
 
 
 SELECT
-    (
-        (
-            ("sfdc-w003-t002-bookingvalues".casenumber) :: text || '__S' :: text
-        ) || "right"(
-            ("sfdc-w003-t002-bookingvalues".valueorder) :: text,
-            1
-        )
-    ) AS id,
+    "sfdc-w003-t002-bookingvalues".casenumber || '__S' || right("sfdc-w003-t002-bookingvalues".valueorder, 1) AS id,
     "sfdc-w003-t002-bookingvalues".casenumber,
     "sfdc-w003-t002-bookingvalues".bookingvalue
 FROM
