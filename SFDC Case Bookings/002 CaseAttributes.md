@@ -28,14 +28,15 @@ WITH
        select
        a1.id,
        a1.Special_Terms_List__c,
-       a2.OwnerId as MSAOwnerId,
-       a2.status as MSAStatus,
-       a2.Contract_End_Date__c,
-       a2.StartDate,
-       a3.full_name__c as MSAOwnerName
+       a1.parent_contract__c,
+       a2.status msastatus,
+       a2.contract_end_date__c msaenddate,
+       a2.startdate msastartdate,
+       a2.OwnerId as msaownerid,
+       a3.full_name__c as msaownername
        from salesforce_contract as a1
-            left outer join salesforce_contract as a2 ON a1.Parent_Contract__c = a2.id
-            left outer join salesforce_user as a3 ON a2.OwnerID = a3.id
+           left outer join salesforce_contract as a2 on a1.parent_contract__c = a2.id
+           left outer join salesforce_user as a3 on a2.ownerid = a3.id
     )
  
  
@@ -94,10 +95,11 @@ SELECT
       d.name as partnername
       e.Special_Terms_List__c,
       e.OwnerId as MSAOwnerId,
-      e.status as MSAStatus,
-      e.Contract_End_Date__c MSAEndDate,
-      e.StartDate MSAStartDate,
-      e.full_name__c as MSAOwnerName
+      e.msastatus,
+      e.msaenddate,
+      e.msastartdate,
+      e.msaownerid,
+      e.msaownername
       
 from
       salesforce_case as a
