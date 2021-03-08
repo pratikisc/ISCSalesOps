@@ -1,6 +1,6 @@
 ---
 title: Transformation (Adding a new key column)
-description: For later joins
+View Name: sfdc-w003-t003-bookingvalues__s
 Status: Interim View
 ---
 
