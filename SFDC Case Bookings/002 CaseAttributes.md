@@ -23,14 +23,20 @@ WITH
         name
         from
         salesforce_account
+    ),
+   dim_contract AS (
+       select
+       a1.id,
+       a1.Special_Terms_List__c,
+       a2.OwnerId as MSAOwnerId,
+       a2.status as MSAStatus,
+       a2.Contract_End_Date__c,
+       a2.StartDate,
+       a3.full_name__c as MSAOwnerName
+       from salesforce_contract as a1
+            left outer join salesforce_contract as a2 ON a1.Parent_Contract__c = a2.id
+            left outer join salesforce_user as a3 ON a2.OwnerID = a3.id
     )
--- ,
--- Add Later
---    dim_contract AS (
---        select
---        id,
---        Special_Terms_List__c  -- check if this is nested data column
---    )
  
  
 SELECT
@@ -86,12 +92,19 @@ SELECT
       b.opportunity_number__c as opportunity_number,
       c.name as accountname,
       d.name as partnername
+      e.Special_Terms_List__c,
+      e.OwnerId as MSAOwnerId,
+      e.status as MSAStatus,
+      e.Contract_End_Date__c MSAEndDate,
+      e.StartDate MSAStartDate,
+      e.full_name__c as MSAOwnerName
       
 from
       salesforce_case as a
       left outer join dim_opportunity as b ON a.opportunity__c = b.id
       left outer join dim_account as c ON a.accountid = c.id
       left outer join dim_account as d ON a.firstin_partner_account__c = d.id
+      left outer join dim_contract as e ON a.contract__c = e.id
 where
       finance_sub_status__c = 'Booked'
  
