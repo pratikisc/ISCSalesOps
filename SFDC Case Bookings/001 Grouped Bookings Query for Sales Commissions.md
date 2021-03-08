@@ -74,10 +74,14 @@ left outer join
 		id_h
 	) t1
 	on t1.id_h = basetable.id_h
+
+-- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. See: https://mode.com/blog/anti-join-examples/
+
+left join "sfdc-w003-t005-splits-key-value-final" as j1 ON basetable.id_h = j1.id_h
 where
 basetable.rank = 1 and
-basetable.opportunity__c is not null
-
+basetable.opportunity__c is not null and
+j1.id_h is null
 
 	    
 	    
