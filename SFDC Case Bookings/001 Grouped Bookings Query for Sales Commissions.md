@@ -1,7 +1,7 @@
 ---
 title: Opportunity to Case Metrics Mapping.
-*NOTE: Bookings with Commission Processing flag = `Adjustment: Negative Amount - No Sales Rep` are excluded at this base level,
-and thus are not grouped into opportunities downstream.*
+NOTE: Bookings with Commission Processing flag = `Adjustment: Negative Amount - No Sales Rep` are excluded at this base level,
+and thus are not grouped into opportunities downstream.
 description: View for getting the connection between grouped cases metrics to the relevant opportunity.
 Renewal, Amendment and Transfer% cases are included in the grouping.
 Status: Interim View
