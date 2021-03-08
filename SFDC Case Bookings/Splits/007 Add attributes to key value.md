@@ -41,7 +41,7 @@ SELECT
     s.finance_sub_status__c,
     s.net_bookings_value__c,
     s.parentid,
-    s."type",
+    s.type,
     s.inet_type__c,
     s.opportunity__c,
     s.accountid,
