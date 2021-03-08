@@ -1,5 +1,5 @@
 ---
-title: Adding attributes (Case Data)
+title: Adding attributes to Split Key Values
 View Name: sfdc-w003-t005-splits-key-value-final
 Status: Final View
 ---
