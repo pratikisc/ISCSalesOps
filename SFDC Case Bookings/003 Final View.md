@@ -54,7 +54,7 @@ select
         COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
         text(coalesce(a.calculationflag,'Case Value')) as calculationflag,
         b.recordtypeid,
-        b.dm__c,
+        text(b.dm__c) as dm__c,
         b.net_bookings_value__c,
         b.exchange_rate_to_usd__c,
         b.booked_date__c,
