@@ -13,15 +13,11 @@ SELECT
     t.teamname,
     b.bookingvalue
 FROM
-    (
-        "sfdc-w003-t003-teamnames__s" t
-        LEFT JOIN "sfdc-w003-t003-bookingvalues__s" b ON ((t.id = b.id))
-    )
+    "sfdc-w003-t003-teamnames__s" t
+    LEFT JOIN "sfdc-w003-t003-bookingvalues__s" b ON t.id = b.id
 WHERE
-    (
-        t.teamname IS NOT NULL
-        AND 
-        b.bookingvalue <> 0
-    )
+    t.teamname IS NOT NULL
+    AND 
+    b.bookingvalue <> 0
 ORDER BY
     t.id;
