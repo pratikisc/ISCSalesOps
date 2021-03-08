@@ -53,7 +53,6 @@ select
         COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
         a.calculationflag,
         b.recordtypeid,
-        -- b.casenumber,
         b.dm__c,
         b.net_bookings_value__c,
         b.exchange_rate_to_usd__c,
