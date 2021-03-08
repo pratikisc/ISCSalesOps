@@ -43,7 +43,7 @@ SELECT
 		
 		-- !!!! Commission Processing Flag excluded here
 		
-		Commission_Processing_Flag__c IN ('Adjustment: Negative Amount - No Sales Rep')
+		Commission_Processing_Flag__c not IN ('Adjustment: Negative Amount - No Sales Rep')
 
 	ORDER BY
 		net_bookings_value__c DESC
