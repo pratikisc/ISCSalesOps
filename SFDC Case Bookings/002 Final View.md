@@ -178,10 +178,10 @@ from
 |`commission_processing_flag__c` | Used by finance to flag cases that are not assigned any negative credit Sales Reps. If there is a picklist value selected in this field, then it is excluded from grouping calculations (Cases grouped by opportunity). If there are cases without opportunities AND `commission_processing_flag__c` has a value, then it will need to be excluded |
 |`oracle_order_number__c` | Used to Track 'iNet' Synergy orders for SAFER Team. Process not yet defined |
 |`oracle_system_number__c` |  |
-|`opportunityname` |  |
-|`opportunity_number` |  |
-|`accountname` |  |
-|`partnername` |  |
+|`opportunityname` | Useful in statement design Group By |
+|`opportunity_number` | Opp#xxx useful for look up in statement design |
+|`accountname` | Useful in statement design Group By |
+|`partnername` | Useful in statement design Group By  |
 |`Special_Terms_List__c` | Used for Accelerators, value = Auto Renew contracts |
 |`MSAOwnerId` | MSA items used to determine automatic overlay policies per Governing Policy |
 |`MSAStatus` | MSA has to be active |
