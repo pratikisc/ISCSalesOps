@@ -45,7 +45,7 @@ select
         b.inet_safer_synergy__c,
         b.nam__c,
         b.key_account_manager__c,
-        left(b.opportunity__c,15) as opportunity__c,
+        left(b.opportunity__c,15) as opp_id__c,
         b.oracle_organization__c,
         b.commission_processing_flag__c,
         b.oracle_order_number__c,
