@@ -94,7 +94,6 @@ SELECT
       c.name as accountname,
       d.name as partnername
       e.Special_Terms_List__c,
-      e.OwnerId as MSAOwnerId,
       e.msastatus,
       e.msaenddate,
       e.msastartdate,
