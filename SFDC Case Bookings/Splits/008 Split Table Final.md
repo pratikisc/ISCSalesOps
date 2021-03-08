@@ -13,12 +13,12 @@ select
         -- x.casenumber, this is removed from the Split table
         x.id as casenumber,
         x.allocation,
-        x.teamname as dm__c,
+        text(x.teamname) as dm__c,
         COALESCE(x.allocation * b.mrrchangelocal,0) as mrrchangelocaloverride,
         COALESCE(x.allocation * b.net_bookings_value__c,0) as nbvlocaloverride,
         COALESCE(x.allocation * b.Previous_Monthly_Subscription_Fee__c,0) as Previous_Monthly_Subscription_Fee__c_override,
         COALESCE(x.allocation * b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
-        'Split Case' as calculationflag,
+        text('Split Case') as calculationflag,
         b.recordtypeid,
         -- b.dm__c, this is removed per logic in CIQ
         b.net_bookings_value__c,
@@ -70,7 +70,7 @@ select
         b.opportunity_number,
         b.accountname,
         b.partnername,
-        b.Special_Terms_List__c,
+        text(b.Special_Terms_List__c) as Special_Terms_List__c,
         b.msastatus,
         b.msaenddate,
         b.msastartdate,
