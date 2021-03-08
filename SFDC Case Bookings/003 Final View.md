@@ -1,6 +1,6 @@
 ---
 title: Final View for CIQ / Power BI Sales Team
-description: Final view to calculate Subscription Bookings. Cases (Ungrouped cases in prev. step) with Splits are also removed using left anti join.
+description: Final view to calculate Subscription Bookings. Cases (Ungrouped cases in prev. step) with Splits are also removed using left anti join. All Team values are replaced with null
 Status: Final View
 
 ---
@@ -63,11 +63,11 @@ select
         b.current_monthly_subscription_fee__c,
         b.previous_monthly_subscription_fee__c,
         b.current_monthly_subscription_fee__c - previous_monthly_subscription_fee__c as mrrchangelocal,
-        b.distributor_commission__c,
-        b.spiff_commission__c,
+        COALESCE(b.distributor_commission__c,0) as distributor_commission__c,
+        COALESCE(b.spiff_commission__c,0) as distributor_commission__c,
         b.type,
         b.inet_type__c,
-        b.inet_now_licenses__c,
+        COALESCE(b.inet_now_licenses__c,0) as inet_now_licenses__c,
         b.finance_sub_status__c,
         b.incentive_program_competitive_takeaway__c,
         b.incentive_program_qualification__c,
@@ -78,25 +78,25 @@ select
         b.inet_safer_synergy__c,
         b.nam__c,
         b.key_account_manager__c,
-        b.opportunity__c,
+        left(b.opportunity__c,15) as opportunity__c,
         b.oracle_organization__c,
-        b.team_territory_assignment_1__c,
-        b.team_1_net_booking_value_case_currency__c,
-        b.team_territory_assignment_2__c,
-        b.team_2_net_booking_value_case_currency__c,
-        b.team_territory_assignment_3__c,
-        b.team_3_net_booking_value_case_currency__c,
-        b.team_territory_assignment_4__c,
-        b.team_4_net_booking_value_case_currency__c,
-        b.team_territory_assignment_5__c,
-        b.team_5_net_booking_value_case_currency__c,
-        b.team_territory_assignment_6__c,
-        b.team_6_net_booking_value_case_currency__c,
-        b.team_territory_assignment_7__c,
-        b.team_7_net_booking_value_case_currency__c,
-        b.team_territory_assignment_8__c,
-        b.team_8_net_booking_value_case_currency__c,
-        b.commission_processing_flag__c,
+        null as team_territory_assignment_1__c,
+        null as team_1_net_booking_value_case_currency__c,
+        null as team_territory_assignment_2__c,
+        null as team_2_net_booking_value_case_currency__c,
+        null as team_territory_assignment_3__c,
+        null as team_3_net_booking_value_case_currency__c,
+        null as team_territory_assignment_4__c,
+        null as team_4_net_booking_value_case_currency__c,
+        null as team_territory_assignment_5__c,
+        null as team_5_net_booking_value_case_currency__c,
+        null as team_territory_assignment_6__c,
+        null as team_6_net_booking_value_case_currency__c,
+        null as team_territory_assignment_7__c,
+        null as team_7_net_booking_value_case_currency__c,
+        null as team_territory_assignment_8__c,
+        null as team_8_net_booking_value_case_currency__c,
+        commission_processing_flag__c,
         b.oracle_order_number__c,
         b.oracle_system_number__c,
         b.opportunityname,
@@ -117,7 +117,7 @@ from
  left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
 
--- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. See: https://mode.com/blog/anti-join-examples/
+-- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. i.e. if there is split, then it is excluded See: https://mode.com/blog/anti-join-examples/
 
 left join "sfdc-w003-t005-splits-key-value-final" as j1 ON x.casenumber = j1.casenumber
 where
@@ -164,24 +164,24 @@ j1.casenumber is null
 |`inet_safer_synergy__c` |  |
 |`nam__c` |  |
 |`key_account_manager__c` |  |
-|`opportunity__c` |  |
+|`opportunity__c` | left 15 chars taken to match opp_id__c |
 |`oracle_organization__c` |  |
-|`team_territory_assignment_1__c` |  |
-|`team_1_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_2__c` |  |
-|`team_2_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_3__c` |  |
-|`team_3_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_4__c` |  |
-|`team_4_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_5__c` |  |
-|`team_5_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_6__c` |  |
-|`team_6_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_7__c` |  |
-|`team_7_net_booking_value_case_currency__c` |  |
-|`team_territory_assignment_8__c` |  |
-|`team_8_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_1__c` | null |
+|`team_1_net_booking_value_case_currency__c` | null |
+|`team_territory_assignment_2__c` | null |
+|`team_2_net_booking_value_case_currency__c` |null  |
+|`team_territory_assignment_3__c` | null |
+|`team_3_net_booking_value_case_currency__c` | null |
+|`team_territory_assignment_4__c` | null |
+|`team_4_net_booking_value_case_currency__c` | null |
+|`team_territory_assignment_5__c` | null |
+|`team_5_net_booking_value_case_currency__c` | null |
+|`team_territory_assignment_6__c` | null|
+|`team_6_net_booking_value_case_currency__c` | null |
+|`team_territory_assignment_7__c` | null |
+|`team_7_net_booking_value_case_currency__c` | null |
+|`team_territory_assignment_8__c` | null |
+|`team_8_net_booking_value_case_currency__c` | null |
 |`commission_processing_flag__c` | Used by finance to flag cases that are not assigned any negative credit Sales Reps. If there is a picklist value selected in this field, then it is excluded from grouping calculations at an earlier part of the calculation. If there are cases without opportunities AND `commission_processing_flag__c` has a value, then it will need to be excluded |
 |`oracle_order_number__c` | Used to Track 'iNet' Synergy orders for SAFER Team. Process not yet defined |
 |`oracle_system_number__c` |  |
