@@ -92,7 +92,7 @@ SELECT
       b.name as opportunityname,
       b.opportunity_number__c as opportunity_number,
       c.name as accountname,
-      d.name as partnername
+      d.name as partnername,
       e.Special_Terms_List__c,
       e.msastatus,
       e.msaenddate,
