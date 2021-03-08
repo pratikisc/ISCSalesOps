@@ -16,7 +16,7 @@ SELECT
 	-- Create hybrid opportunity key for a given case
 	opportunity__c || '-' || inet_type__c || '-' || to_char( booked_date__c, 'YYYY') || '-' || to_char( booked_date__c, 'MM') AS id_h,
 	casenumber,
-	coalesce(inet_type__c, 'No-iNetType__c') as inet_type__c,
+	coalesce(inet_type__c, 'No-iNetType__c') as inet_type__c, -- Same syntax used in Split Table, to identify Split Cases by id_h
 	net_bookings_value__c,
 	Contract_Length__c,
 	Current_Monthly_Subscription_Fee__c,
