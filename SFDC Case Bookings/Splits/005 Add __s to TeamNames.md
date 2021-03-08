@@ -1,6 +1,6 @@
 ---
 title: Transformation (Adding a new key column)
-View Name: sfdc-w003-t001-splittable
+View Name: sfdc-w003-t003-teamnames__s
 Status: Interim View
 ---
 
