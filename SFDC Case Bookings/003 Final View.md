@@ -64,7 +64,7 @@ select
         b.previous_monthly_subscription_fee__c,
         b.current_monthly_subscription_fee__c - previous_monthly_subscription_fee__c as mrrchangelocal,
         COALESCE(b.distributor_commission__c,0) as distributor_commission__c,
-        COALESCE(b.spiff_commission__c,0) as distributor_commission__c,
+        COALESCE(b.spiff_commission__c,0) as spiff_commission__c,
         b.type,
         b.inet_type__c,
         COALESCE(b.inet_now_licenses__c,0) as inet_now_licenses__c,
