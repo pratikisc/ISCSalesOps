@@ -108,7 +108,9 @@ select
         b.msaenddate,
         b.msastartdate,
         b.msaownerid,
-        b.msaownername
+        b.msaownername,
+        b.msaname,
+        b.msanumber
  
 from
  caselist as x
@@ -193,3 +195,5 @@ j1.casenumber is null
 |`MSAEndDate` | MSA End Date must be after booked date |
 |`MSAStartDate` |MSA Start Date must be before booked date |
 |`MSAOwnerName` | MSA Owner gets credit per Governing Policy |
+|`msaname`| Name of Master Service Agreement|
+|`msanumber`| Contract Number of MSA |
