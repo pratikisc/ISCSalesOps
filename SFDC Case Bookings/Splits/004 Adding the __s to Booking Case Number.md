@@ -8,8 +8,8 @@ Status: Interim View
 
 
 SELECT
-    "sfdc-w003-t002-bookingvalues".casenumber || '__S' || right("sfdc-w003-t002-bookingvalues".valueorder, 1) AS id,
-    "sfdc-w003-t002-bookingvalues".casenumber,
-    "sfdc-w003-t002-bookingvalues".bookingvalue
+    s.casenumber || '__S' || right(s.valueorder, 1) AS id,
+    s.casenumber,
+    s.bookingvalue
 FROM
-    "sfdc-w003-t002-bookingvalues";
+    "sfdc-w003-t002-bookingvalues" as s;
