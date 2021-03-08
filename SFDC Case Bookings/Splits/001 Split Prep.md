@@ -7,7 +7,7 @@ Status: Interim View
 ```sql
 -- CREATE VIEW sfdc-w003-t001-splittable AS
  
- WITH basetable AS (
+
                SELECT
                   casenumber,
                   team_territory_assignment_1__c AS team1,
