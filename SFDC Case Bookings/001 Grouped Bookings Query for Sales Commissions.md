@@ -1,9 +1,7 @@
 ---
 title: Opportunity to Case Metrics Mapping.
 NOTE: Only Bookings with Commission Processing flag = NULL are included in calculations
-and are not grouped into opportunities downstream for Sales Commissions
-description: View for getting the connection between grouped cases metrics to the relevant opportunity.
-Renewal, Amendment and Transfer% cases are included in the grouping.
+description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewal, Amendment and Transfer% cases are included in the grouping.
 Status: Interim View.
 ---
 
