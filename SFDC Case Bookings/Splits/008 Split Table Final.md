@@ -62,7 +62,7 @@ select
  
 from
  "sfdc-w003-t005-splits-key-value-final" as x
- left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
+ left outer join "SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES" as b ON x.casenumber = b.casenumber
 
 
 
