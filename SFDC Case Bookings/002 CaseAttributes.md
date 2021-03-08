@@ -36,6 +36,8 @@ WITH
        a2.contract_end_date__c msaenddate,
        a2.startdate msastartdate,
        a2.OwnerId as msaownerid,
+       a2.ContractNumber as msanumber,
+       a2.name as msaname,
        a3.full_name__c as msaownername
        from salesforce_contract as a1
            left outer join salesforce_contract as a2 on a1.parent_contract__c = a2.id
@@ -101,7 +103,9 @@ SELECT
       e.msaenddate,
       e.msastartdate,
       e.msaownerid,
-      e.msaownername
+      e.msaownername,
+      e.msaname,
+      e.msanumber
       
 from
       salesforce_case as a
