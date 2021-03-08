@@ -13,6 +13,7 @@ select
         x.casenumber,
         x.id as casenumber__s,
         x.allocation,
+        x.teamname,
         COALESCE(x.allocation * b.mrrchangelocal,0) as mrrchangelocaloverride,
         COALESCE(x.allocation * b.net_bookings_value__c,0) as nbvlocaloverride,
         COALESCE(x.allocation * b.Previous_Monthly_Subscription_Fee__c,0) as Previous_Monthly_Subscription_Fee__c_override,
