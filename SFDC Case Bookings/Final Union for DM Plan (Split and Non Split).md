@@ -1,6 +1,8 @@
 
 
 ```sql
+SFDC-CASE-W0001-T0004-FINAL-UNION-BASE-AND-SPLIT
+
 
 -- base booking table
 
@@ -72,7 +74,7 @@ select
       "SFDC-CASE-W0001-T0003-FINAL-VIEW"
       
       
-
+union
 -- split table
 
 select
