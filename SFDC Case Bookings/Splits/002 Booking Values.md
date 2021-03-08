@@ -35,3 +35,13 @@ select
 
 from "sfdc-w003-t001-splittable" cross join colv
 order by casenumber, Value asc;
+
+```
+
+## View Name: `"sfdc-w003-t002-bookingvalues"`
+
+| Column | Description |
+| --- | --- |
+|`All Column Descriptions`| All column descriptions are in the final view  |
+
+
