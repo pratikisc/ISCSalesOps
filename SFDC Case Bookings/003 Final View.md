@@ -1,6 +1,6 @@
 ---
 title: Final View for CIQ / Power BI Sales Team
-description: Final view to calculate Subscription Bookings
+description: Final view to calculate Subscription Bookings. Cases (Ungrouped cases in prev. step) with Splits are also removed using left anti join.
 Status: Final View
 
 ---
@@ -114,7 +114,12 @@ from
  caselist as x
  left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
- 
+
+-- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. See: https://mode.com/blog/anti-join-examples/
+
+left join "sfdc-w003-t005-splits-key-value-final" as j1 ON x.casenumber = j1.casenumber
+where
+j1.casenumber is null
  
 
 ```
