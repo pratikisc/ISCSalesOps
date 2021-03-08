@@ -1,5 +1,5 @@
 ---
-title: Opportunity to Case Metrics Mapping
+title: Opportunity to Case Metrics Mapping. NOTE: Bookings with Commission Processing flag = `Adjustment: Negative Amount - No Sales Rep` are excluded at this base level, and thus are not grouped into opportunities downstream.
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewal, Amendment and Transfer% cases are included in the grouping.
 Status: Interim View
 usage: This is an interim view for downstream calculations on Salesforce booking can be used in many different salesforce reports for a quick connection between `accountid` and the relevant `email`.
@@ -39,7 +39,8 @@ SELECT
 		-- Remember to check this same list in the WITH ( CaseList ) table in Final View
 		type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    
 		finance_sub_status__c = 'Booked' and
-		opportunity__c is not null
+		opportunity__c is not null and
+		Commission_Processing_Flag__c IN ('Adjustment: Negative Amount - No Sales Rep')
 
 	ORDER BY
 		net_bookings_value__c DESC
