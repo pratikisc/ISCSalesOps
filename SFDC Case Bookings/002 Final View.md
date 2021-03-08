@@ -60,7 +60,7 @@ select
         b.booked_date__c,
         b.casecurrency__c,
         b.contract__c,
-        COALESCE(b.contract_length__c,0)
+        COALESCE(b.contract_length__c,0) as contract_length__c,
         b.current_monthly_subscription_fee__c,
         b.previous_monthly_subscription_fee__c,
         b.current_monthly_subscription_fee__c - previous_monthly_subscription_fee__c as mrrchangelocal,
@@ -102,8 +102,8 @@ select
         b.oracle_system_number__c,
         b.opportunityname,
         b.opportunity_number,
-        c.accountname,
-        d.partnername
+        b.accountname,
+        b.partnername
  
 from
  caselist as x
