@@ -111,7 +111,6 @@ from
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
  
  
- -- Use later.. COALESCE(b.net_bookings_value__c_override, net_bookings_value__c) AS 
 
 ```
 
@@ -124,6 +123,57 @@ from
 | `opportunity__c`| Opportunity ID |
 | `casenumber`| Case Number of the Top Case if grouped by opportunity, else standalone `casenumber` |
 | `nbvlocaloverride` | NBV Local override value, grouped by `id_h` |
+| `calculationflag` | To know if case calculation was grouped by Opportunity `id_h` |
 | `mrrchangelocaloverride` | MRR Change Local override value, grouped by `id_h` |
 | `Previous_Monthly_Subscription_Fee__c_override`| Previous Monthly Local Override value, grouped by `id_h` |
 | `Current_Monthly_Subscription_Fee__c_override` | Current Monthly Local Override value, grouped by `id_h` |
+|`recordtypeid`|  |
+|`dm__c` |  |
+|`net_bookings_value__c` |  |
+|`exchange_rate_to_usd__c` |  |
+|`booked_date__c` |  |
+|`casecurrency__c` |  |
+|`contract__c` |  |
+|`contract_length__c` | COALESCE function used to substitute NULL values with zero |
+|`current_monthly_subscription_fee__c` |  |
+|`previous_monthly_subscription_fee__c` |  |
+|`distributor_commission__c` |  |
+|`spiff_commission__c` |  |
+|`type` |  |
+|`inet_type__c` |  |
+|`inet_now_licenses__c` |  |
+|`finance_sub_status__c` |  |
+|`incentive_program_competitive_takeaway__c` |  |
+|`incentive_program_qualification__c` |  |
+|`shipping_outside_of_owners_territory__c` |  |
+|`accountid` |  |
+|`firstin_partner_account__c` |  |
+|`billing_agent__c` |  |
+|`inet_safer_synergy__c` |  |
+|`nam__c` |  |
+|`key_account_manager__c` |  |
+|`opportunity__c` |  |
+|`oracle_organization__c` |  |
+|`team_territory_assignment_1__c` |  |
+|`team_1_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_2__c` |  |
+|`team_2_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_3__c` |  |
+|`team_3_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_4__c` |  |
+|`team_4_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_5__c` |  |
+|`team_5_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_6__c` |  |
+|`team_6_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_7__c` |  |
+|`team_7_net_booking_value_case_currency__c` |  |
+|`team_territory_assignment_8__c` |  |
+|`team_8_net_booking_value_case_currency__c` |  |
+|`commission_processing_flag__c` | Used by finance to flag cases that are not assigned any negative credit Sales Reps |
+|`oracle_order_number__c` |  |
+|`oracle_system_number__c` |  |
+|`opportunityname` |  |
+|`opportunity_number` |  |
+|`accountname` |  |
+|`partnername` |  |
