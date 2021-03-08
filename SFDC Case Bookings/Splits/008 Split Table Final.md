@@ -10,17 +10,17 @@ Status: Final View
 
 
 select
-        x.casenumber,
-        x.id as casenumber__s,
+        -- x.casenumber, this is removed from the Split table
+        x.id as casenumber,
         x.allocation,
-        x.teamname,
+        x.teamname as dm__c,
         COALESCE(x.allocation * b.mrrchangelocal,0) as mrrchangelocaloverride,
         COALESCE(x.allocation * b.net_bookings_value__c,0) as nbvlocaloverride,
         COALESCE(x.allocation * b.Previous_Monthly_Subscription_Fee__c,0) as Previous_Monthly_Subscription_Fee__c_override,
         COALESCE(x.allocation * b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
         'Split Case' as calculationflag,
         b.recordtypeid,
-        b.dm__c,
+        -- b.dm__c, this is removed per logic in CIQ
         b.net_bookings_value__c,
         b.exchange_rate_to_usd__c,
         b.booked_date__c,
@@ -30,11 +30,11 @@ select
         b.current_monthly_subscription_fee__c,
         b.previous_monthly_subscription_fee__c,
         b.current_monthly_subscription_fee__c - previous_monthly_subscription_fee__c as mrrchangelocal,
-        b.distributor_commission__c,
-        b.spiff_commission__c,
+        COALESCE(b.distributor_commission__c,0) as distributor_commission__c,
+        COALESCE(b.spiff_commission__c,0) as spiff_commission__c,
         b.type,
         b.inet_type__c,
-        b.inet_now_licenses__c,
+        COALESCE(b.inet_now_licenses__c,0) as inet_now_licenses__c,
         b.finance_sub_status__c,
         b.incentive_program_competitive_takeaway__c,
         b.incentive_program_qualification__c,
@@ -45,7 +45,7 @@ select
         b.inet_safer_synergy__c,
         b.nam__c,
         b.key_account_manager__c,
-        b.opportunity__c,
+        left(b.opportunity__c,15) as opportunity__c,
         b.oracle_organization__c,
         b.commission_processing_flag__c,
         b.oracle_order_number__c,
@@ -59,7 +59,9 @@ select
         b.msaenddate,
         b.msastartdate,
         b.msaownerid,
-        b.msaownername
+        b.msaownername,
+        b.msaname,
+        b.msanumber
  
 from
  "sfdc-w003-t005-splits-key-value-final" as x
@@ -74,9 +76,9 @@ from
 
 | Column | Description |
 | --- | --- |
-| `casenumber__s`| Unique identifier |
+| `casenumber`| Unique identifier, is actually casenumber__S |
 | `allocation`| % value used to derive MRR change, NBV while maintaining contract lenght of main case |
-| `teamname`| Team Name (Split Table Team on SFDC) |
+| `dm__c`| Team Name (Split Table Team on SFDC). This does not contain the User ID of the DM in the case. |
 | `mrrchangelocaloverride`| Override case metrics |
 | `nbvlocaloverride`| Override case metrics |
 | `Previous_Monthly_Subscription_Fee__c_override`| Override case metrics |
