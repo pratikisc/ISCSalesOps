@@ -102,7 +102,13 @@ select
         b.opportunityname,
         b.opportunity_number,
         b.accountname,
-        b.partnername
+        b.partnername,
+        b.Special_Terms_List__c,
+        b.msastatus,
+        b.msaenddate,
+        b.msastartdate,
+        b.msaownerid,
+        b.msaownername
  
 from
  caselist as x
