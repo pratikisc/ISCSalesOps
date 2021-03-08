@@ -1,6 +1,7 @@
 ---
 title: Adding attributes to Split Key Values
 View Name: sfdc-w003-t005-splits-key-value-final
+Note: This view is referenced by the Primary Case Booking Query
 Status: Final View
 ---
 
