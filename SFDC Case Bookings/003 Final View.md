@@ -44,6 +44,7 @@ WITH caselist AS (
 select
         x.casenumber,
         a.nbv_local_grouped,
+        1 as allocation,
         a.Previous_Monthly_Subscription_Fee__c_grouped,
         a.Current_Monthly_Subscription_Fee__c_grouped,
         a.mrr_change_local_grouped,
@@ -51,7 +52,7 @@ select
         COALESCE(a.nbv_local_grouped,b.net_bookings_value__c,0) as nbvlocaloverride,
         COALESCE(a.Previous_Monthly_Subscription_Fee__c_grouped,b.Previous_Monthly_Subscription_Fee__c,0) as Previous_Monthly_Subscription_Fee__c_override,
         COALESCE(a.Current_Monthly_Subscription_Fee__c_grouped,b.Current_Monthly_Subscription_Fee__c,0) as Current_Monthly_Subscription_Fee__c_override,
-        a.calculationflag,
+        coalesce(a.calculationflag,'Case Value') as calculationflag,
         b.recordtypeid,
         b.dm__c,
         b.net_bookings_value__c,
