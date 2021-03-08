@@ -6,7 +6,7 @@ Status: Interim View
 
 ```sql
 -- CREATE VIEW "SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES" AS
- 
+  
  
 WITH
     dim_opportunity AS (
