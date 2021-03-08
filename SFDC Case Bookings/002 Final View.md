@@ -176,3 +176,9 @@ from
 |`opportunity_number` |  |
 |`accountname` |  |
 |`partnername` |  |
+|`Special_Terms_List__c` | Used for Accelerators |
+|`MSAOwnerId` | MSA items used to determine automatic overlay policies per Governing Policy |
+|`MSAStatus` | MSA has to be active |
+|`MSAEndDate` | MSA End Date must be after booked date |
+|`MSAStartDate` |MSA Start Date must be before booked date |
+|`MSAOwnerName` | MSA Owner gets credit per Governing Policy |
