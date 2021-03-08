@@ -148,8 +148,8 @@ from
 |`inet_type__c` |  |
 |`inet_now_licenses__c` |  |
 |`finance_sub_status__c` |  |
-|`incentive_program_competitive_takeaway__c` |  |
-|`incentive_program_qualification__c` |  |
+|`incentive_program_competitive_takeaway__c` | 2020 Program: No SPIFF programs in 2021 |
+|`incentive_program_qualification__c` |  2020 Program: No SPIFF programs in 2021 |
 |`shipping_outside_of_owners_territory__c` |  |
 |`accountid` |  |
 |`firstin_partner_account__c` |  |
@@ -176,7 +176,7 @@ from
 |`team_territory_assignment_8__c` |  |
 |`team_8_net_booking_value_case_currency__c` |  |
 |`commission_processing_flag__c` | Used by finance to flag cases that are not assigned any negative credit Sales Reps. If there is a picklist value selected in this field, then it is excluded from grouping calculations (Cases grouped by opportunity). If there are cases without opportunities AND `commission_processing_flag__c` has a value, then it will need to be excluded |
-|`oracle_order_number__c` |  |
+|`oracle_order_number__c` | Used to Track 'iNet' Synergy orders for SAFER Team |
 |`oracle_system_number__c` |  |
 |`opportunityname` |  |
 |`opportunity_number` |  |
