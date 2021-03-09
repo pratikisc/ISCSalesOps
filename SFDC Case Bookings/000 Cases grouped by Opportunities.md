@@ -57,7 +57,7 @@ SELECT
 		basetable	
 		GROUP BY
 		id_h
-		
+```		
 ## View Name: `SFDC-CASE-W0001-T0001-GROUPED-CASES`
 
 | Column | Description |
