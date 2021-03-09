@@ -58,7 +58,7 @@ SELECT
 		GROUP BY
 		id_h
 ```		
-## View Name: `SFDC-CASE-W0001-T0001-GROUPED-CASES`
+## View Name: `sfdc-case-w0001-t0000-casemetricsgroupedbyopp`
 
 | Column | Description |
 | --- | --- |
