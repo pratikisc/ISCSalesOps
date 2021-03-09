@@ -6,7 +6,8 @@ SFDC-CASE-W0001-T0004-FINAL-UNION-BASE-AND-SPLIT
 
 -- base booking table
 
-select
+WITH A AS (
+        select
         casenumber,
         allocation,
         mrrchangelocaloverride,
@@ -71,9 +72,9 @@ select
         msanumber
       from
       "SFDC-CASE-W0001-T0003-FINAL-VIEW"
-      
-      
-union
+),
+        B AS (
+  
 -- split table
 
 select
@@ -141,6 +142,12 @@ select
         msanumber
       from
       "sfdc-w003-t006-splits-final-table"
+  )
+  
+  SELECT
+  casenumber
+  from
+  a
 
 
    
