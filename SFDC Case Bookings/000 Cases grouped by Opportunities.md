@@ -1,6 +1,7 @@
 ---
 title: Cases grouped by Opportunity Id_h
 NOTE: Filters applied for Commission Processing flag = NULL; Only Renewal, Amendment, Transfer included in grouping. Splits are removed at a later stage.
+View: sfdc-case-w0001-t0000-casemetricsgroupedbyopp
 Status: Interim View.
 ---
 
