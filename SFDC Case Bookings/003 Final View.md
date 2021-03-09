@@ -13,7 +13,7 @@ Status: Final View
 WITH caselist AS (   
         (
             SELECT
-                casenumber
+                casenumber :: character varying as casenumber
             FROM
                 "SFDC-CASE-W0001-T0001-GROUPED-CASES" -- Grouped Renewal and Amendment cases by Opportunity
     
@@ -21,7 +21,7 @@ WITH caselist AS (
         UNION
         (
             SELECT
-            casenumber
+            casenumber :: character varying as casenumber
             FROM
             salesforce_case
             WHERE
