@@ -12,7 +12,7 @@ Status: Final View
 select
         
         (x.id)::varchar as casenumber, -- this is the modified key casenumber__S
-        float4(x.allocation),
+        float4(x.allocation) as allocation,
         (x.teamname)::varchar as dm__c,
         COALESCE(x.allocation * b.mrrchangelocal,0) as mrrchangelocaloverride,
         COALESCE(x.allocation * b.net_bookings_value__c,0) as nbvlocaloverride,
