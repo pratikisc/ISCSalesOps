@@ -57,3 +57,14 @@ SELECT
 		basetable	
 		GROUP BY
 		id_h
+		
+## View Name: `SFDC-CASE-W0001-T0001-GROUPED-CASES`
+
+| Column | Description |
+| --- | --- |
+| `id_h` `key`| Hybrid Opportunity ID |
+| `nbv_local_grouped` | Sum of All NBV Local for `id_h` |
+| `mrr_change_local_grouped` | Sum of All MRR Change Local grouped by `id_h` |
+| `Previous_Monthly_Subscription_Fee__c_grouped`| Sum of Previous MRR Local grouped by `id_h` |
+| `Current_Monthly_Subscription_Fee__c_grouped` | Sum of Current MRR Local grouped by `id_h` |
+| `calculationflag` | To know if case calculation was grouped by Opportunity |
