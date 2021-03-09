@@ -15,7 +15,8 @@ join information_schema.columns c
               on t.table_schema = c.table_schema 
               and t.table_name = c.table_name
 where table_type = 'VIEW' 
-      and t.table_schema not in ('information_schema', 'pg_catalog') 
+      and t.table_schema not in ('information_schema', 'pg_catalog')
+      and t.table_name in ('sfdc-case-w0001-t0003-final-view', 'sfdc-w003-t006-splits-final-table') --Change the View Names here
       
 order by schema_name,
          view_name;
