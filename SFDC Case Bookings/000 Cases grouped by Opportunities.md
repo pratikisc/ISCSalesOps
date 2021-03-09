@@ -52,7 +52,8 @@ SELECT
 		sum(basetable.net_bookings_value__c) AS nbv_local_grouped,
 		sum(basetable.MRRChangeLocal) AS mrr_change_local_grouped,
 		sum(basetable.Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
-		sum(basetable.Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped
+		sum(basetable.Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped,
+		'Grouped Booking Value' :: character varying (200) AS calculationflag
 		FROM
 		basetable	
 		GROUP BY
