@@ -42,7 +42,7 @@ WITH caselist AS (
 
  -- Start Joins
 select
-        (x.casenumber)::varchar as casenumber,
+        (x.casenumber) :: character varying as casenumber,
         float4 (1) as allocation,
         COALESCE(a.mrr_change_local_grouped, b.mrrchangelocal,0) as mrrchangelocaloverride,
         COALESCE(a.nbv_local_grouped,b.net_bookings_value__c,0) as nbvlocaloverride,
