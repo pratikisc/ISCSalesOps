@@ -147,7 +147,12 @@ select
   SELECT
   casenumber
   from
-  a
+  *
+  UNION
+  select
+  *
+  from
+  b
 
 
    
