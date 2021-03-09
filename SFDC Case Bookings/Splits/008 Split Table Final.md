@@ -79,6 +79,8 @@ select
 from
  "sfdc-w003-t005-splits-key-value-final" as x
  left outer join "SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES" as b ON x.casenumber = b.casenumber
+ where b.finance_sub_status__c = 'Booked'
+ 
 
 
 
