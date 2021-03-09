@@ -11,7 +11,7 @@ Status: Final View
 
 select
         
-        (x.id)::varchar as casenumber, -- this is the modified key casenumber__S
+        (x.id):: character varying as casenumber, -- this is the modified key casenumber__S
         float4(x.allocation) as allocation,
         (x.teamname)::varchar as dm__c,
         COALESCE(x.allocation * b.mrrchangelocal,0) as mrrchangelocaloverride,
@@ -45,21 +45,21 @@ select
         (left(b.opportunity__c,15))::varchar as opp_id__c,
         (b.oracle_organization__c)::varchar as oracle_organization__c,
         null as team_territory_assignment_1__c,
-        null as team_1_net_booking_value_case_currency__c,
+        coalesce(null) as team_1_net_booking_value_case_currency__c,
         null as team_territory_assignment_2__c,
-        null as team_2_net_booking_value_case_currency__c,
+        coalesce(null) as team_2_net_booking_value_case_currency__c,
         null as team_territory_assignment_3__c,
-        null as team_3_net_booking_value_case_currency__c,
+        coalesce(null) as team_3_net_booking_value_case_currency__c,
         null as team_territory_assignment_4__c,
-        null as team_4_net_booking_value_case_currency__c,
+        coalesce(null) as team_4_net_booking_value_case_currency__c,
         null as team_territory_assignment_5__c,
-        null as team_5_net_booking_value_case_currency__c,
+        coalesce(null) as team_5_net_booking_value_case_currency__c,
         null as team_territory_assignment_6__c,
-        null as team_6_net_booking_value_case_currency__c,
+        coalesce(null) as team_6_net_booking_value_case_currency__c,
         null as team_territory_assignment_7__c,
-        null as team_7_net_booking_value_case_currency__c,
+        coalesce(null) as team_7_net_booking_value_case_currency__c,
         null as team_territory_assignment_8__c,
-        null as team_8_net_booking_value_case_currency__c,
+        coalesce(null) as team_8_net_booking_value_case_currency__c,
         (commission_processing_flag__c)::varchar as commission_processing_flag__c,
         (b.oracle_order_number__c)::varchar as oracle_order_number__c,
         (b.oracle_system_number__c)::varchar as oracle_system_number__c,
