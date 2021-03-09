@@ -51,7 +51,7 @@ select
         (coalesce(a.calculationflag,'Case Value'))::varchar as calculationflag,
         (b.recordtypeid)::varchar as recordtypeid,
         (b.dm__c)::varchar as dm__c,
-        (b.exchange_rate_to_usd__c)::varchar as exchange_rate_to_usd__c,
+        b.exchange_rate_to_usd__c,
         b.booked_date__c,
         (b.casecurrency__c)::varchar as casecurrency__c,
         (b.contract__c)::varchar as contract__c,
