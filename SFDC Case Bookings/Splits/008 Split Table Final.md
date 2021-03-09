@@ -22,7 +22,7 @@ select
         
         
         (b.recordtypeid)::varchar as recordtypeid,
-        (b.exchange_rate_to_usd__c)::varchar as exchange_rate_to_usd__c,
+        b.exchange_rate_to_usd__c,
         b.booked_date__c,
         (b.casecurrency__c)::varchar as casecurrency__c,
         (b.contract__c)::varchar as contract__c,
