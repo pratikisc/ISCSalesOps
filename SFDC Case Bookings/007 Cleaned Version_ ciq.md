@@ -1,3 +1,8 @@
+---
+View: sfdc-case-w0001-t0004-final-union-base-and-split-ciq
+Notes: Column cleaned up (boolean to string)
+---
+
 ```sql
 
 WITH A AS (
