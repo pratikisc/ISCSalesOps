@@ -15,8 +15,7 @@ WITH id_h__sum AS (
 		sum(net_bookings_value__c) AS nbv_local_grouped,
 		sum(MRRChangeLocal) AS mrr_change_local_grouped,
 		sum(Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
-		sum(Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped,
-		'Grouped Booking Value' AS calculationflag
+		sum(Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped
 		FROM
 		"sfdc-case-w0001-t0000-a1-base-table"	
 		GROUP BY
@@ -43,7 +42,7 @@ a.nbv_local_grouped,
 a.mrr_change_local_grouped,
 a.Previous_Monthly_Subscription_Fee__c_grouped,
 a.Current_Monthly_Subscription_Fee__c_grouped,
-a.calculationflag
+'Grouped Booking Value' AS calculationflag
 from
 id_h__sum as a
 left join id_h__case as b on a.id_h = b.id_h
