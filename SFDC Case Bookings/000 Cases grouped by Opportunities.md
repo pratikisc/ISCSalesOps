@@ -1,7 +1,6 @@
 ---
-title: Base Table: Renewal, Amendment, Transfer% Cases With Associated Opportunity
-NOTE: Filters applied for Commission Processing flag = NULL. Only Renewal, Amendment, Transfer included in grouping. Splits are removed at a later stage.
-View: sfdc-case-w0001-t0000-a1-base
+title: Base Table
+NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping. Splits are removed from Grouping (Renewal, Amendment, Transfer splits)
 Status: Interim View.
 ---
 
