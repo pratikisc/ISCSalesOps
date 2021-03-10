@@ -1,6 +1,7 @@
 ---
 title: Base Table
 NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping. Splits are removed from Grouping (Renewal, Amendment, Transfer splits)
+View Name: sfdc-case-w0001-t0000-a1-base-table
 Status: Interim View.
 ---
 
