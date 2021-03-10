@@ -32,6 +32,10 @@ WITH A AS (
         shipping_outside_of_owners_territory__c,
         accountid,
         firstin_partner_account__c,
+        case billing_agent__c when true 
+            then 'true'
+            else 'false'
+        end as billing_agent__c__text,
         billing_agent__c,
         case inet_safer_synergy__c when true 
             then 'true'
@@ -106,6 +110,10 @@ select
         shipping_outside_of_owners_territory__c,
         accountid,
         firstin_partner_account__c,
+        case billing_agent__c when true 
+            then 'true'
+            else 'false'
+        end as billing_agent__c__text,
         billing_agent__c,
         case inet_safer_synergy__c when true 
             then 'true'
