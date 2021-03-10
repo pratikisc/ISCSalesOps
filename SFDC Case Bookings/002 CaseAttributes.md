@@ -27,7 +27,6 @@ WITH
     ),
    dim_contract AS (
        
-       -- Add the Master Service Agreement Contract Number (For Statement Design)
        
        select
        a1.id,
