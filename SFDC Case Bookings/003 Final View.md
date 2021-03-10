@@ -1,6 +1,7 @@
 ---
 title: Final View for CIQ / Power BI Sales Team
 description: Final view to calculate Subscription Bookings. Cases (Ungrouped cases in prev. step) with Splits are also removed using left anti join. All Team values are replaced with null
+View: SFDC-CASE-W0001-T0003-FINAL-VIEW
 Status: Final View
 
 ---
@@ -31,7 +32,7 @@ WITH caselist AS (
                 )
                 or
                 (
-                      type in ('Renewal', 'Amendment') and
+                      type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
                       finance_sub_status__c = 'Booked' and
                       opportunity__c is null
                 )
