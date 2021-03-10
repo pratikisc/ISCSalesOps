@@ -9,38 +9,6 @@ Status: Final View
 ```sql
 -- CREATE VIEW "SFDC-CASE-W0001-T0003-FINAL-VIEW" AS
 
-
--- UNION to get relevant case numbers
-WITH caselist AS (   
-        (
-            SELECT
-                casenumber :: character varying (200) as casenumber
-            FROM
-                "SFDC-CASE-W0001-T0001-GROUPED-CASES" -- Grouped Renewal and Amendment cases by Opportunity
-    
-        )
-        UNION
-        (
-            SELECT
-            casenumber :: character varying (200) as casenumber
-            FROM
-            salesforce_case
-            WHERE
-                (
-                    type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
-                    finance_sub_status__c = 'Booked'
-                )
-                or
-                (
-                      type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
-                      finance_sub_status__c = 'Booked' and
-                      opportunity__c is null
-                )
-    
-        )
- )
- 
-
  -- Start Joins
 select
         (x.casenumber) :: character varying (200) as casenumber,
@@ -107,7 +75,7 @@ select
         (b.msanumber):: character varying (200) as msanumber
  
 from
- caselist as x
+ "sfdc-case-w0001-t0003-a-final case numbers" as x
  left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
 
