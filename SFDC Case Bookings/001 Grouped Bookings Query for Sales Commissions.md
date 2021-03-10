@@ -47,12 +47,6 @@ a.calculationflag
 from
 id_h__sum as a
 left join id_h__case as b on a.id_h = b.id_h
-left join "sfdc-w003-t005-splits-key-value-final" as j1 ON a.id_h = j1.id_h
-
--- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. See: https://mode.com/blog/anti-join-examples/
- 
-where
-j1.id_h is null     
 	    
 
 ```
