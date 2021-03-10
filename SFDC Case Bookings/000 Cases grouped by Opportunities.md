@@ -25,8 +25,8 @@ SELECT
 	row_number() OVER(     
 		PARTITION BY id_h
 		ORDER BY
-		net_bookings_value__c DESC,
-		booked_date__c DESC
+		a.net_bookings_value__c DESC,
+		a.booked_date__c DESC
 	) AS rank
 	FROM
 		salesforce_case as a
@@ -39,7 +39,7 @@ SELECT
 		
 		-- !!!! Commission Processing Flag excluded here
 		
-		a.Commission_Processing_Flag__c is null
+		a.Commission_Processing_Flag__c is null and
 		
 		-- !!!! Exlclude items that are being split
 		j1.casenumber is null
