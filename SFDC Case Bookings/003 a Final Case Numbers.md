@@ -43,7 +43,6 @@ select
 from
 caselist as x
 left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
-inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
 
 -- left anti join for cases already in split
 
