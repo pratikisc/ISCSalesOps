@@ -1,6 +1,7 @@
 ---
 title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
+View: SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES
 Status: Interim View
 ---
 
