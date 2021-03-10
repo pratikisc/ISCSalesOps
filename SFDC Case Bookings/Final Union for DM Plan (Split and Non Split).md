@@ -1,7 +1,11 @@
-
+---
+title: Union (Split and Base)
+description: Includes all bookings (splits are counted multiple times)
+View: sfdc-case-w0001-t0004-final-union-base-and-split
+Status: Final View
+---
 
 ```sql
-SFDC-CASE-W0001-T0004-FINAL-UNION-BASE-AND-SPLIT
 
 
 -- base booking table
