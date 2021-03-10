@@ -35,9 +35,9 @@ WITH id_h__sum AS (
 		
 
 SELECT
-b.casenumber,
-b.opportunity__c,
 a.id_h,
+b.opportunity__c,
+b.casenumber,
 a.nbv_local_grouped,
 a.mrr_change_local_grouped,
 a.Previous_Monthly_Subscription_Fee__c_grouped,
