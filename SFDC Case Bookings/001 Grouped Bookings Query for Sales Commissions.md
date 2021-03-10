@@ -15,7 +15,7 @@ WITH id_h__sum AS (
 		sum(MRRChangeLocal) AS mrr_change_local_grouped,
 		sum(Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
 		sum(Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped,
-		'Grouped by opportunity' AS calculationflag
+		'Grouped Booking Value' AS calculationflag
 		FROM
 		"sfdc-case-w0001-t0000-a1-base-table"	
 		GROUP BY
