@@ -8,82 +8,50 @@ Status: Interim View.
 -- CREATE VIEW SFDC-CASE-W0001-T0001-GROUPED-CASES AS
 
 
--- Base Table for all booked case with an opporunity id
-WITH basetable AS (
-SELECT
-	opportunity__c,
-
-	-- Create hybrid opportunity key for a given case
-	opportunity__c || '-' || inet_type__c || '-' || to_char( booked_date__c, 'YYYY') || '-' || to_char( booked_date__c, 'MM') AS id_h,
-	casenumber,
-	coalesce(inet_type__c, 'No-iNetType__c') as inet_type__c, -- Same syntax used in Split Table, to identify Split Cases by id_h at sfdc-w003-t005-splits-key-value-final
-	net_bookings_value__c,
-	Contract_Length__c,
-	Current_Monthly_Subscription_Fee__c,
-	Previous_Monthly_Subscription_Fee__c,
-	Current_Monthly_Subscription_Fee__c - Previous_Monthly_Subscription_Fee__c as MRRChangeLocal,
-	to_char( booked_date__c, 'YYYY') AS y,
-	to_char( booked_date__c, 'MM') AS m,
-	
-	-- for a given Opportunity Key, determine the case with the top rank as determined by highest NBV
-	rank() OVER(     
-		PARTITION BY id_h
-		ORDER BY
-		net_bookings_value__c DESC,
-		booked_date__c DESC
-	) AS rank
-	FROM
-		salesforce_case
-	WHERE
-		-- Remember to check this same list in the WITH ( CaseList ) table in Final View
-		type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    
-		finance_sub_status__c = 'Booked' and
-		opportunity__c is not null and
-		
-		-- !!!! Commission Processing Flag excluded here
-		
-		Commission_Processing_Flag__c is null
-
-	ORDER BY
-		net_bookings_value__c DESC
-)
-
--- Use Base Table to obtain Case KPI Grouped Values
-SELECT
-basetable.id_h,
-basetable.opportunity__c,
-basetable.casenumber,
-t1.nbv_local_grouped,
-t1.mrr_change_local_grouped,
-t1.Previous_Monthly_Subscription_Fee__c_grouped,
-t1.Current_Monthly_Subscription_Fee__c_grouped,
-'Grouped Booking Value' AS calculationflag
-from
-basetable
-left outer join
-    (
-		SELECT
-		basetable.id_h,
-		sum(basetable.net_bookings_value__c) AS nbv_local_grouped,
-		sum(basetable.MRRChangeLocal) AS mrr_change_local_grouped,
-		sum(basetable.Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
-		sum(basetable.Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped
+WITH id_h__sum AS (
+	SELECT
+		id_h,
+		sum(net_bookings_value__c) AS nbv_local_grouped,
+		sum(MRRChangeLocal) AS mrr_change_local_grouped,
+		sum(Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
+		sum(Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped,
+		'Grouped by opportunity' AS calculationflag
 		FROM
-		basetable	
+		"sfdc-case-w0001-t0000-a1-base-table"	
 		GROUP BY
 		id_h
-	) t1
-	on t1.id_h = basetable.id_h
+),
+	id_h__case AS (
+	SELECT
+		id_h,
+		opportunity__c,
+		casenumber
+		from
+		"sfdc-case-w0001-t0000-a1-base-table" as basetable
+		where rank = 1
+	)
+
+		
+		
+
+SELECT
+b.casenumber,
+b.opportunity__c,
+a.id_h,
+a.nbv_local_grouped,
+a.mrr_change_local_grouped,
+a.Previous_Monthly_Subscription_Fee__c_grouped,
+a.Current_Monthly_Subscription_Fee__c_grouped,
+a.calculationflag
+from
+id_h__sum as a
+left join id_h__case as b on a.id_h = b.id_h
+left join "sfdc-w003-t005-splits-key-value-final" as j1 ON a.id_h = j1.id_h
 
 -- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. See: https://mode.com/blog/anti-join-examples/
-
-left join "sfdc-w003-t005-splits-key-value-final" as j1 ON basetable.id_h = j1.id_h
+ 
 where
-basetable.rank = 1 and
-basetable.opportunity__c is not null and
-j1.id_h is null
-
-	    
+j1.id_h is null     
 	    
 
 ```
