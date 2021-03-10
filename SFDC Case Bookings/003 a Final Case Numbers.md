@@ -1,3 +1,9 @@
+---
+View: sfdc-case-w0001-t0003-a-final case numbers
+Note: Splits removed again from other joins
+---
+
+
 ```sql
 
 WITH caselist AS (   
