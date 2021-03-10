@@ -1,19 +1,16 @@
 ---
-title: Cases grouped by Opportunity Id_h
+title: Base Table: Renewal, Amendment, Transfer% Cases With Associated Opportunity
 NOTE: Filters applied for Commission Processing flag = NULL; Only Renewal, Amendment, Transfer included in grouping. Splits are removed at a later stage.
-View: sfdc-case-w0001-t0000-casemetricsgroupedbyopp
+View: sfdc-case-w0001-t0000-a1-base
 Status: Interim View.
 ---
 
 ```sql
 
--- Base Table for all booked case with an opporunity id
-WITH basetable AS (
 SELECT
 	opportunity__c,
-
 	-- Create hybrid opportunity key for a given case
-	opportunity__c || '-' || inet_type__c || '-' || to_char( booked_date__c, 'YYYY') || '-' || to_char( booked_date__c, 'MM') AS id_h,
+	opportunity__c || '-' || coalesce(inet_type__c, 'No-iNetType__c') || '-' || to_char( booked_date__c, 'YYYY') || '-' || to_char( booked_date__c, 'MM') AS id_h,
 	casenumber,
 	coalesce(inet_type__c, 'No-iNetType__c') as inet_type__c, -- Same syntax used in Split Table, to identify Split Cases by id_h at sfdc-w003-t005-splits-key-value-final
 	net_bookings_value__c,
@@ -45,21 +42,9 @@ SELECT
 
 	ORDER BY
 		net_bookings_value__c DESC
-)
 
-SELECT
-		basetable.id_h,
-		sum(basetable.net_bookings_value__c) AS nbv_local_grouped,
-		sum(basetable.MRRChangeLocal) AS mrr_change_local_grouped,
-		sum(basetable.Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
-		sum(basetable.Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped,
-		'Grouped Booking Value' :: character varying (200) AS calculationflag
-		FROM
-		basetable	
-		GROUP BY
-		id_h
 ```		
-## View Name: `sfdc-case-w0001-t0000-casemetricsgroupedbyopp`
+## View Description
 
 | Column | Description |
 | --- | --- |
