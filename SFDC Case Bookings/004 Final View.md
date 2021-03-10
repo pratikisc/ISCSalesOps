@@ -81,9 +81,9 @@ from
 
 -- !!!! Applying Left Anti Join to only include / group cases that are not present in the Split Table. i.e. if there is split, then it is excluded See: https://mode.com/blog/anti-join-examples/
 
-left join "sfdc-w003-t005-splits-key-value-final" as j1 ON x.casenumber = j1.casenumber
+left join "sfdc-w003-t005-splits-key-value-final" as j2 ON x.casenumber = j2.casenumber
 where
-j1.casenumber is null
+j2.casenumber is null
  
 
 ```
