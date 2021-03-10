@@ -23,7 +23,7 @@ SELECT
 	
 	-- for a given Opportunity Key, determine the case with the top rank as determined by highest NBV
 	row_number() OVER(     
-		PARTITION BY id_h
+		PARTITION BY a.opportunity__c, coalesce(a.inet_type__c, 'No-iNetType__c'), to_char( a.booked_date__c, 'YYYY'), to_char( a.booked_date__c, 'MM')
 		ORDER BY
 		a.net_bookings_value__c DESC,
 		a.booked_date__c DESC
