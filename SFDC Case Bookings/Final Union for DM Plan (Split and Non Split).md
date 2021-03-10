@@ -149,9 +149,9 @@ select
   )
   
   SELECT
-  casenumber
-  from
   *
+  from
+  a
   UNION
   select
   *
