@@ -1,4 +1,5 @@
-```SQL 
+### GAM Query
+```SQL
 let
     Source = Excel.Workbook(File.Contents("C:\Users\mgrazioso\Fortive\Global Sales - Documents\2 Global files\Reporting\Power BI Reporting\Data Clean Up Location Accounts\DimAccount.xlsx"), null, true),
     //Source = Excel.Workbook(File.Contents("\Dim Location and Account.xlsx"), null, true),
