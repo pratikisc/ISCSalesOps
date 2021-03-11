@@ -24,7 +24,7 @@ WITH
       )
 select 
     casenumber,
-    cv "Value",
+    cv as "valueorder",
     CASE cv 
         WHEN 'Value1' THEN "Value1" 
         WHEN 'Value2' THEN "Value2"
@@ -35,10 +35,10 @@ select
         WHEN 'Value7' THEN "Value7"
         WHEN 'Value8' THEN "Value8"
         ELSE NULL
-    END as "ValueValue"
+    END as "bookingvalue"
 
 from "sfdc-w003-t001-splittable" cross join colv
-order by casenumber, Value asc;
+order by casenumber, colv.cv asc;
 
 ```
 
