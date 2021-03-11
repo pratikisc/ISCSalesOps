@@ -22,3 +22,8 @@ order by schema_name,
          view_name;
          
 ```
+### How to drop multiple tables at once
+```sql
+SELECT 'DROP TABLE "' + schemaname + '"."' + tablename + '";' FROM pg_tables WHERE schemaname = 'public' and tablename like ' insert name type %'
+
+```
