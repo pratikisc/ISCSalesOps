@@ -195,7 +195,12 @@ let
 	else if Text.Contains([ACCOUNT NAME], "tech water") then "Teck Resources"
 	else if Text.Contains([ACCOUNT NAME], "sasol") then "Sasol"
 	else if Text.Contains([ACCOUNT NAME], "stantec") then "Stantec"
-	else if Text.Contains([ACCOUNT NAME], "arc resource") then "ARC Resources"
+	else if Text.Contains([ACCOUNT NAME], "arc resources") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "seven generations energy") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "arc international") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "seven generations energy") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "orion energy") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "storm exploration") then "ARC Resources"
         
         //Tie Breaker for VALE and Valero between EM and BB
         else if Text.Contains([ACCOUNT NAME], "valero ") then 0
