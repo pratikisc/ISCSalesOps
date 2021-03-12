@@ -8,7 +8,7 @@ let
       #"Added Marencel Column" = Table.AddColumn(#"Lowercased Text", "Bill Marencel", each 
         if Text.Contains([ACCOUNT NAME], "arcelor mittal") then "Cleveland Cliffs" 
         else if Text.Contains([ACCOUNT NAME], "arcelormittal") then "Cleveland Cliffs"
-	    else if Text.Contains([ACCOUNT NAME], "ak steel") then "Cleveland Cliffs" 
+	else if Text.Contains([ACCOUNT NAME], "ak steel") then "Cleveland Cliffs" 
         else if Text.Contains([ACCOUNT NAME], "domtar ") then "Domtar" 
         else if Text.Contains([ACCOUNT NAME], "duke energy") then "Duke Energy" 
         else if Text.Contains([ACCOUNT NAME], "progress ") then "Duke Energy" 
@@ -52,7 +52,7 @@ let
         else if Text.Contains([ACCOUNT NAME], "imperial oil") then "ExxonMobil" 
         else if Text.Contains([ACCOUNT NAME], "infineum ") then "ExxonMobil" 
         else if Text.Contains([ACCOUNT NAME], "trend gathering") then "ExxonMobil"
-	    else if Text.Contains([ACCOUNT NAME], "noble energy") then "Chevron" 
+	else if Text.Contains([ACCOUNT NAME], "noble energy") then "Chevron" 
        
        //Tie Breaker for Chevron and Chevron Phillips Chemical between BT and TH
         else if Text.Contains([ACCOUNT NAME], "chevron phillips chemical") then 0 
@@ -77,14 +77,14 @@ let
         else if Text.Contains([ACCOUNT NAME], "cognis ") then "BASF" 
         else if Text.Contains([ACCOUNT NAME], "engelhard") then "BASF" 
         else if Text.Contains([ACCOUNT NAME], "synvina ") then "BASF"
-	    else if Text.Contains([ACCOUNT NAME], "chevron phillips chemical") then "Chevron Phillips Chemical" 
+	else if Text.Contains([ACCOUNT NAME], "chevron phillips chemical") then "Chevron Phillips Chemical" 
         else if Text.Contains([ACCOUNT NAME], "chevron phillips") then "Chevron Phillips Chemical" 
         else if Text.Contains([ACCOUNT NAME], "american styrenics") then "Chevron Phillips Chemical" 
         else if Text.Contains([ACCOUNT NAME], "drilling specialties") then "Chevron Phillips Chemical" 
         else if Text.Contains([ACCOUNT NAME], "performance pipe") then "Chevron Phillips Chemical"
         else if Text.Contains([ACCOUNT NAME], "chemours ") then "Chemours" 
         else if Text.Contains([ACCOUNT NAME], "first chemical") then "Chemours"
-	    else if Text.Contains([ACCOUNT NAME], "citgo") then "Citgo" 
+	else if Text.Contains([ACCOUNT NAME], "citgo") then "Citgo" 
         else if Text.Contains([ACCOUNT NAME], "dow ") then "Dow DuPont Corteva" 
         else if Text.Contains([ACCOUNT NAME], "dupont ") then "Dow DuPont Corteva" 
         else if Text.Contains([ACCOUNT NAME], "corteva ") then "Dow DuPont Corteva" 
@@ -189,12 +189,17 @@ let
         else if Text.Contains([ACCOUNT NAME], "ngl processing") then "Inter Pipeline" 
         else if Text.Contains([ACCOUNT NAME], "pembina pipeline") then "Pembina Pipeline"
         else if Text.Contains([ACCOUNT NAME], "teck resources") then "Teck Resources"
-	    else if Text.Contains([ACCOUNT NAME], "tech coal") then "Teck Resources"
-	    else if Text.Contains([ACCOUNT NAME], "tech metals") then "Teck Resources"
-	    else if Text.Contains([ACCOUNT NAME], "tech water") then "Teck Resources"
-	    else if Text.Contains([ACCOUNT NAME], "sasol") then "Sasol"
-	    else if Text.Contains([ACCOUNT NAME], "stantec") then "Stantec"
-	    else if Text.Contains([ACCOUNT NAME], "arc resource") then "ARC Resources"
+	else if Text.Contains([ACCOUNT NAME], "tech coal") then "Teck Resources"
+	else if Text.Contains([ACCOUNT NAME], "tech metals") then "Teck Resources"
+	else if Text.Contains([ACCOUNT NAME], "tech water") then "Teck Resources"
+	else if Text.Contains([ACCOUNT NAME], "sasol") then "Sasol"
+	else if Text.Contains([ACCOUNT NAME], "stantec") then "Stantec"
+	else if Text.Contains([ACCOUNT NAME], "arc resources") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "seven generations energy") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "arc international") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "seven generations energy") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "orion energy") then "ARC Resources"
+        else if Text.Contains([ACCOUNT NAME], "storm exploration") then "ARC Resources"
         
         //Tie Breaker for VALE and Valero between EM and BB
         else if Text.Contains([ACCOUNT NAME], "valero ") then 0
