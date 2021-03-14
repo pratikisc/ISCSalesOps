@@ -18,13 +18,13 @@ with split_non_grouped AS (
                     WHERE
                       -- Remember to check this same list in the WITH ( CaseList ) table in `003 a Final Case Numbers.md`. This is the inverse of Case List.
                         (
-                            type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
+                            type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
                             finance_sub_status__c = 'Booked' and
                             casenumber is not null
                         )
                         or
                         (
-                              type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
+                              type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
                               finance_sub_status__c = 'Booked' and
                               id_h is null and
                               casenumber is not null
@@ -43,7 +43,7 @@ splits_grouped AS (
                     "sfdc-w003-t005-final-metrics-to-join"
                     WHERE
                       -- Remember to check this same list in the WITH ( CaseList ) table in Final View
-                      type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    
+                      type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
                       finance_sub_status__c = 'Booked' and
                       id_h is not null
   
