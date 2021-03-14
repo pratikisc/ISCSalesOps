@@ -43,9 +43,3 @@ select
 from
 caselist as x
 left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
-
--- left anti join for cases already in split
-
-left join "sfdc-w003-t005-splits-key-value-final" as j1 ON x.casenumber = j1.casenumber
-where
-j1.casenumber is null
