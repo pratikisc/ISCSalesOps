@@ -19,15 +19,13 @@ with split_non_grouped AS (
                       -- Remember to check this same list in the WITH ( CaseList ) table in `003 a Final Case Numbers.md`. This is the inverse of Case List.
                         (
                             type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
-                            finance_sub_status__c = 'Booked' and
-                            casenumber is not null
+                            finance_sub_status__c = 'Booked'
                         )
                         or
                         (
                               type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
                               finance_sub_status__c = 'Booked' and
-                              id_h is null and
-                              casenumber is not null
+                              id_h is null
                         )
 ),
 
