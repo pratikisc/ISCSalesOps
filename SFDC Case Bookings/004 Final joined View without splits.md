@@ -1,6 +1,7 @@
 ---
 title: Final View without accounting for splits
 description: Final view to calculate Subscription Bookings WITHOUT joining splits data that will introduce known duplicate rows.
+Use: GAM Bookings, PBI Sales Bookings
 View: sfdc-case-w0001-t0003-final-joined-view
 Status: Final View
 ---
@@ -36,7 +37,15 @@ select
         (b.accountid)::character varying (200) as accountid,
         (b.firstin_partner_account__c)::character varying (200) as firstin_partner_account__c,
         b.billing_agent__c as billing_agent__c,
+        case billing_agent__c when true 
+            then 'true'
+            else 'false'
+        end as billing_agent__c__text,
         b.inet_safer_synergy__c as inet_safer_synergy__c,
+        case inet_safer_synergy__c when true 
+            then 'true'
+            else 'false'
+        end as inet_safer_synergy__c__text,
         (b.nam__c)::character varying (200) as nam__c,
         (b.key_account_manager__c)::character varying (200) as key_account_manager__c,
         (left(b.opportunity__c,15))::character varying (200) as opp_id__c,
