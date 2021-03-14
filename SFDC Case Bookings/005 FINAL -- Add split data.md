@@ -52,8 +52,9 @@ splits_grouped AS (
 select
         
         a.id_h,
-        a.casenumber,
-        a.allocation,
+        coalesce( b.id, c.id, a.casenumber) as casenumber,
+        a.casenumber as casenumber_original,
+        coalesce ( b.allocation, c.allocation, a.allocation) as allocation,
         coalesce( b.allocation*a.mrrchangelocaloverride, c.allocation* a.mrrchangelocaloverride, a.mrrchangelocaloverride) as mrrchangelocaloverride,
         coalesce( b.allocation*a.nbvlocaloverride, c.allocation*a.nbvlocaloverride, a.nbvlocaloverride) as nbvlocaloverride,
         coalesce( b.allocation*a.Previous_Monthly_Subscription_Fee__c_override, c.allocation*a.Previous_Monthly_Subscription_Fee__c_override,a.Previous_Monthly_Subscription_Fee__c_override) as Previous_Monthly_Subscription_Fee__c_override,
