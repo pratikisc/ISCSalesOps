@@ -1,6 +1,7 @@
 ---
 title: Adding attributes to Split Key Values
 View Name: "sfdc-w003-t005-final-metrics-to-join"
+Note: GAM Team Names have been excluded from split
 Status: Final View
 ---
 
