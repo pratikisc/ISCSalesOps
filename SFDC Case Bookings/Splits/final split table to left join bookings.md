@@ -35,6 +35,7 @@ SELECT
     a.teamname,
     a.bookingvalue,
     s.net_bookings_value__c,
+    ('Split Case')::character varying (200) as calculationflag,
     round(a.bookingvalue / s.net_bookings_value__c,2) AS allocation
         
 FROM
