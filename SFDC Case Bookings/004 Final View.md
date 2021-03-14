@@ -1,6 +1,6 @@
 ---
 title: Final View for CIQ / Power BI Sales Team
-description: Final view to calculate Subscription Bookings. Cases (Ungrouped cases in prev. step) All Team values are replaced with null
+description: Final view to calculate Subscription Bookings WITHOUT joining splits data that will introduce known duplicate rows.
 View: sfdc-case-w0001-t0003-final-joined-view
 Status: Final View
 ---
