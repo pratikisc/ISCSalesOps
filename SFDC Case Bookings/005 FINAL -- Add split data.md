@@ -6,6 +6,9 @@ Use: Territory Bookings in CIQ
 
 ```
 
+
+!!!! Check Up: Do an inner join between split_non_grouped and splits_grouped to ensure consistent unique foreign key.
+
 with split_non_grouped AS (
                     select distinct
                     id,
