@@ -1,15 +1,15 @@
 ---
 title: Final View for CIQ / Power BI Sales Team
 description: Final view to calculate Subscription Bookings. Cases (Ungrouped cases in prev. step) All Team values are replaced with null
-View: sfdc-case-w0001-t0003-final-view
+View: sfdc-case-w0001-t0003-final-joined-view
 Status: Final View
 ---
 
 ```sql
--- CREATE VIEW "sfdc-case-w0001-t0003-final-view" AS
 
  -- Start Joins
 select
+        a.id_h as id_h,
         (x.casenumber) :: character varying (200) as casenumber,
         float4 (1) as allocation,
         COALESCE(a.mrr_change_local_grouped, b.mrrchangelocal,0) as mrrchangelocaloverride,
@@ -75,13 +75,15 @@ select
  
 from
  "sfdc-case-w0001-t0003-a-final case numbers" as x
- left outer join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
+ left join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
+ left join "sfdc-w003-t005-final-metrics-to-join" as c ON a.id_h = c.id_h
+ 
  
 
 ```
 
-## View Name: `"sfdc-case-w0001-t0003-final-view"`
+## View Name: `"sfdc-case-w0001-t0003-final-joined-view"`
 
 
 | Column | Description |
