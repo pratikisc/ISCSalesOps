@@ -1,5 +1,6 @@
 ---
 View: sfdc-case-w0001-t0005-final-joined-view-with-splits
+Notes: Calculation Flag, dm__c__original
 Use: Territory Bookings in CIQ
 ---
 
@@ -60,8 +61,8 @@ select
         coalesce( b.allocation*a.Previous_Monthly_Subscription_Fee__c_override, c.allocation*a.Previous_Monthly_Subscription_Fee__c_override,a.Previous_Monthly_Subscription_Fee__c_override) as Previous_Monthly_Subscription_Fee__c_override,
         
         coalesce( b.allocation*a.current_Monthly_Subscription_Fee__c_override, c.allocation*a.current_Monthly_Subscription_Fee__c_override,a.current_Monthly_Subscription_Fee__c_override) as current_Monthly_Subscription_Fee__c_override,
-        coalesce ( b.teamname, c.teamname, dm__c) as dm__c,
-        a.dm__c__original,
+        coalesce ( b.teamname, c.teamname, a.dm__c) as dm__c,
+        a.dm__c as dm__c__original,
         coalesce ( b.teamname, c.teamname) as teamname,
         coalesce ( b.calculationflag, c.calculationflag, a.calculationflag) as calculationflag,
         a.recordtypeid,
