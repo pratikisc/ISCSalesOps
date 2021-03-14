@@ -38,7 +38,7 @@ SELECT
     a.bookingvalue,
     s.net_bookings_value__c,
     ('Split Case')::character varying (200) as calculationflag,
-    round(a.bookingvalue / s.net_bookings_value__c,2) AS allocation,
+    round(a.bookingvalue / s.net_bookings_value__c,2) AS allocation,  -- !!!! NOTE: This is the allocation at the local (case) level. Allocation against the opp need booking value / opp value
     type,
     finance_sub_status__c
         
