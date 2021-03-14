@@ -1,6 +1,6 @@
 ---
 View: sfdc-case-w0001-t0003-a-final case numbers
-Note: All the case numbers from grouped cases + case numbers from ungrouped
+Note: All the case numbers from grouped cases + case numbers from ungrouped; Commission Processing Flag = NULL
 ---
 
 
