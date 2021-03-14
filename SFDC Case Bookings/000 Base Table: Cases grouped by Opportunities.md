@@ -1,6 +1,6 @@
 ---
 title: Base Table for Cases with Opportunity
-NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping. Splits are removed from Grouping (Renewal, Amendment, Transfer splits)
+NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping.
 View Name: sfdc-case-w0001-t0000-a1-base-table
 Status: Interim View.
 ---
@@ -30,7 +30,7 @@ SELECT
 	) AS rank
 	FROM
 		salesforce_case as a
-		left join "sfdc-w003-t005-splits-key-value-final" as j1 ON a.casenumber = j1.casenumber
+	
 	WHERE
 		-- Remember to check this same list in the WITH ( CaseList ) table in Final View
 		a.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and    
@@ -39,10 +39,7 @@ SELECT
 		
 		-- !!!! Commission Processing Flag excluded here
 		
-		a.Commission_Processing_Flag__c is null and
-		
-		-- !!!! Exlclude items that are being split
-		j1.casenumber is null
+		a.Commission_Processing_Flag__c is null
 
 
 	ORDER BY
