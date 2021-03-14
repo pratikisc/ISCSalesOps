@@ -10,6 +10,8 @@ WITH dim_case AS (
     select
         casenumber,
         booked_date__c,
+        type,
+        finance_sub_status__c,
         net_bookings_value__c,
         coalesce(inet_type__c, 'No-iNetType__c') as inet_type__c,
         coalesce(opportunity__c, 'No-Opp') as opportunity__c    
@@ -36,7 +38,9 @@ SELECT
     a.bookingvalue,
     s.net_bookings_value__c,
     ('Split Case')::character varying (200) as calculationflag,
-    round(a.bookingvalue / s.net_bookings_value__c,2) AS allocation
+    round(a.bookingvalue / s.net_bookings_value__c,2) AS allocation,
+    type,
+    finance_sub_status__c
         
 FROM
     
