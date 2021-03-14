@@ -15,7 +15,7 @@ with split_non_grouped AS (
                     from
                     "sfdc-w003-t005-final-metrics-to-join"
                     WHERE
-                      -- Remember to check this same list in the WITH ( CaseList ) table in Final View. This is the inverse of Case List.
+                      -- Remember to check this same list in the WITH ( CaseList ) table in `003 a Final Case Numbers.md`. This is the inverse of Case List.
                         (
                             type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
                             finance_sub_status__c = 'Booked' and
