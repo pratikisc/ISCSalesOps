@@ -24,7 +24,7 @@ with split_non_grouped AS (
                         (
                               type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree') and
                               finance_sub_status__c = 'Booked' and
-                              opportunity__c is null and
+                              id_h is null and
                               casenumber is not null
                         )
 ),
@@ -60,7 +60,7 @@ select
         coalesce( b.allocation*a.current_Monthly_Subscription_Fee__c_override, c.allocation*a.current_Monthly_Subscription_Fee__c_override,a.current_Monthly_Subscription_Fee__c_override) as current_Monthly_Subscription_Fee__c_override,
         coalesce ( b.teamname, c.teamname, dm__c) as dm__c__ciq,
         coalesce ( b.teamname, c.teamname) as teamname,
-        calculationflag( b.calculationflag, c.calculationflag, a.calculationflag) as calculationflag
+        calculationflag( b.calculationflag, c.calculationflag, a.calculationflag) as calculationflag,
         a.recordtypeid,
         a.dm__c,
         a.exchange_rate_to_usd__c,
