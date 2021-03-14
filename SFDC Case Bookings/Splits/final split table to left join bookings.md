@@ -14,7 +14,7 @@ WITH dim_case AS (
         finance_sub_status__c,
         net_bookings_value__c,
         coalesce(inet_type__c, 'No-iNetType__c') as inet_type__c,
-        coalesce(opportunity__c, 'No-Opp') as opportunity__c    
+        opportunity__c    
     from
         salesforce_case
     where
