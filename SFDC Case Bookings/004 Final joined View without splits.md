@@ -1,6 +1,6 @@
 ---
 title: Final View without accounting for splits
-description: Final view to calculate Subscription Bookings WITHOUT joining splits data that will introduce known duplicate rows.
+description: Final view to calculate Subscription Bookings WITHOUT joining splits data that will introduce known duplicate rows. Includes cleaned up strings for boolean (CIQ)
 Use: GAM Bookings, PBI Sales Bookings
 View: sfdc-case-w0001-t0003-final-joined-view
 Status: Final View
