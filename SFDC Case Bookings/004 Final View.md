@@ -77,7 +77,6 @@ from
  "sfdc-case-w0001-t0003-a-final case numbers" as x
  left join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
- left join "sfdc-w003-t005-final-metrics-to-join" as c ON a.id_h = c.id_h
  
  
 
