@@ -11,7 +11,7 @@ with split_non_grouped AS (
                     casenumber,
                     teamname,
                     allocation,
-                    calculationflag
+                    'Split / Case Value' as calculationflag
                     from
                     "sfdc-w003-t005-final-metrics-to-join"
                     WHERE
@@ -37,7 +37,7 @@ splits_grouped AS (
                     casenumber,
                     teamname,
                     allocation,
-                    calculationflag
+                    'Split / Grouped Value' as calculationflag
                     from
                     "sfdc-w003-t005-final-metrics-to-join"
                     WHERE
@@ -52,7 +52,7 @@ splits_grouped AS (
 select
         
         a.id_h,
-        coalesce( b.id, c.id, a.casenumber) as casenumber,
+        coalesce( b.id, c.id, a.casenumber) as casenumber, -- overriding the Case Number__s for Split Cases
         a.casenumber as casenumber_original,
         coalesce ( b.allocation, c.allocation, a.allocation) as allocation,
         coalesce( b.allocation*a.mrrchangelocaloverride, c.allocation* a.mrrchangelocaloverride, a.mrrchangelocaloverride) as mrrchangelocaloverride,
@@ -60,11 +60,11 @@ select
         coalesce( b.allocation*a.Previous_Monthly_Subscription_Fee__c_override, c.allocation*a.Previous_Monthly_Subscription_Fee__c_override,a.Previous_Monthly_Subscription_Fee__c_override) as Previous_Monthly_Subscription_Fee__c_override,
         
         coalesce( b.allocation*a.current_Monthly_Subscription_Fee__c_override, c.allocation*a.current_Monthly_Subscription_Fee__c_override,a.current_Monthly_Subscription_Fee__c_override) as current_Monthly_Subscription_Fee__c_override,
-        coalesce ( b.teamname, c.teamname, dm__c) as dm__c__ciq,
+        coalesce ( b.teamname, c.teamname, dm__c) as dm__c,
+        a.dm__c__original,
         coalesce ( b.teamname, c.teamname) as teamname,
         coalesce ( b.calculationflag, c.calculationflag, a.calculationflag) as calculationflag,
         a.recordtypeid,
-        a.dm__c,
         a.exchange_rate_to_usd__c,
         a.booked_date__c,
         a.casecurrency__c,
@@ -82,7 +82,9 @@ select
         a.accountid,
         a.firstin_partner_account__c,
         a.billing_agent__c,
+        a.billing_agent__c__text,
         a.inet_safer_synergy__c,
+        a.inet_safer_synergy__c__text,
         a.nam__c,
         a.key_account_manager__c,
         a.opp_id__c,
