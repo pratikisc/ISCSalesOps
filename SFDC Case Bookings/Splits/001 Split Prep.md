@@ -1,11 +1,10 @@
 ---
 title: Initial Load of a flat split table
-View Name: sfdc-w003-t001-splittable
+View Name: sfdc-w003v1-t001-splittable
 Status: Interim View
 ---
 
 ```sql
--- CREATE VIEW sfdc-w003v1-t001-splittable AS
  
 
                SELECT
@@ -39,7 +38,7 @@ Status: Interim View
 
 ```
 
-## View Name: `"sfdc-w003v1-t001-splittable"`
+## View Name: 
 
 | Column | Description |
 | --- | --- |
