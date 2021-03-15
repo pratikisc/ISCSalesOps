@@ -1,6 +1,6 @@
 ---
 title: Transformation (Adding a new key column)
-View Name: sfdc-w003-t003-bookingvalues__s
+View Name: sfdc-w003v1-t003-bookingvalues__s
 Status: Interim View
 ---
 
@@ -12,4 +12,4 @@ SELECT
     s.casenumber,
     s.bookingvalue
 FROM
-    "sfdc-w003-t002-bookingvalues" as s;
+    "sfdc-w003v1-t002-bookingvalues" as s;
