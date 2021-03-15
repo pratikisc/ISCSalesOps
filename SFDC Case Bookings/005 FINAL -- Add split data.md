@@ -124,7 +124,7 @@ select
         a.msanumber
 from
         "sfdc-case-w0001-t0003-final-joined-view" as a
-        left join splits_grouped as b on a.id_h = b.id_h
+        left join splits_grouped as b on a.id_h = b.id_h   -- !!!! Ensure proper foreign key
         left join split_non_grouped as c on a.casenumber = c.casenumber
 
 where
