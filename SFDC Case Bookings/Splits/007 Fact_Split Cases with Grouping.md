@@ -27,9 +27,9 @@ with getid_h as (
                 WHERE
                       -- !!!! Filter for only cases that will be grouped here
                       -- Remember to check this same list in the WITH ( CaseList ) table in Final View
-                      type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
-                      finance_sub_status__c = 'Booked' and
-                      id_h is not null
+                      b.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
+                      b.finance_sub_status__c = 'Booked' and
+                      b.opportunity__c is not null
                 )
 select
   id_h,
