@@ -35,11 +35,13 @@ select
   id_h,
   teamname,
   sum(bookingvalue) as bookingvalue_g,
-  sum(net_bookings_value__c) / sum(bookingvalue) as allocation
+  sum(bookingvalue)/sum(net_bookings_value__c)  as allocation
 
 from getid_h
 
 group by id_h, teamname
+
+
                 
     
                 
