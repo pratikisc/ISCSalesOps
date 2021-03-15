@@ -27,7 +27,7 @@ UNION
             Commission_Processing_Flag__c is null
             
             -- !!!! Removing Splits from Grouping here
-		        and a.team_territory_assignment_1__c is null
+		        and team_territory_assignment_1__c is null
         )
         or
         (
@@ -37,7 +37,7 @@ UNION
               Commission_Processing_Flag__c is null
               
               -- !!!! Removing Splits from Grouping here
-		          and a.team_territory_assignment_1__c is null
+		          and team_territory_assignment_1__c is null
         )
 
 )
