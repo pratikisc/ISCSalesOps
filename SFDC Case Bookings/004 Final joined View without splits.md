@@ -2,7 +2,7 @@
 title: Final View without accounting for splits
 description: Final view to calculate Subscription Bookings WITHOUT joining splits data that will introduce known duplicate rows. Includes cleaned up strings for boolean (CIQ)
 Use: GAM Bookings, PBI Sales Bookings
-View: sfdc-case-w0001-t0003-final-joined-view
+View: sfdc-case-w0001v1-t0003-final-joined-view
 Status: Final View
 ---
 
@@ -29,7 +29,7 @@ select
         COALESCE(b.spiff_commission__c,0) as spiff_commission__c,
         (b.type)::character varying (200) as type,
         (b.inet_type__c)::character varying (200) as inet_type__c,
-        COALESCE(b.inet_now_licenses__c,0) as inet_now_licenses__c,
+        COALESCE(a.inet_now_licenses__c_grouped, b.inet_now_licenses__c,0) as inet_now_licenses__c,
         (b.finance_sub_status__c)::character varying (200) as finance_sub_status__c,
         (b.incentive_program_competitive_takeaway__c)::character varying (200) as incentive_program_competitive_takeaway__c,
         (b.incentive_program_qualification__c)::character varying (200) as incentive_program_qualification__c,
@@ -84,7 +84,7 @@ select
  
 from
  "sfdc-case-w0001-t0003-a-final case numbers" as x
- left join "SFDC-CASE-W0001-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
+ left join "SFDC-CASE-W0001v1-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
  inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
  
  
