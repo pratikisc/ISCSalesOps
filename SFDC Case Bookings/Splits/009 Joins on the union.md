@@ -34,6 +34,11 @@ select
         b.billing_agent__c as billing_agent__c,
         b.billing_agent__c__text,
         b.inet_safer_synergy__c as inet_safer_synergy__c,
+        
+        CASE when COALESCE ( a.inet_safer_synergy__c_grouped, b.inet_safer_synergy__c__text) = 'true' then true
+             else false
+             end AS inet_safer_synergy__c
+        
         COALESCE( a.inet_safer_synergy__c_grouped, b.inet_safer_synergy__c__text) AS inet_safer_synergy__c__text,
         (b.nam__c)::character varying (200) as nam__c,
         (b.key_account_manager__c)::character varying (200) as key_account_manager__c,
