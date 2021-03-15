@@ -12,7 +12,7 @@ NOTE: Check the where clause on edits
 
 with getid_h as (
                 select
-                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') AS id_h,
+                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') ||  a.teamname AS id_hs,
                 a.id,
                 a.casenumber,
                 a.teamname,
@@ -38,9 +38,10 @@ with getid_h as (
                 
             getrowid as (
               select
-                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') AS id_h,
+                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM')||  a.teamname AS id_hs,
                 a.teamname,
                 a.id,
+		a.casenumber,
                 row_number() OVER(     
                   PARTITION BY b.opportunity__c, coalesce(b.inet_type__c, 'No-iNetType__c'), to_char( b.booked_date__c, 'YYYY'), to_char( b.booked_date__c, 'MM'), a.teamname
                   ORDER BY
@@ -64,14 +65,16 @@ with getid_h as (
     
     
 select
-a.id_h,
+a.id_hs,
+b.id,
+b.casenumber,
 a.team,
 a.bookingvalue_g,
 a.calculationflag,
 
 from
 (    select
-      id_h,
+      id_hs,
       teamname,
       sum(bookingvalue) as bookingvalue_g,
       sum(net_bookings_value__c)  as nbvgrouped,
@@ -86,7 +89,7 @@ from
 
     order by id_h, nbvgrouped
 ) as a
-left join getrowid b ON a.id_h = b.id_h
+left join getrowid b ON a.id_hs = b.id_hs
 
 
                 
