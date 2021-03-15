@@ -35,7 +35,8 @@ select
   id_h,
   teamname,
   sum(bookingvalue) as bookingvalue_g,
-  sum(net_bookings_value__c)  as nbvgrouped
+  sum(net_bookings_value__c)  as nbvgrouped,
+  'Split / Grouped' as calculationflag
 
 from getid_h
 
