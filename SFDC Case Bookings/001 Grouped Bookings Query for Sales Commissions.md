@@ -1,7 +1,7 @@
 ---
 title: Opportunity to Case Metrics Mapping.
 NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping. Splits are removed from Grouping (Renewal, Amendment, Transfer splits)
-View: sfdc-case-w0001-t0001-grouped-cases
+View: sfdc-case-w0001v1-t0001-grouped-cases
 Status: Interim View.
 ---
 
@@ -15,9 +15,11 @@ WITH id_h__sum AS (
 		sum(net_bookings_value__c) AS nbv_local_grouped,
 		sum(MRRChangeLocal) AS mrr_change_local_grouped,
 		sum(Previous_Monthly_Subscription_Fee__c) AS Previous_Monthly_Subscription_Fee__c_grouped,
-		sum(Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped
+		sum(Current_Monthly_Subscription_Fee__c) AS Current_Monthly_Subscription_Fee__c_grouped,
+		sum(inet_now_licenses__c) AS inet_now_licenses__c_grouped,
+		sum(inet_safer_synergy__c__int) AS inet_safer_synergy__c_grouped
 		FROM
-		"sfdc-case-w0001-t0000-a1-base-table"	
+		"sfdc-case-w0001v1-t0000-a1-base-table"	
 		GROUP BY
 		id_h
 ),
@@ -27,7 +29,7 @@ WITH id_h__sum AS (
 		opportunity__c,
 		casenumber
 		from
-		"sfdc-case-w0001-t0000-a1-base-table" as basetable
+		"sfdc-case-w0001v1-t0000-a1-base-table" as basetable
 		where rank = 1
 	)
 
@@ -42,6 +44,13 @@ a.nbv_local_grouped,
 a.mrr_change_local_grouped,
 a.Previous_Monthly_Subscription_Fee__c_grouped,
 a.Current_Monthly_Subscription_Fee__c_grouped,
+a.inet_now_licenses__c_grouped,
+
+case when a.inet_safer_synergy__c_grouped  > 0 
+            then 'true'
+            else 'false'
+        end as inet_safer_synergy__c_grouped,
+
 'Grouped Booking Value' AS calculationflag
 from
 id_h__sum as a
