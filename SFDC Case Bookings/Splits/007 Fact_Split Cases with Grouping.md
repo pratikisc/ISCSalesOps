@@ -29,7 +29,9 @@ with getid_h as (
                       -- Remember to check this same list in the WITH ( CaseList ) table in Final View
                       b.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
                       b.finance_sub_status__c = 'Booked' and
-                      b.opportunity__c is not null
+                      b.opportunity__c is not null and
+                      a.teamname not like 'GAM-%'
+                      
                 )
 select
   id_h,
