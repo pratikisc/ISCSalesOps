@@ -68,28 +68,27 @@ select
 a.id_hs,
 b.id,
 b.casenumber,
-a.team,
+b.teamname,
 a.bookingvalue_g,
-a.calculationflag,
+a.calculationflag
 
 from
-(    select
-      id_hs,
-      teamname,
-      sum(bookingvalue) as bookingvalue_g,
-      sum(net_bookings_value__c)  as nbvgrouped,
-      first (
-      'Split / Grouped' as calculationflag
+	(    select
+		id_hs,
+		sum(bookingvalue) as bookingvalue_g,
+		sum(net_bookings_value__c)  as nbvgrouped,
+		'Split / Grouped' as calculationflag
 
-    from getid_h
-    group by id_h, teamname
+		from getid_h
+		group by id_hs
 
 
-    having nbvgrouped <> 0
+    		having nbvgrouped <> 0
 
-    order by id_h, nbvgrouped
-) as a
+    		order by id_hs, nbvgrouped
+	) as a
 left join getrowid b ON a.id_hs = b.id_hs
+where b.rank = 1
 
 
                 
