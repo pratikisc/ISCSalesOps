@@ -19,11 +19,13 @@ WHERE
     -- Remember to check this same list in the WITH ( CaseList ) table in `003 a Final Case Numbers.md`. This is the inverse of Case List.
     (
     b.type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
-    b.finance_sub_status__c = 'Booked'
+    b.finance_sub_status__c = 'Booked' and
+    a.teamname not like 'GAM-%'
     )
     or
     (
     b.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
     b.finance_sub_status__c = 'Booked' and
-    b.opportunity__c is null
+    b.opportunity__c is null and
+    a.teamname not like 'GAM-%'
     )
