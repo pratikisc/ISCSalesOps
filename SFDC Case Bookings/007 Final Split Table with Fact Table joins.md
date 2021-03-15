@@ -11,7 +11,7 @@ Use: Territory Bookings in CIQ
 
 select
         
-        coalesce( b.id_h, c.id, a.casenumber) as casenumber, -- overriding Ids for Split Cases
+        a.casenumber,
         a.casenumber as casenumber_original,
         coalesce ( b.bookingvalue_g/a.nbvlocaloverride, c.bookingvalue/a.nbvlocaloverride, a.allocation) as allocation,
         coalesce( b.bookingvalue_g/a.nbvlocaloverride*a.mrrchangelocaloverride, c.bookingvalue/a.nbvlocaloverride* a.mrrchangelocaloverride, a.mrrchangelocaloverride) as mrrchangelocaloverride,
