@@ -72,5 +72,5 @@ select
         (b.msanumber):: character varying (200) as msanumber
  
 from
- "sfdc-w003v1-t006-fact-split-cases-union" as a ON a.casenumber = a.casenumber
+ "sfdc-w003v1-t006-fact-split-cases-union" as a
  inner join "sfdc-case-w0001v1-t0002-case-attributes" as b ON a.casenumber = b.casenumber
