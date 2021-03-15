@@ -37,7 +37,7 @@ select
         
         CASE when COALESCE ( a.inet_safer_synergy__c_grouped, b.inet_safer_synergy__c__text) = 'true' then true
              else false
-             end AS inet_safer_synergy__c
+             end AS inet_safer_synergy__c,
         
         COALESCE( a.inet_safer_synergy__c_grouped, b.inet_safer_synergy__c__text) AS inet_safer_synergy__c__text,
         (b.nam__c)::character varying (200) as nam__c,
