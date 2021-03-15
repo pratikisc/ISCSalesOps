@@ -32,23 +32,61 @@ with getid_h as (
                       b.finance_sub_status__c = 'Booked' and
                       b.opportunity__c is not null and
                       a.teamname not like 'GAM-%'
+                order by b.net_bookings_value__c
                       
-                )
+                ),
+                
+            getrowid as (
+              select
+                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') AS id_h,
+                a.teamname,
+                a.id,
+                row_number() OVER(     
+                  PARTITION BY b.opportunity__c, coalesce(b.inet_type__c, 'No-iNetType__c'), to_char( b.booked_date__c, 'YYYY'), to_char( b.booked_date__c, 'MM'), a.teamname
+                  ORDER BY
+                  b.net_bookings_value__c DESC,
+                  b.booked_date__c DESC
+	                ) AS rank
+              
+              from
+              "sfdc-w003-t004-unpivoted-key-values" a
+              LEFT JOIN salesforce_case b ON a.casenumber = b.casenumber
+              
+              WHERE
+                      -- !!!! Filter for only cases that will be grouped here (SAME AS ABOVE)
+                      -- Remember to check this same list in the WITH ( CaseList ) table in Final View
+                      b.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
+                      b.finance_sub_status__c = 'Booked' and
+                      b.opportunity__c is not null and
+                      a.teamname not like 'GAM-%'
+          )
+    
+    
+    
 select
-  id_h,
-  teamname,
-  sum(bookingvalue) as bookingvalue_g,
-  sum(net_bookings_value__c)  as nbvgrouped,
-  'Split / Grouped' as calculationflag
+a.id_h,
+a.team,
+a.bookingvalue_g,
+a.calculationflag,
 
-from getid_h
+from
+(    select
+      id_h,
+      teamname,
+      sum(bookingvalue) as bookingvalue_g,
+      sum(net_bookings_value__c)  as nbvgrouped,
+      first (
+      'Split / Grouped' as calculationflag
 
-group by id_h, teamname
+    from getid_h
+    group by id_h, teamname
 
 
-having nbvgrouped <> 0
+    having nbvgrouped <> 0
 
-order by id_h, nbvgrouped 
+    order by id_h, nbvgrouped
+) as a
+left join getrowid b ON a.id_h = b.id_h
 
 
                 
