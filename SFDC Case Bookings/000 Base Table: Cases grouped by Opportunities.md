@@ -1,7 +1,7 @@
 ---
 title: Base Table for Cases with Opportunity
 NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Term Extension, Amendment, Transfer included in grouping.
-View Name: sfdc-case-w0001-t0000-a1-base-table
+View Name: sfdc-case-w0001v1-t0000-a1-base-table
 Status: Interim View.
 ---
 
@@ -18,6 +18,11 @@ SELECT
 	a.Current_Monthly_Subscription_Fee__c,
 	a.Previous_Monthly_Subscription_Fee__c,
 	a.Current_Monthly_Subscription_Fee__c - a.Previous_Monthly_Subscription_Fee__c as MRRChangeLocal,
+	case a.inet_safer_synergy__c when true 
+            then 1
+            else 0
+        end as inet_safer_synergy__c__int,
+	a.inet_now_licenses__c,
 	to_char( a.booked_date__c, 'YYYY') AS y,
 	to_char( a.booked_date__c, 'MM') AS m,
 	
