@@ -33,7 +33,6 @@ select
         (b.firstin_partner_account__c)::character varying (200) as firstin_partner_account__c,
         b.billing_agent__c as billing_agent__c,
         b.billing_agent__c__text,
-        b.inet_safer_synergy__c as inet_safer_synergy__c,
         
         CASE when COALESCE ( a.inet_safer_synergy__c_grouped, b.inet_safer_synergy__c__text) = 'true' then true
              else false
