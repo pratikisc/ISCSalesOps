@@ -1,6 +1,6 @@
 ---
 title: Base Table for Cases with Opportunity
-NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping.
+NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Term Extension, Amendment, Transfer included in grouping.
 View Name: sfdc-case-w0001-t0000-a1-base-table
 Status: Interim View.
 ---
@@ -40,6 +40,9 @@ SELECT
 		-- !!!! Commission Processing Flag excluded here
 		
 		a.Commission_Processing_Flag__c is null
+		
+		-- !!!! Removing Splits from Grouping here
+		and a.salesforce_case.team_territory_assignment_1__c is null
 
 
 	ORDER BY
