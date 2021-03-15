@@ -1,5 +1,5 @@
 ---
-View: sfdc-w003-t005-fact-split-cases-grouped
+View: sfdc-w003v1-t005-fact-split-cases-grouped
 NOTE: Check the where clause on edits
 ---
 
@@ -17,11 +17,16 @@ with getid_h as (
                 a.casenumber,
                 a.teamname,
                 a.bookingvalue,
-                b.net_bookings_value__c
+                b.net_bookings_value__c,
+		b.inet_now_licenses__c,
+		case b.inet_safer_synergy__c when true 
+			then 1
+			else 0
+			end as inet_safer_synergy__c__int
                                
                 from
                 
-                "sfdc-w003-t004-unpivoted-key-values" a
+                "sfdc-w003v1-t004-unpivoted-key-values" a
                 
                 LEFT JOIN salesforce_case b ON a.casenumber = b.casenumber
                 
@@ -50,7 +55,7 @@ with getid_h as (
 	                ) AS rank
               
               from
-              "sfdc-w003-t004-unpivoted-key-values" a
+              "sfdc-w003v1-t004-unpivoted-key-values" a
               LEFT JOIN salesforce_case b ON a.casenumber = b.casenumber
               
               WHERE
@@ -72,6 +77,11 @@ b.teamname,
 a.bookingvalue_g,
 a.nbvgrouped,
 a.bookingvalue_g/a.nbvgrouped as allocation,
+a.inet_now_licenses__c_grouped,
+case when a.inet_safer_synergy__c_grouped  > 0 
+            then 'true'
+            else 'false'
+        end as inet_safer_synergy__c_grouped
 a.calculationflag
 
 from
@@ -79,6 +89,8 @@ from
 		id_hs,
 		sum(bookingvalue) as bookingvalue_g,
 		sum(net_bookings_value__c)  as nbvgrouped,
+		sum(inet_now_licenses__c) as inet_now_licenses__c_grouped,
+		sum(inet_safer_synergy__c__int) as inet_safer_synergy__c_grouped,
 		'Split / Grouped' as calculationflag
 
 		from getid_h
