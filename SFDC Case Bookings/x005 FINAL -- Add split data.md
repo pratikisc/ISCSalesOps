@@ -56,12 +56,12 @@ select
         a.id_h,
         coalesce( b.id, c.id, a.casenumber) as casenumber, -- overriding the Case Number__s for Split Cases
         a.casenumber as casenumber_original,
-        coalesce ( b.bookingvalue/a.nbvlocaloverride, c.bookingvalue/a.nbvlocaloverride, a.allocation) as allocation,
-        coalesce( b.bookingvalue/a.nbvlocaloverride*a.mrrchangelocaloverride, c.bookingvalue/a.nbvlocaloverride* a.mrrchangelocaloverride, a.mrrchangelocaloverride) as mrrchangelocaloverride,
-        coalesce( b.bookingvalue, c.bookingvalue, a.nbvlocaloverride) as nbvlocaloverride,
-        coalesce( b.bookingvalue/a.nbvlocaloverride*a.Previous_Monthly_Subscription_Fee__c_override, c.bookingvalue/a.nbvlocaloverride*a.Previous_Monthly_Subscription_Fee__c_override,a.Previous_Monthly_Subscription_Fee__c_override) as Previous_Monthly_Subscription_Fee__c_override,
+        coalesce ( b.bookingvalue_g/a.nbvlocaloverride, c.bookingvalue/a.nbvlocaloverride, a.allocation) as allocation,
+        coalesce( b.bookingvalue_g/a.nbvlocaloverride*a.mrrchangelocaloverride, c.bookingvalue/a.nbvlocaloverride* a.mrrchangelocaloverride, a.mrrchangelocaloverride) as mrrchangelocaloverride,
+        coalesce( b.bookingvalue_g, c.bookingvalue, a.nbvlocaloverride) as nbvlocaloverride,
+        coalesce( b.bookingvalue_g/a.nbvlocaloverride*a.Previous_Monthly_Subscription_Fee__c_override, c.bookingvalue/a.nbvlocaloverride*a.Previous_Monthly_Subscription_Fee__c_override,a.Previous_Monthly_Subscription_Fee__c_override) as Previous_Monthly_Subscription_Fee__c_override,
         
-        coalesce( b.bookingvalue/a.nbvlocaloverride*a.current_Monthly_Subscription_Fee__c_override, c.bookingvalue/a.nbvlocaloverride*a.current_Monthly_Subscription_Fee__c_override,a.current_Monthly_Subscription_Fee__c_override) as current_Monthly_Subscription_Fee__c_override,
+        coalesce( b.bookingvalue_g/a.nbvlocaloverride*a.current_Monthly_Subscription_Fee__c_override, c.bookingvalue/a.nbvlocaloverride*a.current_Monthly_Subscription_Fee__c_override,a.current_Monthly_Subscription_Fee__c_override) as current_Monthly_Subscription_Fee__c_override,
         coalesce ( b.teamname, c.teamname, a.dm__c) as dm__c,
         a.dm__c as dm__c__original,
         coalesce ( b.teamname, c.teamname) as teamname,
