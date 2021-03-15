@@ -1,5 +1,6 @@
 ---
 View: sfdc-w003-t005-fact-split-cases-grouped
+NOTE: Check the where clause on edits
 ---
 
 
