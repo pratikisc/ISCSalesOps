@@ -1,5 +1,5 @@
 ---
-View: sfdc-case-w0001-t0003-a-final case numbers
+View: sfdc-case-w0001v1-t0003-a-final case numbers
 Note: All the case numbers from grouped cases + case numbers from ungrouped; Commission Processing Flag = NULL; Splits excluded here.
 ---
 
@@ -11,7 +11,7 @@ Note: All the case numbers from grouped cases + case numbers from ungrouped; Com
     SELECT
         casenumber :: character varying (200) as casenumber
     FROM
-        "SFDC-CASE-W0001-T0001-GROUPED-CASES" -- Grouped Renewal and Amendment cases by Opportunity
+        "SFDC-CASE-W0001v1-T0001-GROUPED-CASES" -- Grouped Renewal and Amendment cases by Opportunity
 
 )
 UNION
