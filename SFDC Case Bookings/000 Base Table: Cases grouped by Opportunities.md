@@ -42,7 +42,7 @@ SELECT
 		a.Commission_Processing_Flag__c is null
 		
 		-- !!!! Removing Splits from Grouping here
-		and a.salesforce_case.team_territory_assignment_1__c is null
+		and a.team_territory_assignment_1__c is null
 
 
 	ORDER BY
