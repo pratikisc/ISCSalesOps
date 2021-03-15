@@ -1,6 +1,6 @@
 ---
 title: Transformation (Intermediate Steps)
-View Name: sfdc-w003-t002-bookingvalues
+View Name: sfdc-w003v1-t002-bookingvalues
 Status: Interim View
 ---
 ```sql
@@ -42,7 +42,7 @@ order by casenumber, colv.cv asc;
 
 ```
 
-## View Name: `"sfdc-w003-t002-bookingvalues"`
+## View Name: `"sfdc-w003v1-t002-bookingvalues"`
 
 | Column | Description |
 | --- | --- |
