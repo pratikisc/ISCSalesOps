@@ -36,16 +36,9 @@ select
         (b.shipping_outside_of_owners_territory__c)::character varying (200) as shipping_outside_of_owners_territory__c,
         (b.accountid)::character varying (200) as accountid,
         (b.firstin_partner_account__c)::character varying (200) as firstin_partner_account__c,
-        b.billing_agent__c as billing_agent__c,
-        case billing_agent__c when true 
-            then 'true'
-            else 'false'
-        end as billing_agent__c__text,
+        b.billing_agent__c__text,
         b.inet_safer_synergy__c as inet_safer_synergy__c,
-        case inet_safer_synergy__c when true 
-            then 'true'
-            else 'false'
-        end as inet_safer_synergy__c__text,
+        COALESCE ( a.inet_safer_synergy__c_grouped, b.inet_safer_synergy__c__text) AS inet_safer_synergy__c__text,
         (b.nam__c)::character varying (200) as nam__c,
         (b.key_account_manager__c)::character varying (200) as key_account_manager__c,
         (left(b.opportunity__c,15))::character varying (200) as opp_id__c,
@@ -83,9 +76,9 @@ select
         (b.msanumber):: character varying (200) as msanumber
  
 from
- "sfdc-case-w0001-t0003-a-final case numbers" as x
+ "sfdc-case-w0001v1-t0003-a-final case numbers" as x
  left join "SFDC-CASE-W0001v1-T0001-GROUPED-CASES" as a ON x.casenumber = a.casenumber
- inner join "sfdc-case-w0001-t0002-case-attributes" as b ON x.casenumber = b.casenumber
+ inner join "sfdc-case-w0001v1-t0002-case-attributes" as b ON x.casenumber = b.casenumber
  
  
 
