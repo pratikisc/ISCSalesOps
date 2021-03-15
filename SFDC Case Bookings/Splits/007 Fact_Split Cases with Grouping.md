@@ -70,6 +70,8 @@ b.id,
 b.casenumber,
 b.teamname,
 a.bookingvalue_g,
+a.nbvgrouped,
+a.bookingvalue_g/a.nbvgrouped as allocation,
 a.calculationflag
 
 from
