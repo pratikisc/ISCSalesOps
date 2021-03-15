@@ -12,10 +12,10 @@ NOTE: Check the where clause on edits
 
 with getid_h as (
                 select
-                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') ||  a.teamname AS id_hs,
+                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') ||  a.teamvalue AS id_hs,
                 a.id,
                 a.casenumber,
-                a.teamname,
+                a.teamvalue,
                 a.bookingvalue,
                 b.net_bookings_value__c,
 		b.inet_now_licenses__c,
@@ -36,19 +36,19 @@ with getid_h as (
                       b.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
                       b.finance_sub_status__c = 'Booked' and
                       b.opportunity__c is not null and
-                      a.teamname not like 'GAM-%'
+                      a.teamvalue not like 'GAM-%'
                 order by b.net_bookings_value__c
                       
                 ),
                 
             getrowid as (
               select
-                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM')||  a.teamname AS id_hs,
-                a.teamname,
+                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM')||  a.teamvalue AS id_hs,
+                a.teamvalue,
                 a.id,
 		a.casenumber,
                 row_number() OVER(     
-                  PARTITION BY b.opportunity__c, coalesce(b.inet_type__c, 'No-iNetType__c'), to_char( b.booked_date__c, 'YYYY'), to_char( b.booked_date__c, 'MM'), a.teamname
+                  PARTITION BY b.opportunity__c, coalesce(b.inet_type__c, 'No-iNetType__c'), to_char( b.booked_date__c, 'YYYY'), to_char( b.booked_date__c, 'MM'), a.teamvalue
                   ORDER BY
                   b.net_bookings_value__c DESC,
                   b.booked_date__c DESC
@@ -64,7 +64,7 @@ with getid_h as (
                       b.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
                       b.finance_sub_status__c = 'Booked' and
                       b.opportunity__c is not null and
-                      a.teamname not like 'GAM-%'
+                      a.teamvalue not like 'GAM-%'
           )
     
     
@@ -73,7 +73,7 @@ select
 a.id_hs,
 b.id,
 b.casenumber,
-b.teamname,
+b.teamvalue,
 a.bookingvalue_g,
 a.nbvgrouped,
 a.bookingvalue_g/a.nbvgrouped as allocation,
@@ -81,7 +81,7 @@ a.inet_now_licenses__c_grouped,
 case when a.inet_safer_synergy__c_grouped  > 0 
             then 'true'
             else 'false'
-        end as inet_safer_synergy__c_grouped
+        end as inet_safer_synergy__c_grouped,
 a.calculationflag
 
 from
