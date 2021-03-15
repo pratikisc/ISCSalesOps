@@ -23,6 +23,13 @@ with getid_h as (
                 "sfdc-w003-t004-unpivoted-key-values" a
                 
                 LEFT JOIN salesforce_case b ON a.casenumber = b.casenumber
+                
+                WHERE
+                      -- !!!! Filter for only cases that will be grouped here
+                      -- Remember to check this same list in the WITH ( CaseList ) table in Final View
+                      type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
+                      finance_sub_status__c = 'Booked' and
+                      id_h is not null
                 )
 select
   id_h,
