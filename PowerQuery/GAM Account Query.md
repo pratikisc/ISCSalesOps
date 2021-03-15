@@ -48,8 +48,7 @@ let
         if Text.Contains([ACCOUNT NAME], "exxonmobil") then "ExxonMobil" 
         else if Text.Contains([ACCOUNT NAME], "exxon") then "ExxonMobil" 
         else if Text.Contains([ACCOUNT NAME], "xto ") then "ExxonMobil" 
-        else if Text.Contains([ACCOUNT NAME], "esso ") then "ExxonMobil" 
-        else if Text.Contains([ACCOUNT NAME], "syncrude ") then "ExxonMobil" 
+        else if Text.Contains([ACCOUNT NAME], "esso ") then "ExxonMobil"  
         else if Text.Contains([ACCOUNT NAME], "imperial oil") then "ExxonMobil" 
         else if Text.Contains([ACCOUNT NAME], "infineum ") then "ExxonMobil" 
         else if Text.Contains([ACCOUNT NAME], "trend gathering") then "ExxonMobil"
@@ -179,7 +178,8 @@ let
   
     #"Added Matson Column" = Table.AddColumn(#"Added Bourque Column", "Eric Matson", each 
         if Text.Contains([ACCOUNT NAME], "suncor ") then "Suncor Energy" 
-        else if Text.Contains([ACCOUNT NAME], "oilsands refining") then "Suncor Energy" 
+        else if Text.Contains([ACCOUNT NAME], "oilsands refining") then "Suncor Energy"
+	else if Text.Contains([ACCOUNT NAME], "syncrude ") then "Suncor Energy" 
         else if Text.Contains([ACCOUNT NAME], "husky energy") then "Cenovus Energy" 
         else if Text.Contains([ACCOUNT NAME], "cenovus ") then "Cenovus Energy" 
         else if Text.Contains([ACCOUNT NAME], "canadian natural resource") then "Canadian Natural Resources" 
