@@ -8,6 +8,8 @@ a.id,
 a.casenumber,
 a.teamname,
 a.bookingvalue,
+b.net_bookings_value__c,
+a.bookingvalue/b.net_bookings_value__c as allocation,
 'Split / Case Value' as calculationflag
 from
 "sfdc-w003-t004-unpivoted-key-values" a
