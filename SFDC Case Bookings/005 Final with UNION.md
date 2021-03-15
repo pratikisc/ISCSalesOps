@@ -1,5 +1,5 @@
 ---
-View: sfdc-case-w0001-t0004-final-union-view-with-splits
+View: sfdc-case-w0001v1-t0004-final-union-view-with-splits
 ---
 
 ```
@@ -71,7 +71,7 @@ select
         team_territory_assignment_8__c,
         team_8_net_booking_value_case_currency__c
       from
-      "sfdc-w003-t007-fact-split-cases-joins-on-union"
+      "sfdc-w003v1-t007-fact-split-cases-joins-on-union"
  UNION
  select
         casenumber,
@@ -138,5 +138,5 @@ select
         team_territory_assignment_8__c,
         team_8_net_booking_value_case_currency__c
       from
-      "sfdc-case-w0001-t0003-final-joined-view"
+      "sfdc-case-w0001v1-t0003-final-joined-view"
       
