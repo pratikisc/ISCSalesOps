@@ -11,7 +11,7 @@ View: sfdc-w003-t005-fact-split-cases-grouped
 
 with getid_h as (
                 select
-                b.opportunity__c || '-' || b.inet_type__c || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') AS id_h
+                b.opportunity__c || '-' || coalesce(b.inet_type__c, 'No-iNetType__c')  || '-' || to_char( b.booked_date__c, 'YYYY') || '-' || to_char( b.booked_date__c, 'MM') AS id_h,
                 a.id,
                 a.casenumber,
                 a.teamname,
@@ -35,11 +35,16 @@ select
   id_h,
   teamname,
   sum(bookingvalue) as bookingvalue_g,
-  sum(bookingvalue)/sum(net_bookings_value__c)  as allocation
+  sum(net_bookings_value__c)  as nbvgrouped
 
 from getid_h
 
 group by id_h, teamname
+
+
+having nbvgrouped <> 0
+
+order by id_h, nbvgrouped 
 
 
                 
