@@ -1,7 +1,7 @@
 ---
 title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
-View: SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES
+View: SFDC-CASE-W0001v1-T0002-CASE-ATTRIBUTES
 Status: Interim View
 ---
 
@@ -70,7 +70,15 @@ SELECT
       accountid,
       firstin_partner_account__c,
       billing_agent__c,
+      case billing_agent__c when true 
+            then 'true'
+            else 'false'
+        end as billing_agent__c__text,
       inet_safer_synergy__c,
+      case inet_safer_synergy__c when true 
+            then 'true'
+            else 'false'
+        end as inet_safer_synergy__c__text,
       nam__c,
       key_account_manager__c,
       opportunity__c,
@@ -122,7 +130,7 @@ where
 
 ```
 
-## View Name: `"SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES"`
+## View Name: `"SFDC-CASE-W0001v1-T0002-CASE-ATTRIBUTES"`
 
 | Column | Description |
 | --- | --- |
