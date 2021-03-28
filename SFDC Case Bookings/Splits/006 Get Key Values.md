@@ -1,6 +1,6 @@
 ---
 title: Joining on the new casenumber__S key
-View Name: sfdc-w003v1-t004-unpivoted-key-values
+View Name: '"commissions"."sfdc-w003v2-t004-unpivoted-key-values"'
 Status: Interim View
 ---
 
@@ -13,8 +13,8 @@ SELECT
     t.teamvalue,
     b.bookingvalue
 FROM
-    "sfdc-w003v1-t003-teamnames__s" t
-    LEFT JOIN "sfdc-w003v1-t003-bookingvalues__s" b ON t.id = b.id
+    "commissions"."sfdc-w003v2-t003-teamnames__s" t
+    LEFT JOIN "commissions"."sfdc-w003v2-t003-bookingvalues__s" b ON t.id = b.id
 WHERE
     t.teamvalue IS NOT NULL
     AND 
