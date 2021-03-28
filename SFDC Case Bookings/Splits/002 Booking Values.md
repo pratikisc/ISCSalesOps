@@ -1,6 +1,6 @@
 ---
 title: Transformation (Intermediate Steps)
-View Name: sfdc-w003v1-t002-bookingvalues
+View Name: "commissions"."sfdc-w003v2-t002-bookingvalues"
 Status: Interim View
 ---
 ```sql
@@ -37,15 +37,7 @@ select
         ELSE NULL
     END as "bookingvalue"
 
-from "sfdc-w003-t001-splittable" cross join colv
+from "commissions"."sfdc-w003v2-t001-splittable" cross join colv
 order by casenumber, colv.cv asc;
 
 ```
-
-## View Name: `"sfdc-w003v1-t002-bookingvalues"`
-
-| Column | Description |
-| --- | --- |
-|`All Column Descriptions`| All column descriptions are in the final view  |
-
-
