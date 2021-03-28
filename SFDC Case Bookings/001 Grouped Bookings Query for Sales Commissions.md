@@ -1,13 +1,11 @@
 ---
 title: Opportunity to Case Metrics Mapping.
 NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping. Splits are removed from Grouping (Renewal, Amendment, Transfer splits)
-View: sfdc-case-w0001v1-t0001-grouped-cases
+View: '"commissions"."sfdc-case-w0001v2-t0001-grouped-cases"'
 Status: Interim View.
 ---
 
 ```sql
--- CREATE VIEW SFDC-CASE-W0001-T0001-GROUPED-CASES AS
-
 
 WITH id_h__sum AS (
 	SELECT
@@ -19,7 +17,7 @@ WITH id_h__sum AS (
 		sum(inet_now_licenses__c) AS inet_now_licenses__c_grouped,
 		sum(inet_safer_synergy__c__int) AS inet_safer_synergy__c_grouped
 		FROM
-		"sfdc-case-w0001v1-t0000-a1-base-table"	
+		"commissions"."sfdc-case-w0001v2-t0000-a1-base-table"	
 		GROUP BY
 		id_h
 ),
@@ -29,7 +27,7 @@ WITH id_h__sum AS (
 		opportunity__c,
 		casenumber
 		from
-		"sfdc-case-w0001v1-t0000-a1-base-table" as basetable
+		"commissions"."sfdc-case-w0001v2-t0000-a1-base-table" as basetable
 		where rank = 1
 	)
 
@@ -60,8 +58,6 @@ left join id_h__case as b on a.id_h = b.id_h
 ```
 
 ## View Results Dictionary
-
-## View Name: `SFDC-CASE-W0001-T0001-GROUPED-CASES`
 
 | Column | Description |
 | --- | --- |
