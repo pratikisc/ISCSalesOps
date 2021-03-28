@@ -1,6 +1,6 @@
 ---
 title: Opportunity to Case Metrics Mapping.
-NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping. Splits are removed from Grouping (Renewal, Amendment, Transfer splits)
+'!!!IMPORTANT NOTE': Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping.
 View: '"commissions"."sfdc-case-w0001v2-t0001-grouped-cases"'
 Status: Interim View.
 ---
