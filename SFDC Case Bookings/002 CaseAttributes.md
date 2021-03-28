@@ -1,13 +1,11 @@
 ---
 title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
-View: SFDC-CASE-W0001v1-T0002-CASE-ATTRIBUTES
+View: '"commissions"."sfdc-case-w0001v2-t0002-case-attributes"
 Status: Interim View
 ---
 
-```sql
--- CREATE VIEW "SFDC-CASE-W0001-T0002-CASE-ATTRIBUTES" AS
-  
+```  
  
 WITH
     dim_opportunity AS (
@@ -129,10 +127,4 @@ where
 
 
 ```
-
-## View Name: `"SFDC-CASE-W0001v1-T0002-CASE-ATTRIBUTES"`
-
-| Column | Description |
-| --- | --- |
-|`All Column Descriptions`| All column descriptions are in the final view  |
 
