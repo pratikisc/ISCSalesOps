@@ -7,17 +7,18 @@ Status: Final reference join table
 ```sql
 
 
-SELECT
-    t.id,
-    t.casenumber,
-    t.teamvalue,
-    b.bookingvalue
-FROM
-    "commissions"."sfdc-w003v2-t003-teamnames__s" t
-    LEFT JOIN "commissions"."sfdc-w003v2-t003-bookingvalues__s" b ON t.id = b.id
-WHERE
-    t.teamvalue IS NOT NULL
-    AND 
-    b.bookingvalue <> 0
-ORDER BY
-    t.id;
+select
+a.id,
+a.casenumber,
+a.teamvalue,
+a.bookingvalue,
+b.net_bookings_value__c,
+a.bookingvalue / b.net_bookings_value__c as allocation
+from
+"commissions"."sfdc-w003v2-t004-unpivoted-key-values" as a
+left join salesforce_case as b
+on a.casenumber = b.casenumber
+where
+b.net_bookings_value__c <> 0
+and teamvalue not like 'GAM%'
+order by a.id
