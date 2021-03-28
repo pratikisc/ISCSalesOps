@@ -1,7 +1,7 @@
 ---
-title Transformation (Adding a new key column)
-View Name "commissions"."sfdc-w003v1-t003-bookingvalues__s"
-Status Interim View
+title: Transformation (Adding a new key column)
+View Name: "commissions"."sfdc-w003v1-t003-bookingvalues__s"
+Status: Interim View
 ---
 
 ```sql
