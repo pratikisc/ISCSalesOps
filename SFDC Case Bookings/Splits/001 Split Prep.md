@@ -1,6 +1,6 @@
 ---
 title: Initial Load of a flat split table
-View Name: sfdc-w003v2-t001-splittable
+View Name: "commissions"."sfdc-w003v2-t001-splittable"
 Status: Interim View
 ---
 
