@@ -1,6 +1,6 @@
 ---
 title: get allocations for left joins on main table
-View Name: '"commissions"."sfdc-w003v2-t004-unpivoted-key-values"'
+View Name: '"commissions"."sfdc-w003v2-t005-split-ref-table"'
 Status: Final reference join table
 ---
 
