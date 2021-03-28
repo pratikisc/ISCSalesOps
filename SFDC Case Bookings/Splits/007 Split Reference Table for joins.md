@@ -13,7 +13,8 @@ a.casenumber,
 a.teamvalue,
 a.bookingvalue,
 b.net_bookings_value__c,
-a.bookingvalue / b.net_bookings_value__c as allocation
+a.bookingvalue / b.net_bookings_value__c as allocation,
+'Split Case' as calculationflag
 from
 "commissions"."sfdc-w003v2-t004-unpivoted-key-values" as a
 left join salesforce_case as b
