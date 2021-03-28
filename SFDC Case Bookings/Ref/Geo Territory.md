@@ -22,7 +22,7 @@ with dim_account as (
 select
 a.id,
 a.geocategory,
-b.__sub_territory_id
+b.__sub_territory_id as st_id_amer
 from
 dim_account a
 inner join "territory"."sheets_join_territory_join_geo_us  ca postal" b
