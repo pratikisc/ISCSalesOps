@@ -1,6 +1,6 @@
 ---
 title: Transformation (Intermediate Steps)
-View Name: sfdc-w003v1-t002-teamnames
+View Name: "commissions"."sfdc-w003v2-t002-teamnames"
 Status: Interim View
 ---
 
@@ -39,14 +39,8 @@ select
         ELSE NULL
     END as "TeamValue"
 
-from "sfdc-w003v1-t001-splittable" cross join cols
+from "commissions"."sfdc-w003v2-t001-splittable" cross join cols
 order by casenumber, team asc;
 
 
 ```
-
-## View Name:
-
-| Column | Description |
-| --- | --- |
-|`All Column Descriptions`|   |
