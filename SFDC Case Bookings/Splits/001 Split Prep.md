@@ -37,10 +37,3 @@ Status: Interim View
 
 
 ```
-
-## View Name: 
-
-| Column | Description |
-| --- | --- |
-|`All Column Descriptions`| All column descriptions are in the final view  |
-
