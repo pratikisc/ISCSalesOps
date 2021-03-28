@@ -37,6 +37,7 @@ SELECT
 		salesforce_case as a
 	
 	WHERE
+		--- !!! Filter for Grouped Cases: Type, Opportunity__c
 		-- Remember to check this same list in the WITH ( CaseList ) table in Final View
 		a.type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and    
 		a.finance_sub_status__c = 'Booked' and
