@@ -1,6 +1,6 @@
 ---
 title: Base Table for Cases with Opportunity
-!!! IMPORTANT NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Term Extension, Amendment, Transfer included in grouping.
+'!!! IMPORTANT NOTE': Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Term Extension, Amendment, Transfer included in grouping.
 View Name: '"commissions"."sfdc-case-w0001v2-t0000-a1-base-table"'
 Status: Interim View.
 ---
