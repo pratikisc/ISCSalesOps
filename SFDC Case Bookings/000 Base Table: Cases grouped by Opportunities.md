@@ -1,7 +1,7 @@
 ---
 title: Base Table for Cases with Opportunity
-NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Term Extension, Amendment, Transfer included in grouping.
-View Name: sfdc-case-w0001v1-t0000-a1-base-table
+!!! IMPORTANT NOTE: Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Term Extension, Amendment, Transfer included in grouping.
+View Name: '"commissions"."sfdc-case-w0001v2-t0000-a1-base-table"'
 Status: Interim View.
 ---
 
@@ -46,21 +46,7 @@ SELECT
 		
 		a.Commission_Processing_Flag__c is null
 		
-		-- !!!! Removing Splits from Grouping here
-		and a.team_territory_assignment_1__c is null
-
-
 	ORDER BY
 		a.net_bookings_value__c DESC
 
-```		
-## View Description
-
-| Column | Description |
-| --- | --- |
-| `id_h` `key`| Hybrid Opportunity ID |
-| `nbv_local_grouped` | Sum of All NBV Local for `id_h` |
-| `mrr_change_local_grouped` | Sum of All MRR Change Local grouped by `id_h` |
-| `Previous_Monthly_Subscription_Fee__c_grouped`| Sum of Previous MRR Local grouped by `id_h` |
-| `Current_Monthly_Subscription_Fee__c_grouped` | Sum of Current MRR Local grouped by `id_h` |
-| `calculationflag` | To know if case calculation was grouped by Opportunity |
+```
