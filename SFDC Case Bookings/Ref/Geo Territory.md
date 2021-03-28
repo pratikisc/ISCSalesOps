@@ -9,7 +9,7 @@ salesforce_account
 where shippingcountry in ('CH','ch')
 
 
--- US ad CA reference table
+-- US ad CA reference table (used in partner bookings)
 
 with dim_account as (
     select
