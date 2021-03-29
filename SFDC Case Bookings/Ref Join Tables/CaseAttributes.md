@@ -1,7 +1,7 @@
 ---
 title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 description: View for getting the connection between grouped cases metrics to the relevant opportunity. Renewals and Amendment cases are included in the grouping.
-View: '"commissions"."sfdc-case-w0001v2-t0002-case-attributes"'
+View: '"commissions"."reference-case-attributes"'
 Status: Interim View
 ---
 
@@ -40,13 +40,31 @@ WITH
        from salesforce_contract as a1
            left outer join salesforce_contract as a2 on a1.parent_contract__c = a2.id
            left outer join salesforce_user as a3 on a2.ownerid = a3.id
+    ),
+  dim_user AS (
+       select
+       id,
+       full_name__c
+       from
+       salesforce_user
     )
  
  
 SELECT
-      recordtypeid,
-      casenumber,
-      dm__c,
+      a.recordtypeid,
+      a.casenumber,
+      
+      g.full_name__c as dm,
+      f.full_name__c as gam,
+      a.key_account_manager__c as kam,
+      a.safer_rep__c as safer_rep,
+      
+      h.amer_psm_sub_territory as amer_psm_sub_territory_id_named,
+      i.__sub_territory_id as dm_sub_territory_id,
+      j.__sub_territory_id as gam_sub_territory_id,
+      k.__sub_territory_id as kam_sub_territory_id,
+      l.__sub_territory_id as safer_sub_territory_id,
+      
       net_bookings_value__c,
       exchange_rate_to_usd__c,
       booked_date__c,
@@ -77,26 +95,10 @@ SELECT
             then 'true'
             else 'false'
         end as inet_safer_synergy__c__text,
-      nam__c,
-      key_account_manager__c,
-      opportunity__c,
+      
+      a.opportunity__c,
+      a.inet_account__c,
       oracle_organization__c,
-      team_territory_assignment_1__c,
-      team_1_net_booking_value_case_currency__c,
-      team_territory_assignment_2__c,
-      team_2_net_booking_value_case_currency__c,
-      team_territory_assignment_3__c,
-      team_3_net_booking_value_case_currency__c,
-      team_territory_assignment_4__c,
-      team_4_net_booking_value_case_currency__c,
-      team_territory_assignment_5__c,
-      team_5_net_booking_value_case_currency__c,
-      team_territory_assignment_6__c,
-      team_6_net_booking_value_case_currency__c,
-      team_territory_assignment_7__c,
-      team_7_net_booking_value_case_currency__c,
-      team_territory_assignment_8__c,
-      team_8_net_booking_value_case_currency__c,
       commission_processing_flag__c,
       oracle_order_number__c,
       oracle_system_number__c,
@@ -115,10 +117,17 @@ SELECT
       
 from
       salesforce_case as a
-      left outer join dim_opportunity as b ON a.opportunity__c = b.id
-      left outer join dim_account as c ON a.accountid = c.id
-      left outer join dim_account as d ON a.firstin_partner_account__c = d.id
-      left outer join dim_contract as e ON a.contract__c = e.id
+      left join dim_opportunity as b ON a.opportunity__c = b.id
+      left join dim_account as c ON a.accountid = c.id
+      left join dim_account as d ON a.firstin_partner_account__c = d.id
+      left join dim_contract as e ON a.contract__c = e.id
+      left join dim_user as f ON a.nam__c = f.id
+      left join dim_user as g ON a.dm__c = g.id
+      left join "commissions"."plan-rule-2021-001-t001-amer-psm-inet-launches" as h ON a.casenumber = h.casenumber
+      left join "territory"."sheets_join_territory_join sfdc case dm name" as i ON a.dm__c = i.__dm__c
+      left join "territory"."sheets_join_territory_join sfdc case gam" as j ON a.nam__c = j.__nam__c
+      left join "territory"."sheets_join_territory_join sfdc case kam" as k ON a.key_account_manager__c = k.__key_account_manager__c
+      left join "territory"."sheets_join_territory_join sfdc case safer_rep__c" as l ON a.safer_rep__c = l.__safer_rep__c
 where
       finance_sub_status__c = 'Booked'
  
