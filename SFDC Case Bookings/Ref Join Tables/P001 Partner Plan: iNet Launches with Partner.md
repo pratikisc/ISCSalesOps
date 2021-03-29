@@ -19,7 +19,7 @@ where
 -- !!! Launches only
 a.type = 'Launch'  
 
-- !!! Launches with partner accounts only
+-- !!! Launches with partner accounts only
 and a.firstin_partner_account__c is not null 
 
 ```
