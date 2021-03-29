@@ -1,5 +1,5 @@
 ---
-View Name: '"commissions"."sfdc-case-w0001v2-t0004-fact-join-split"'
+View Name: '"commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-split-fact"'
 ---
 ```
 select
@@ -8,6 +8,8 @@ a.casenumber,
 
 a.inet_now_licenses__c_grouped,
 a.inet_safer_synergy__c_grouped,
+
+coalesce(b.calculationflag,'No Split') || ' - ' || a.calculationflag as ac,
 
 coalesce(b.calculationflag::character varying (200), a.calculationflag::character varying (200)) as calculationflag,
 coalesce(b.allocation::float,1) as allocation,
