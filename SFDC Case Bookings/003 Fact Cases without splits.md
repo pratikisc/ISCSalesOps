@@ -4,7 +4,6 @@ View:
 
 ```
 select
-null::character varying (200) as id,
 casenumber::character varying (200) as casenumber,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
@@ -16,12 +15,11 @@ null::float as inet_now_licenses__c_grouped,
 null::character varying (200) as inet_safer_synergy__c_grouped
 
 from
-"commissions"."sfdc-case-w0001v2-t0003-non-grouped-cases"
+"commissions"."sfdc-case-w0001v2-t0002-non-grouped-cases"
 
 UNION
 
 select
-id::character varying (200) as id,
 casenumber::character varying (200) as casenumber,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
