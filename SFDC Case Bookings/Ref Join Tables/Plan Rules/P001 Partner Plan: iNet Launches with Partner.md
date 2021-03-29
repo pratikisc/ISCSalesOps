@@ -20,6 +20,8 @@ where
 a.type = 'Launch'  
 
 -- !!! Launches with partner accounts only
-and a.firstin_partner_account__c is not null 
+and a.firstin_partner_account__c is not null
+
+and b.st_id_amer is not null
 
 ```
