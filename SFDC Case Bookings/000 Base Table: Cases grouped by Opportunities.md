@@ -22,7 +22,7 @@ SELECT
             then 1
             else 0
         end as inet_safer_synergy__c__int,
-	coalesce(a.inet_now_licenses__c,0) as inet_now_licences__c,
+	coalesce(a.inet_now_licenses__c,0) as inet_now_licenses__c,
 	to_char( a.booked_date__c, 'YYYY') AS y,
 	to_char( a.booked_date__c, 'MM') AS m,
 	
