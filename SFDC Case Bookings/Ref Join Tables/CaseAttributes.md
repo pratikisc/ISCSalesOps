@@ -70,12 +70,11 @@ SELECT
       a.key_account_manager__c as kam,
       a.safer_rep__c as safer_rep,
       
-      h.amer_psm_sub_territory as amer_psm_sub_territory_id_named,
       i.__sub_territory_id as dm_sub_territory_id,
       j.__sub_territory_id as gam_sub_territory_id,
       k.__sub_territory_id as kam_sub_territory_id,
       l.__sub_territory_id as safer_sub_territory_id,
-      m.__partner_sub_territory_id,
+      (m.__partner_sub_territory_id::integer, h.amer_psm_sub_territory::integer) as amer_psm_sub_territory_id_named,
       
       
       net_bookings_value__c,
