@@ -1,6 +1,7 @@
 ---
 title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 View: '"commissions"."reference-case-attributes"'
+Note: !!! Plan overrides are applied on this sheet as well.
 Status: Interim View
 ---
 
@@ -46,8 +47,19 @@ WITH
        full_name__c
        from
        salesforce_user
-    )
- 
+    ),
+  
+  
+  -- !!! Override Table from Airtable
+  psm_plan_ov AS (
+     select
+        trim(from __opportunity_number) as opp_number,
+        __partner_sub_territory_id
+     from
+        "override"."sheets_join sfdc case overrides_join_sfdc inet case - opportunity overlays"
+     where
+        "qc checked for unique pk?" is true
+ )
  
 SELECT
       a.recordtypeid,
@@ -63,6 +75,8 @@ SELECT
       j.__sub_territory_id as gam_sub_territory_id,
       k.__sub_territory_id as kam_sub_territory_id,
       l.__sub_territory_id as safer_sub_territory_id,
+      m.__partner_sub_territory_id,
+      
       
       net_bookings_value__c,
       exchange_rate_to_usd__c,
@@ -127,7 +141,11 @@ from
       left join "territory"."sheets_join_territory_join sfdc case gam" as j ON a.nam__c = j.__nam__c
       left join "territory"."sheets_join_territory_join sfdc case kam" as k ON a.key_account_manager__c = k.__key_account_manager__c
       left join "territory"."sheets_join_territory_join sfdc case safer_rep__c" as l ON a.safer_rep__c = l.__safer_rep__c
-where
+      
+      -- !!! Americas PSM Plan override
+      left join psm_plan_ov as m ON b.opportunity_number__c = m.opp_number
+      
+      where
       finance_sub_status__c = 'Booked'
  
  
