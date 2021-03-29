@@ -8,7 +8,9 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
 
   
     SELECT
-    casenumber
+    casenumber,
+    'Case Value' as calculationflag,
+    1 as allocation
     FROM
     salesforce_case
     WHERE
