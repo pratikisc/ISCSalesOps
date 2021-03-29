@@ -1,5 +1,5 @@
 ---
-view: '""commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attributes-final"'
+view: '"commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attributes-final"'
 ---
 
 ```sql
