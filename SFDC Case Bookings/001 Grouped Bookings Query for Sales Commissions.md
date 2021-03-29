@@ -49,7 +49,8 @@ case when a.inet_safer_synergy__c_grouped  > 0
             else 'false'
         end as inet_safer_synergy__c_grouped,
 
-'Grouped Booking Value' AS calculationflag
+'Grouped Booking Value' AS calculationflag,
+1 as allocation
 from
 id_h__sum as a
 left join id_h__case as b on a.id_h = b.id_h
