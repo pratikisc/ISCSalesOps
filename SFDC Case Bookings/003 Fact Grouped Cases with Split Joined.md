@@ -9,9 +9,7 @@ a.casenumber,
 a.inet_now_licenses__c_grouped,
 a.inet_safer_synergy__c_grouped,
 
-coalesce(b.calculationflag,'No Split') || ' - ' || a.calculationflag as ac,
-
-coalesce(b.calculationflag::character varying (200), a.calculationflag::character varying (200)) as calculationflag,
+coalesce(b.calculationflag,'No Split') || ' - ' || a.calculationflag as calculationflag,
 coalesce(b.allocation::float,1) as allocation,
 coalesce(b.allocation::float,1) * a.nbvlocal as nbvlocal,
 coalesce(b.allocation::float,1) * a.mrrchangelocal as mrrchangelocal,
