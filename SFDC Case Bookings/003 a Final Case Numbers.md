@@ -1,6 +1,6 @@
 ---
 View: '"commissions"."sfdc-case-w0001v2-t0003-non-grouped-cases"'
-Note: All the case numbers from grouped cases + case numbers from ungrouped; Commission Processing Flag = NULL; Splits excluded here.
+Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
 ---
 
 
