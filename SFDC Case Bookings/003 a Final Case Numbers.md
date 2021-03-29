@@ -1,5 +1,5 @@
 ---
-View: sfdc-case-w0001v1-t0003-a-final case numbers
+View: '"commissions"."sfdc-case-w0001v2-t0003-non-grouped-cases"'
 Note: All the case numbers from grouped cases + case numbers from ungrouped; Commission Processing Flag = NULL; Splits excluded here.
 ---
 
@@ -7,17 +7,8 @@ Note: All the case numbers from grouped cases + case numbers from ungrouped; Com
 ```sql
 
   
-(
     SELECT
-        casenumber :: character varying (200) as casenumber
-    FROM
-        "SFDC-CASE-W0001v1-T0001-GROUPED-CASES" -- Grouped Renewal and Amendment cases by Opportunity
-
-)
-UNION
-(
-    SELECT
-    casenumber :: character varying (200) as casenumber
+    casenumber
     FROM
     salesforce_case
     WHERE
@@ -25,9 +16,6 @@ UNION
             type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
             finance_sub_status__c = 'Booked' and
             Commission_Processing_Flag__c is null
-            
-            -- !!!! Removing Splits from Grouping here
-		        and team_territory_assignment_1__c is null
         )
         or
         (
@@ -35,9 +23,4 @@ UNION
               finance_sub_status__c = 'Booked' and
               opportunity__c is null and
               Commission_Processing_Flag__c is null
-              
-              -- !!!! Removing Splits from Grouping here
-		          and team_territory_assignment_1__c is null
         )
-
-)
