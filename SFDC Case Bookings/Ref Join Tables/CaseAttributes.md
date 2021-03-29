@@ -29,6 +29,7 @@ WITH
        select
        a1.id,
        a1.Special_Terms_List__c,
+       case when a1.special_terms_list__c like '%Auto-Renewal%' then true else false end as autorenewexists,
        a1.parent_contract__c,
        a2.status msastatus,
        a2.contract_end_date__c msaenddate,
@@ -125,6 +126,7 @@ SELECT
       c.name as accountname,
       d.name as partnername,
       e.Special_Terms_List__c,
+      e.autorenewexists,
       e.msastatus,
       e.msaenddate,
       e.msastartdate,
