@@ -11,6 +11,6 @@ salesforce_case as a
 left join "commissions"."reference-sfdc account and ship to amer sub terr" as b
 on a.accountid = b.id
 where
-a.type = 'Launch'  --- !!! Launches only
-and a.firstin_partner_account__c is not null --- !!! Launches with partner accounts only
+a.type = 'Launch'  -- !!! Launches only
+and a.firstin_partner_account__c is not null -- !!! Launches with partner accounts only
 ```
