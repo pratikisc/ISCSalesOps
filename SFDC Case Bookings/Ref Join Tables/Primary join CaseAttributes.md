@@ -115,6 +115,7 @@ SELECT
             else 'false'
         end as inet_safer_synergy__c__text,
       
+      
       a.opportunity__c,
       a.siebel_contract__c	as inetaccount,
       oracle_organization__c,
