@@ -1,5 +1,5 @@
 ---
-View Name:
+View Name: '"commissions"."sfdc-case-w0001v2-t0002-grouped-with-split"'
 ---
 ```
 select
