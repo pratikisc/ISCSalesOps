@@ -5,7 +5,7 @@ View Name: '"commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-split
 select
 b.id,
 a.casenumber,
-
+b.teamvalue,
 a.inet_now_licenses__c_grouped,
 a.inet_safer_synergy__c_grouped,
 
