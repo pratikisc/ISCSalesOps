@@ -49,6 +49,12 @@ WITH
        salesforce_user
     ),
   
+  dim_recordtype AS (
+       SELECT
+       id,
+       name
+       FROM salesforce_recordtype
+  ),
   
   -- !!! Override Table from Airtable
   psm_plan_ov AS (
@@ -62,7 +68,7 @@ WITH
  )
  
 SELECT
-      a.recordtypeid,
+      n.name as recordtype,
       a.casenumber,
       
       g.full_name__c as dm,
@@ -122,7 +128,6 @@ SELECT
       e.msastatus,
       e.msaenddate,
       e.msastartdate,
-      e.msaownerid,
       e.msaownername,
       e.msaname,
       e.msanumber
@@ -140,10 +145,10 @@ from
       left join "territory"."sheets_join_territory_join sfdc case gam" as j ON a.nam__c = j.__nam__c
       left join "territory"."sheets_join_territory_join sfdc case kam" as k ON a.key_account_manager__c = k.__key_account_manager__c
       left join "territory"."sheets_join_territory_join sfdc case safer_rep__c" as l ON a.safer_rep__c = l.__safer_rep__c
-      
       -- !!! Americas PSM Plan override
       left join psm_plan_ov as m ON b.opportunity_number__c = m.opp_number
-      
+      left join dim_recordtype as n ON a.recordtypeid = n.id
+
       where
       finance_sub_status__c = 'Booked'
  
