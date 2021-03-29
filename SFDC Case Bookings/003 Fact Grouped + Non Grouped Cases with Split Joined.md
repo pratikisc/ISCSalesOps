@@ -6,6 +6,7 @@ select
 b.id,
 a.casenumber,
 b.teamvalue,
+b.__sub_territory_id,
 a.inet_now_licenses__c_grouped,
 a.inet_safer_synergy__c_grouped,
 
@@ -19,7 +20,7 @@ coalesce(b.allocation::float,1) * a.currmrrlocal as currmrrlocal
 
 from
 "commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-fact" a
-left join "commissions"."sfdc-w003v2-t005-split-ref-table" b
+left join "commissions"."sfdc-w003v3-t005-split-ref-table" b
 on a.casenumber = b.casenumber
 
 ```
