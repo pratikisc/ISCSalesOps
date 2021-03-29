@@ -19,8 +19,8 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
         )
         or
         (
-              type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
-              finance_sub_status__c = 'Booked' and
-              opportunity__c is null and
-              Commission_Processing_Flag__c is null
+            type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
+            finance_sub_status__c = 'Booked' and
+            opportunity__c is null and
+            Commission_Processing_Flag__c is null
         )
