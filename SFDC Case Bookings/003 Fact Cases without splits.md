@@ -1,5 +1,6 @@
 ---
 View: '"commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-fact"'
+Note: Splits not included
 ---
 
 ```
