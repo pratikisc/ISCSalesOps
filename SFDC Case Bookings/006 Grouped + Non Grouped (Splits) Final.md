@@ -4,12 +4,12 @@ View: '"commissions"."sfdc-case-w0001v2-t0006-splits-incl-grouped-and-non-groupe
 ```sql
 select
 b.recordtype,
-a.casenumber,
-b.dm,
+coalesce( a.id::character varying (200), a.casenumber::character varying (200) ) as casenumber, -- Do not use this downstream to join on case number. This is a modified case number incl. of __S suffix for splits
+coalesce(a.teamvalue::character varying (200), b.dm::character varying (200)) as dm,
 b.gam,
 b.kam,
 b.safer_rep,
-b.dm_sub_territory_id,
+coalesce(a.__sub_territory_id,b.dm_sub_territory_id) as dm_sub_territory_id,
 b.gam_sub_territory_id,
 b.kam_sub_territory_id,
 b.safer_sub_territory_id,
@@ -60,7 +60,7 @@ b.msanumber
 
 
 from
-"commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-fact" AS a
+"commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-split-fact" AS a
 left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b ON a.casenumber = b.casenumber
 
 ```
