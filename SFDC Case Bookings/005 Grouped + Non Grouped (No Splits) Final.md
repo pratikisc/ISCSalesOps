@@ -62,5 +62,5 @@ b.msanumber
 
 from
 "commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-fact" AS a
-left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b
+left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b ON a.casenumber = b.casenumber
 ```
