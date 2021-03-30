@@ -2,7 +2,7 @@
 title: Opportunity to Case Metrics Mapping.
 '!!! IMPORTANT NOTE': Only Bookings with Commission Processing flag = NULL are included; Only Renewal, Amendment, Transfer included in grouping.
 View: '"commissions"."sfdc-case-w0002-dm-t0001-grouped-cases"'
-Status: Interim View.
+PK: caseid
 ---
 
 ```sql
