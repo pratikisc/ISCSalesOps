@@ -13,7 +13,7 @@ PK: split_id
     split_id,
     'Case Value' as calculationflag,
     b.dm_sub_territory_incl_split,
-    1 as allocation
+    b.allocation
     FROM
      "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b
      left join salesforce_case a ON a.casenumber = b.casenumber
