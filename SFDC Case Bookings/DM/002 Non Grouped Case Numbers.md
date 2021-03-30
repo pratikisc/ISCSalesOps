@@ -7,12 +7,14 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
 ```sql
 
   
-    SELECT
-    casenumber,
+  SELECT
+    a.casenumber,
     'Case Value' as calculationflag,
+    b.dm_sub_territory_incl_split,
     1 as allocation
     FROM
-    salesforce_case
+    salesforce_case a
+    left join "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber
     WHERE
         (
             type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
@@ -26,3 +28,5 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
             opportunity__c is null and
             Commission_Processing_Flag__c is null
         )
+        
+  ```
