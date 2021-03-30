@@ -6,6 +6,7 @@ Note: Splits already include in base table at start; Casenumber is no longer uni
 ```
 select
 null::character varying (200) as id_h,
+casenumber::character varying (200) as caseid,
 casenumber::character varying (200) as casenumber,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
@@ -23,6 +24,7 @@ UNION
 
 select
 id_h::character varying (200) as id_h,
+caseid::character varying (200) as caseid,
 casenumber::character varying (200) as casenumber,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
