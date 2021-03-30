@@ -1,5 +1,6 @@
 ---
 view: '"commissions"."sfdc-case-w0002-dm-t0004-grouped-and-non-grouped-with-attributes-final"'
+PK: casenumber (which is actually a surrogate casenumber (caseid __S)
 ---
 
 ```sql
