@@ -1,6 +1,6 @@
 ---
 View: '"commissions"."reference-sfdc-case-dm-subterritory-incl-splits"'
-'!!! CAUTION': This table has non unique rows as 'casenumber'. Be careful when using as a foreign key.
+'!!! CAUTION': This table has non unique rows as 'casenumber'. Be careful when using as a foreign key, it will add duplicate rows on casenumber match
 ---
 
 ```sql
