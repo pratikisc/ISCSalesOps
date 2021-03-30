@@ -1,6 +1,7 @@
 ---
 View: '"commissions"."sfdc-case-w0002-dm-t0003-grouped-and-non-grouped-fact"'
 Note: Splits already include in base table at start; Casenumber is no longer unique here.
+PK: caseid
 ---
 
 ```
