@@ -6,8 +6,8 @@ View: '"commissions"."reference-sfdc-case-dm-subterritory-incl-splits"'
 ```sql
 select
 a.casenumber,
-c.id as split_id,
-coalesce(c.__sub_territory_id, b.__sub_territory_id) as dm_sub_territory_incl_split,
+coalesce(c.id,a.casenumber) as split_id,
+coalesce(c.__sub_territory_id, b.__sub_territory_id,0) as dm_sub_territory_incl_split,
 coalesce(c.allocation,1) as allocation
 from
 salesforce_case a
