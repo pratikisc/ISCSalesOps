@@ -27,6 +27,7 @@ WITH id_h__sum AS (
 		opportunity__c,
 		split_id,
 		allocation,
+		dm_sub_territory_incl_split,
 		casenumber
 		from
 		"commissions"."sfdc-case-w0002-dm-t0000-base-table"
@@ -41,6 +42,7 @@ a.id_h,
 coalesce(b.split_id::character varying (200), b.casenumber::character varying (200) ) as caseid,
 b.opportunity__c,
 b.casenumber,
+b.dm_sub_territory_incl_split,
 a.nbv_local_grouped,
 a.mrr_change_local_grouped,
 a.Previous_Monthly_Subscription_Fee__c_grouped,
