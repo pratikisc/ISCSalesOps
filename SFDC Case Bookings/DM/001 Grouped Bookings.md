@@ -38,7 +38,7 @@ WITH id_h__sum AS (
 
 SELECT
 a.id_h,
-b.split_id,
+coalesce(b.split_id::character varying (200), b.casenumber::character varying (200) ) as caseid,
 b.opportunity__c,
 b.casenumber,
 a.nbv_local_grouped,
