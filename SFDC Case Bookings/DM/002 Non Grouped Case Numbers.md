@@ -14,7 +14,7 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
     1 as allocation
     FROM
      "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b
-     left join   salesforce_case a ON a.casenumber = b.casenumber
+     left join salesforce_case a ON a.casenumber = b.casenumber
 
     WHERE
         (
