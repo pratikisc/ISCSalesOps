@@ -8,6 +8,7 @@ select
 null::character varying (200) as id_h,
 casenumber::character varying (200) as caseid,
 casenumber::character varying (200) as casenumber,
+dm_sub_territory_incl_split,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
 null::float as nbvlocal,
@@ -26,6 +27,7 @@ select
 id_h::character varying (200) as id_h,
 caseid::character varying (200) as caseid,
 casenumber::character varying (200) as casenumber,
+dm_sub_territory_incl_split,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
 
