@@ -35,8 +35,8 @@ SELECT
 		a.booked_date__c DESC
 	) AS rank
 	FROM
-		"commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber
-		left join salesforce_case as a
+		"commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b
+		left join salesforce_case as a ON a.casenumber = b.casenumber
 	
 	WHERE
 		--- !!! Filter for Grouped Cases: Type, Opportunity__c
@@ -51,6 +51,5 @@ SELECT
 		
 	ORDER BY
 		a.net_bookings_value__c DESC
-		
 
 ```
