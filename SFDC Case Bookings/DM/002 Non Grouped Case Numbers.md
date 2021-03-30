@@ -1,6 +1,7 @@
 ---
 View: '"commissions"."sfdc-case-w0002-dm-t0002-non-grouped-cases"'
-Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
+Note: All case numbers from ungrouped; Commission Processing Flag = NULL
+PK: split_id
 ---
 
 
@@ -9,6 +10,7 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
   
   SELECT
     a.casenumber,
+    split_id,
     'Case Value' as calculationflag,
     b.dm_sub_territory_incl_split,
     1 as allocation
