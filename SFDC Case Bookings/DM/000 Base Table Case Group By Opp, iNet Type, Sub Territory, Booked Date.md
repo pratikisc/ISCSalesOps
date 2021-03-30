@@ -1,5 +1,5 @@
 ---
-This View: "commissions"."sfdc-case-w0002-dm-t0000-base-table"
+This View: '"commissions"."sfdc-case-w0002-dm-t0000-base-table"'
 Note: Join with split table that will create extra rows for each case
 Preceding views: '"commissions"."sfdc-w003v3-t005-split-ref-table"'
 ---
