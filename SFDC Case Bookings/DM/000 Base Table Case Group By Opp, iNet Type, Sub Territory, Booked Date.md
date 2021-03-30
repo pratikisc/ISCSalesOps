@@ -36,7 +36,7 @@ SELECT
 	) AS rank
 	FROM
 		salesforce_case as a
-		left join "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber 
+		left join "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber -- !!! Known case of non unique foreign key
 	
 	WHERE
 		--- !!! Filter for Grouped Cases: Type, Opportunity__c
