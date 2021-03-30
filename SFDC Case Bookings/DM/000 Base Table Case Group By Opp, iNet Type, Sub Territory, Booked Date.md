@@ -12,6 +12,7 @@ SELECT
 	a.casenumber,
 	b.split_id,
 	b.allocation,
+	b.dm_sub_territory_incl_split,
 	coalesce(a.inet_type__c, 'No-iNetType__c') as inet_type__c, -- Same syntax used in Split Table, to identify Split Cases by id_h at sfdc-w003-t005-splits-key-value-final
 	coalesce(b.allocation* a.net_bookings_value__c,0) as net_bookings_value__c,
 	a.Contract_Length__c,
