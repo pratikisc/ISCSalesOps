@@ -35,10 +35,8 @@ SELECT
 		a.booked_date__c DESC
 	) AS rank
 	FROM
-		salesforce_case as a
-		
-		-- !!! Known case of non unique foreign key
-		left join "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber
+		"commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber
+		left join salesforce_case as a
 	
 	WHERE
 		--- !!! Filter for Grouped Cases: Type, Opportunity__c
