@@ -1,6 +1,6 @@
 ---
 This View: '"commissions"."sfdc-case-w0002-dm-t0000-base-table"'
-Note: Join with split table that will create extra rows for each case
+'!!! Known case of non unique Foreign Key': Join with split table that will create extra rows for each case
 Goal: Group Case By Opp, Create Split Rows with Allocation amount
 ---
 
