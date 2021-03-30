@@ -1,5 +1,7 @@
 ---
-View: "commissions"."sfdc-case-w0002-dm-t0000-base-table"
+This View: "commissions"."sfdc-case-w0002-dm-t0000-base-table"
+Note: Join with split table that will create extra rows for each case
+Preceding views: '"commissions"."sfdc-w003v3-t005-split-ref-table"'
 ---
 
 ```sql
@@ -31,6 +33,7 @@ SELECT
 	) AS rank
 	FROM
 		salesforce_case as a
+		left join "commissions"."sfdc-w003v3-t005-split-ref-table" as b ON a.casenumber = b.casenumber 
 	
 	WHERE
 		--- !!! Filter for Grouped Cases: Type, Opportunity__c
