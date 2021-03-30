@@ -13,8 +13,9 @@ Note: All case numbers from ungrouped; Commission Processing Flag = NULL;
     b.dm_sub_territory_incl_split,
     1 as allocation
     FROM
-    salesforce_case a
-    left join "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b ON a.casenumber = b.casenumber
+     "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b
+     left join   salesforce_case a ON a.casenumber = b.casenumber
+
     WHERE
         (
             type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
