@@ -1,5 +1,6 @@
 ---
 view: '"commissions"."reference-sfdc account and ship to amer sub terr"'
+'!!!' This view allocates the sub territory id to the DM query
 ---
 
 ```sql
