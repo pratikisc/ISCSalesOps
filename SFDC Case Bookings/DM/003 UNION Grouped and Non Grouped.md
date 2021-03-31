@@ -11,11 +11,11 @@ casenumber::character varying (200) as casenumber,
 dm_sub_territory_incl_split,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
-null::float as nbvlocal,
-null::float as mrrchangelocal,
-null::float as prevmrrlocal,
-null::float as currmrrlocal,
-null::float as inet_now_licenses__c_grouped,
+net_bookings_value__c::float as nbvlocal,
+MRRChangeLocal::float as mrrchangelocal,
+previous_monthly_subscription_fee__c::float as prevmrrlocal,
+current_monthly_subscription_fee__c::float as currmrrlocal,
+inet_now_licenses__c::float as inet_now_licenses__c_grouped,
 null::character varying (200) as inet_safer_synergy__c_grouped
 
 from
