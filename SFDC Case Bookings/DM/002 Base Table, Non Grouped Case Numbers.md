@@ -27,14 +27,14 @@ PK: split_id
      left join salesforce_case a ON a.casenumber = b.casenumber
 
     WHERE
+        --(
+           -- type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
+           -- finance_sub_status__c = 'Booked' and
+          --  Commission_Processing_Flag__c is null
+        -- )
+        -- or
         (
-            type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
-            finance_sub_status__c = 'Booked' and
-            Commission_Processing_Flag__c is null
-        )
-        or
-        (
-            type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
+            -- type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
             finance_sub_status__c = 'Booked' and
             opportunity__c is null and
             Commission_Processing_Flag__c is null
