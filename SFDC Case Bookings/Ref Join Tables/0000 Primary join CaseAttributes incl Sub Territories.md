@@ -1,8 +1,7 @@
 ---
 title: Dimensional Table for Booked Cases used for reporting and grouping (Booked)
 View: '"commissions"."reference-sfdc-case-attributes-with-plan-attributes"'
-Note: !!! Plan overrides are applied on this sheet as well.
-Status: Interim View
+Note: !!! Plan overrides / sub territory allocation applied here
 ---
 
 ```  
