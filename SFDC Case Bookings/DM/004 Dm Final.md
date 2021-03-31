@@ -5,7 +5,7 @@ PK: casenumber (which is actually a surrogate casenumber (caseid __S)
 
 ```sql
 select
-a.id_h,
+a.id_h as opp_group,
 b.recordtype,
 a.caseid as casenumber,
 b.dm,
