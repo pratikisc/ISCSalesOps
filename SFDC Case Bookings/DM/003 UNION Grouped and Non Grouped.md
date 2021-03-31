@@ -6,6 +6,7 @@ PK: caseid
 
 ```
 select
+null::character varying (200) as id_h,
 split_id::character varying (200) as caseid,
 casenumber::character varying (200) as casenumber,
 dm_sub_territory_incl_split,
@@ -24,6 +25,7 @@ from
 UNION
 
 select
+id_h::character varying (200) as id_h,
 caseid::character varying (200) as caseid,
 casenumber::character varying (200) as casenumber,
 dm_sub_territory_incl_split,
