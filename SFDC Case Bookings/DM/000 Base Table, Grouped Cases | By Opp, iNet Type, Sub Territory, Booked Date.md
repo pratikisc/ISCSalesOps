@@ -12,6 +12,7 @@ SELECT
 	a.opportunity__c || '-' || coalesce(b.dm_sub_territory_incl_split,0) || '-' || coalesce(a.inet_type__c, 'No-iNetType__c') || '-' || to_char( a.booked_date__c, 'YYYY') || '-' || to_char( a.booked_date__c, 'MM') AS id_h,
 	a.casenumber,
 	b.split_id,
+	b.teamvalue,
 	b.allocation,
 	b.dm_sub_territory_incl_split,
 	coalesce(a.inet_type__c, 'No-iNetType__c') as inet_type__c, -- Same syntax used in Split Table, to identify Split Cases by id_h at sfdc-w003-t005-splits-key-value-final
