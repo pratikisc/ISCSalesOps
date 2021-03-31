@@ -48,7 +48,7 @@ WITH idh_list AS (
                                     Commission_Processing_Flag__c is null
                         )
              )
-             
+ )          
  SELECT DISTINCT casenumber FROM idh_list
  UNION
  SELECT DISTINCT casenumber from solocases
