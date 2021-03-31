@@ -8,6 +8,7 @@ PK: caseid
 select
 null::character varying (200) as id_h,
 split_id::character varying (200) as caseid,
+teamvalue,
 casenumber::character varying (200) as casenumber,
 dm_sub_territory_incl_split,
 calculationflag::character varying (200) as calculationflag,
@@ -27,11 +28,11 @@ UNION
 select
 id_h::character varying (200) as id_h,
 caseid::character varying (200) as caseid,
+teamvalue,
 casenumber::character varying (200) as casenumber,
 dm_sub_territory_incl_split,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
-
 nbv_local_grouped::float as nbvlocal,
 mrr_change_local_grouped::float as mrrchangelocal,
 Previous_Monthly_Subscription_Fee__c_grouped::float as prevmrrlocal,
