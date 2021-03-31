@@ -9,7 +9,8 @@ select
 a.casenumber,
 coalesce(c.id,a.casenumber) as split_id,
 coalesce(c.__sub_territory_id, b.__sub_territory_id,0) as dm_sub_territory_incl_split,
-coalesce(c.allocation,1) as allocation
+coalesce(c.allocation,1) as allocation,
+c.teamvalue
 from
 salesforce_case a
 left join "territory"."sheets_join_territory_join sfdc case dm name" b ON a.dm__c = b.__dm__c
