@@ -13,6 +13,7 @@ PK: split_id
     split_id,
     'Case Value' as calculationflag,
     b.dm_sub_territory_incl_split,
+    b.teamvalue,
     b.allocation,
     coalesce(b.allocation* a.net_bookings_value__c,0) as net_bookings_value__c,
     a.Contract_Length__c,
