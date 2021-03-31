@@ -19,7 +19,7 @@ PK: split_id
     coalesce(b.allocation* a.Current_Monthly_Subscription_Fee__c,0) as current_monthly_subscription_fee__c,
     coalesce(b.allocation* a.Previous_Monthly_Subscription_Fee__c,0) as previous_monthly_subscription_fee__c,
     coalesce(b.allocation* a.Current_Monthly_Subscription_Fee__c,0) - coalesce(b.allocation* a.Previous_Monthly_Subscription_Fee__c,0) as MRRChangeLocal,
-   	coalesce(b.allocation* a.inet_now_licenses__c,0) as inet_now_licenses__c,
+   	coalesce(b.allocation* a.inet_now_licenses__c,0) as inet_now_licenses__c
 
     FROM
      "commissions"."reference-sfdc-case-dm-subterritory-incl-splits" as b
