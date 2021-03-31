@@ -8,6 +8,8 @@ select
 a.id_h as opp_group,
 b.recordtype,
 a.caseid as casenumber,
+c.case_list,
+c.nbvlocal_list,
 b.dm,
 b.gam,
 b.kam,
@@ -65,4 +67,5 @@ b.msanumber
 from
 "commissions"."sfdc-case-w0002-dm-t0003-grouped-and-non-grouped-fact" AS a
 left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b ON a.casenumber = b.casenumber
+left join "commissions"."sfdc-case-w0002-dm-t0001ref-grouped-cases" as c ON a.id_h = c.id_h
 ```
