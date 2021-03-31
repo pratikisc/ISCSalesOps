@@ -1,6 +1,7 @@
 ---
 title: get allocations for left joins on main table
 View Name: '"commissions"."sfdc-w003v3-t005-split-ref-table"'
+Note: Split Sub Territory override for cases where split > 100% included here
 PK: id
 ---
 
