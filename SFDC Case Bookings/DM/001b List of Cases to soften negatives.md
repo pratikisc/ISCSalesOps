@@ -36,12 +36,12 @@ WITH idh_list AS (
             net_bookings_value__c < 0
             and
             (
-                        --(
-                                    -- type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
-                                    --finance_sub_status__c = 'Booked' and
-                                    --Commission_Processing_Flag__c is null
-                        --)
-                        --or
+                        (
+                                    type not in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
+                                    finance_sub_status__c = 'Booked' and
+                                    Commission_Processing_Flag__c is null
+                        )
+                        or
                         (
                                     -- type in ('Renewal', 'Amendment', 'Transfer – Acquirer', 'Transfer – Acquiree', 'Term Extension') and
                                     finance_sub_status__c = 'Booked' and
