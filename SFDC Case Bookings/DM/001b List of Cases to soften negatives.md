@@ -2,7 +2,8 @@
 View: '"commissions"."sfdc-case-w0002-dm-t0002ref-soften-negatives"'
 ---
 
-### The case numbers here will have an override on Contract Length to right size the negative impact, or have a flag populated for downstream adjustment on payout
+#### Note
+_The case numbers here will have an override on Contract Length to right size the negative impact, or have a flag populated for downstream adjustment on payout_
 
 ```sql
 
