@@ -1,6 +1,6 @@
 ---
 View: '"commissions"."plan-rule-2021-002-t001-isc-reps-safer-launches-only"'
-PK: casenumber
+PK: casenumber (This view is not yet scripted)
 Clause: DMs, GAMs and KAMs do not get credit for SAFER cases except launch. This removes credit for all but launch cases.
 Override: If a DM, GAM or KAM needs to get credit, then an overide will need to be inserted in Captivate IQ
 ---
