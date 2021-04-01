@@ -36,9 +36,14 @@ a.invoice_currency_code,
 a.key_account,
 a.salesrep_name
 
+b.sub_territory_dm,
+b.sub_territory_kam,
+b.sub_territory_safer,
+b.sub_territory_fixed
+
 
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
-LEFT JOIN 
+LEFT JOIN "commissions"."invoice-w001-t003-asia-china-attribution" as b ON a.identifier = b.identifier
 
 
 ```
