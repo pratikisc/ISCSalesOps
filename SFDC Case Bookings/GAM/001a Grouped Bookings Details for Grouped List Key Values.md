@@ -1,6 +1,5 @@
 ---
 View: '"commissions"."sfdc-case-w0001v2-t0001ref-grouped-cases"'
-"'
 PK: id_h
 ---
 ```sql
