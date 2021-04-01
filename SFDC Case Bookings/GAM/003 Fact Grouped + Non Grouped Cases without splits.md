@@ -5,6 +5,7 @@ Note: Splits not included
 
 ```
 select
+null::character varying (200) as id_h,
 casenumber::character varying (200) as casenumber,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
@@ -21,6 +22,7 @@ from
 UNION
 
 select
+id_h::character varying (200) as id_h,
 casenumber::character varying (200) as casenumber,
 calculationflag::character varying (200) as calculationflag,
 allocation::float as allocation,
