@@ -37,7 +37,7 @@ a.key_account,
 a.salesrep_name
 
 
-FROM "public"."sheets_invoice details_jan" as a
+FROM "commissions"."invoice-w001-t002-base-invoices" as a
 LEFT JOIN 
 
 
