@@ -8,7 +8,7 @@ _This will join with_
 
 ```sql
 
-select
+select distinct
 a.casenumber
 , a.booked_date__c
 , case when
