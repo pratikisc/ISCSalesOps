@@ -10,12 +10,15 @@ CASE
     WHEN lower(invoice_description) like '%rent%' then 'Rent'
     WHEN lower(invoice_description) like '%distributor%' then 'Distributor Commissions'
     WHEN product_group = 'SAFER' then 'Hardware'
+    WHEN b.__product_category = 'SAFER' then 'Hardware'
     WHEN report_type_secondary = 'NON-INET' then 'Hardware'
     WHEN report_type_secondary = 'SERVICE' then 'Service/Parts/Accessories'
     END as lob_allocation_override
     
 
 FROM "public"."sheets_invoice details_jan" as a
+LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
+
 WHERE
 lob_allocation = 'Unknown'
 and 
