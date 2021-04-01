@@ -8,7 +8,7 @@ SELECT
 a.identifier,
 a.source_of_data,
 a.operating_unit,
-a.lob_allocation,
+coalesce(d.lob_allocation_override, a.lob_allocation) as lob_allocation,
 a.high_level_lob_allocation,
 a.low_level_lob_allocation,
 a.line_of_business,
@@ -40,6 +40,7 @@ a.salesrep_name
 FROM "public"."sheets_invoice details_jan" as a
 LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
 LEFT JOIN "commissions"."invoice-w001-t001-exclusions" as c on a.identifier = c.identifier
+LEFT JOIN "commissions"."invoice-w001-t0000-lob-cleanup" AS d on a.identifier = d.identifier
 
 WHERE c.identifier is null
 
