@@ -84,7 +84,7 @@ SELECT
       
       net_bookings_value__c,
       exchange_rate_to_usd__c,
-      booked_date__c,
+      coalesce(o.booked_date__c_override, a.booked_date__c) as booked_date__c,
       casecurrency__c,
       contract__c,
       contract_length__c,
@@ -150,12 +150,11 @@ from
       -- !!! Americas PSM Plan override
       left join psm_plan_ov as m ON b.opportunity_number__c = m.opp_number
       left join dim_recordtype as n ON a.recordtypeid = n.id
+      -- !!! Greater China FP Date override for fiscal / payout date adjustment
+      left join "commissions"."reference-sfdc-case-date-override-greater-china" as o ON a.casenumber = o.casenumber
 
       where
-      finance_sub_status__c = 'Booked'
- 
- 
- 
+      finance_sub_status__c = 'Booked' 
 
 
 ```
