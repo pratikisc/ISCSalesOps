@@ -3,6 +3,9 @@ view: '"commissions"."sfdc-case-w0002-dm-t0004-grouped-and-non-grouped-with-attr
 PK: casenumber (which is actually a surrogate casenumber (caseid __S)
 ---
 
+### Note
+[] _The commission processing flag is a moot field. All 'non null' values have already been excluded_
+
 ```sql
 select
 a.id_h as opp_group,
