@@ -1,5 +1,5 @@
 ---
-View:'"commissions"."invoice-w001-t000-lob-cleanup"'
+View: '"commissions"."invoice-w001-t000-lob-cleanup"'
 ---
 ```sql
 
