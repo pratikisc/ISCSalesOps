@@ -40,6 +40,5 @@ a.salesrep_name
 FROM "public"."sheets_invoice details_jan" as a
 LEFT JOIN 
 
-WHERE c.identifier is null
 
 ```
