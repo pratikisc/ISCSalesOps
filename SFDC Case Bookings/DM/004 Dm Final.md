@@ -4,7 +4,7 @@ PK: casenumber (which is actually a surrogate casenumber (caseid __S)
 ---
 
 ### Note
-[] _The commission processing flag is a moot field. All 'non null' values have already been excluded_
+[ ] _The commission processing flag is a moot field. All 'non null' values have already been excluded_
 
 ```sql
 select
