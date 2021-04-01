@@ -45,7 +45,7 @@ WHERE
 lower(customer_name) like '%industrial scientific%'
 or product_type_group = 'PSC'
 or b.id is not null
-or lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions')
+or lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions', 'Not Margin Account')
 or (
     lob_allocation = 'iNet' and
     line_of_business = 'SERVICE'
