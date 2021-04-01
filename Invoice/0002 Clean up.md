@@ -13,7 +13,7 @@ a.high_level_lob_allocation,
 a.low_level_lob_allocation,
 a.line_of_business,
 a.family,
-a.product_group,
+coalesce ( b.__product_category,a.product_group ) as product_group,
 a.product_type_group,
 a.report_type_secondary,
 a.item_description,
@@ -38,9 +38,14 @@ a.salesrep_name
 
 
 FROM "public"."sheets_invoice details_jan" as a
-LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b
+LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
+LEFT JOIN "commissions"."invoice-w001-t001-exclusions" as c on a.identifier = c.identifier
 
+WHERE c.identifier is null
 
+```
+
+```
 
 if [PRODUCT_GROUP] = "SAFER H/W"
 then "SAFER H/W"
