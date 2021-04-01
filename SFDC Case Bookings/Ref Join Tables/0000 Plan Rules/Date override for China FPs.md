@@ -2,7 +2,13 @@
 View:
 ---
 
-_This will join with the `"commissions"."reference-sfdc-case-attributes-with-plan-attributes"` in `SFDC Case Bookings/Ref Join Tables/0000 Plan Rules/0000 Primary join CaseAttributes incl Sub Territories.md` 
+_This will join with_
+
+`"commissions"."reference-sfdc-case-attributes-with-plan-attributes"`
+
+in
+
+`SFDC Case Bookings/Ref Join Tables/0000 Plan Rules/0000 Primary join CaseAttributes incl Sub Territories.md` 
 ```sql
 
 select
