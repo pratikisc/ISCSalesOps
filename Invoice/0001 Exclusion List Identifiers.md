@@ -48,7 +48,15 @@ or b.id is not null
 or lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions')
 or (
     lob_allocation = 'iNet' and
-    line_of_business IN ('SERVICE', 'NO_LOB')
+    line_of_business = 'SERVICE'
     )
+or
+    (
+    lob_allocation = 'iNet' and
+    line_of_business = 'NO_LOB' and
+    invoice_description not like '%termination%'
+    )
+
+
 
 ```
