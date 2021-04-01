@@ -5,7 +5,7 @@ View: '"commissions"."invoice-w001-t0000-lob-cleanup"'
 
 -- Clean up Unknown LOBs
 SELECT
-invoice_description,
+identifier,
 CASE
     WHEN lower(invoice_description) like '%rent%' then 'Rent'
     WHEN lower(invoice_description) like '%distributor%' then 'Distributor Commissions'
