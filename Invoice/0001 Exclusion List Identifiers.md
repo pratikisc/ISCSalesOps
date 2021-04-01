@@ -54,8 +54,9 @@ or
     (
     lob_allocation = 'iNet' and
     line_of_business = 'NO_LOB' and
-    invoice_description not like '%termination%'
+    lower(invoice_description) not like '%termination%'
     )
+
 
 
 
