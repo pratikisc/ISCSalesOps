@@ -60,6 +60,7 @@ b.msastatus,
 b.msaenddate,
 b.msastartdate,
 b.msaownername,
+b.msaownerid,
 b.msaname,
 b.msanumber
 
