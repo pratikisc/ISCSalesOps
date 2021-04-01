@@ -6,11 +6,7 @@ _This will join with_
 
 `"commissions"."reference-sfdc-case-attributes-with-plan-attributes"`
 
-in
-
-`SFDC Case Bookings/Ref Join Tables/0000 Plan Rules/0000 Primary join CaseAttributes incl Sub Territories.md` 
-
-[0000 Primary join CaseAttributes incl Sub Territories.md](https://github.com/pratikshr/ISCSalesOps/blob/533b60e2f654d15368dd712baca3c427f1190b43/SFDC%20Case%20Bookings/Ref%20Join%20Tables/0000%20Plan%20Rules/0000%20Primary%20join%20CaseAttributes%20incl%20Sub%20Territories.md)
+in [0000 Primary join CaseAttributes incl Sub Territories.md](https://github.com/pratikshr/ISCSalesOps/blob/533b60e2f654d15368dd712baca3c427f1190b43/SFDC%20Case%20Bookings/Ref%20Join%20Tables/0000%20Plan%20Rules/0000%20Primary%20join%20CaseAttributes%20incl%20Sub%20Territories.md)
 
 ```sql
 
