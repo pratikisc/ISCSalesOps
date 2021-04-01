@@ -9,6 +9,11 @@ identifier,
 CASE
     WHEN lower(invoice_description) like '%rent%' then 'Rent'
     WHEN lower(invoice_description) like '%distributor%' then 'Distributor Commissions'
+    WHEN lower(invoice_description) like '%rebate%' then 'Distributor Commissions'
+    WHEN lower(invoice_description) like '%repair%' then 'Service/Parts/Accessories'
+    WHEN lower(invoice_description) like '%support%' then 'Service/Parts/Accessories'
+    WHEN lower(invoice_description) like '%sensors%' then 'Service/Parts/Accessories'
+    WHEN lower(invoice_description) like '%period%' then 'iNet'
     WHEN product_group = 'SAFER' then 'Hardware'
     WHEN b.__product_category = 'SAFER' then 'Hardware'
     WHEN report_type_secondary = 'NON-INET' then 'Hardware'
@@ -21,9 +26,5 @@ LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on
 
 WHERE
 lob_allocation = 'Unknown'
-and 
-    (
-        lower(invoice_description) like '%rent%'
-        or lower(invoice_description) like '%distributor%'
-    )
+
 ```
