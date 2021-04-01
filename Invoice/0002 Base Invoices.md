@@ -1,5 +1,5 @@
 ---
-View
+View: '"commissions"."invoice-w001-t002-base-invoices"'
 ---
 
 ```sql
