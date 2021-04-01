@@ -34,7 +34,7 @@ a.invoice_amount_local_currency,
 a.invoice_amount_usd,
 a.invoice_currency_code,
 a.key_account,
-a.salesrep_name
+a.salesrep_name,
 
 b.sub_territory_dm,
 b.sub_territory_kam,
