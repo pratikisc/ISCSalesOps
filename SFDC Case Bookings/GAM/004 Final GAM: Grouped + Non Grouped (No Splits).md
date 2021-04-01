@@ -5,6 +5,8 @@ view: '"commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attri
 ```sql
 select
 b.recordtype,
+c.case_list,
+c.nbvlocal_list,
 a.casenumber,
 b.dm,
 b.gam,
@@ -56,6 +58,7 @@ b.msastatus,
 b.msaenddate,
 b.msastartdate,
 b.msaownername,
+b.msaownerid,
 b.msaname,
 b.msanumber
 
@@ -63,4 +66,6 @@ b.msanumber
 from
 "commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-fact" AS a
 left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b ON a.casenumber = b.casenumber
+left join "commissions"."sfdc-case-w0001v2-t0001ref-grouped-cases" as c ON a.id_h = c.id_h
+
 ```
