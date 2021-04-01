@@ -1,6 +1,5 @@
 ---
 title: Opportunity to Case Metrics Mapping.
-'!!! IMPORTANT NOTE': Only Bookings with Commission Processing flag = NULL are included
 View: '"commissions"."sfdc-case-w0002-dm-t0001-grouped-cases"'
 PK: caseid
 ---
