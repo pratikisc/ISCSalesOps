@@ -7,55 +7,69 @@ view: '"commissions"."invoice-w001-t001-exclusions"'
 -- Exclusion list with Identifiers
 
 SELECT
-identifier,
-source_of_data,
-operating_unit,
-lob_allocation,
-high_level_lob_allocation,
-low_level_lob_allocation,
-line_of_business,
-family,
-product_group,
-product_type_group,
-report_type_secondary,
-item_description,
-invoice_number,
-ref_sales_order_number,
-customer_po_number,
-item_number,
-invoice_description,
-customer_number,
-customer_name,
-ship_to_customer,
-ship_to_customer_number,
-ship_to_country,
-ship_to_state,
-ship_to_postal_code,
-transaction_date_date,
-invoice_amount_local_currency,
-invoice_amount_usd,
-invoice_currency_code,
-key_account,
-salesrep_name
+a.identifier,
+a.source_of_data,
+a.operating_unit,
+coalesce(c.lob_allocation_override::text, a.lob_allocation::text) as lob_allocation,
+a.high_level_lob_allocation,
+a.low_level_lob_allocation,
+a.line_of_business,
+a.family,
+a.product_group,
+a.product_type_group,
+a.report_type_secondary,
+a.item_description,
+a.invoice_number,
+a.ref_sales_order_number,
+a.customer_po_number,
+a.item_number,
+a.invoice_description,
+a.customer_number,
+a.customer_name,
+a.ship_to_customer,
+a.ship_to_customer_number,
+a.ship_to_country,
+a.ship_to_state,
+a.ship_to_postal_code,
+a.transaction_date_date,
+a.invoice_amount_local_currency,
+a.invoice_amount_usd,
+a.invoice_currency_code,
+a.key_account,
+a.salesrep_name
 
 
 FROM "public"."sheets_invoice details_jan" as a
 LEFT JOIN "territory"."sheets_join_territory_exclude_inv account exclusion list" AS b ON a.customer_number = b.__account_number
+LEFT JOIN "commissions"."invoice-w001-t0000-lob-cleanup" AS c ON a.identifier = c.identifier
 WHERE
-lower(customer_name) like '%industrial scientific%'
-or product_type_group = 'PSC'
+lower(a.customer_name) like '%industrial scientific%'
+or a.product_type_group = 'PSC'
 or b.id is not null
-or lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions', 'Not Margin Account')
+or a.lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions', 'Not Margin Account')
+or c.lob_allocation_override = 'Distributor Commissions'
 or (
-    lob_allocation = 'iNet' and
-    line_of_business = 'SERVICE'
+    a.lob_allocation = 'iNet' and
+    a.line_of_business = 'SERVICE'
+    )
+or (
+    c.lob_allocation_override = 'iNet' and
+    a.line_of_business = 'SERVICE'
     )
 or
     (
-    lob_allocation = 'iNet' and
-    line_of_business = 'NO_LOB' and
-    lower(invoice_description) not like '%termination%'
+    a.lob_allocation = 'iNet' and
+    a.line_of_business = 'NO_LOB' and
+    lower(a.invoice_description) not like '%termination%'
     )
+ or
+    (
+    c.lob_allocation_override = 'iNet' and
+    a.line_of_business = 'NO_LOB' and
+    lower(a.invoice_description) not like '%termination%'
+    )
+    
+ 
 
 
 
