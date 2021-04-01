@@ -1,6 +1,13 @@
+---
+view: '"commissions"."invoice-w001-t001-exclusions"'
+---
+
 ```sql
 
+-- Exclusion list with Identifiers
+
 SELECT
+identifier,
 source_of_data,
 operating_unit,
 lob_allocation,
@@ -32,5 +39,16 @@ key_account,
 salesrep_name
 
 
-FROM "public"."sheets_invoice details_jan"
+FROM "public"."sheets_invoice details_jan" as a
+LEFT JOIN "territory"."sheets_join_territory_exclude_inv account exclusion list" AS b ON a.customer_number = b.__account_number
+WHERE
+lower(customer_name) like '%industrial scientific%'
+or product_type_group = 'PSC'
+or b.id is not null
+or lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions')
+or (
+    lob_allocation = 'iNet' and
+    line_of_business IN ('SERVICE', 'NO_LOB')
+    )
+
 ```
