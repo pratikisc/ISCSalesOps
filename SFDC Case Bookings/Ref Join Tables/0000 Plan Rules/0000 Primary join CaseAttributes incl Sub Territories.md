@@ -130,6 +130,7 @@ SELECT
       e.msaenddate,
       e.msastartdate,
       e.msaownername,
+      e.msaownerid,
       e.msaname,
       e.msanumber
       
