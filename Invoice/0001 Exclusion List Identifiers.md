@@ -2,6 +2,8 @@
 view: '"commissions"."invoice-w001-t001-exclusions"'
 ---
 
+### All Exclusion Criteria
+
 ```sql
 
 -- Exclusion list with Identifiers
@@ -67,6 +69,14 @@ or
     c.lob_allocation_override = 'iNet' and
     a.line_of_business = 'NO_LOB' and
     lower(a.invoice_description) not like '%termination%'
+    )
+ or (
+    a.lob_allocation = 'iNet' and
+    a.contract_group is not null
+    )
+ or (
+    c.lob_allocation_override = 'iNet' and
+    a.contract_group is not null
     )
     
  
