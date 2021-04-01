@@ -12,7 +12,7 @@ select distinct
 a.casenumber
 , a.booked_date__c
 , case when
-    a.booked_date__c = '2020-04-02' then '2021-04-05'::date
+    a.booked_date__c = '2020-04-02' then '2021-04-05'::timestamp
     END
     AS booked_date__c_override
 , b.name
