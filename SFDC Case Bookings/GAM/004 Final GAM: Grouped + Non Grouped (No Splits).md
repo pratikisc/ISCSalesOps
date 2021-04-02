@@ -1,6 +1,10 @@
 ---
 view: '"commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attributes-final"'
 ---
+### Note
+
+- _The commission processing flag is a moot field. All 'non null' values have already been excluded_
+- _The Contract Length override for instances when booking value of case is negative is applied here_
 
 ```sql
 select
@@ -23,7 +27,15 @@ b.exchange_rate_to_usd__c,
 b.booked_date__c,
 b.casecurrency__c,
 b.contract__c,
-b.contract_length__c,
+
+-- !!! Contract Length Override for negative value cases to right size
+
+case
+    when coalesce (a.nbvlocal, b.net_bookings_value__c) < 0 and b.contract_length__c < 49 then 48::bigint
+    else b.contract_length__c
+    END AS contract_length__c,
+
+
 coalesce (a.nbvlocal, b.net_bookings_value__c) as nbvlocal,
 coalesce (a.mrrchangelocal, b.mrrchangelocal) as mrrchangelocal,
 coalesce (a.prevmrrlocal, b.prevmrrlocal) as prevmrrlocal,
