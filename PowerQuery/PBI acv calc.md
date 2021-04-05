@@ -1,4 +1,4 @@
-```pq
+```
 let
   Source = #"ref Case Bookings dedup",
   #"Filtered rows: Booked Finance Sub Status" = Table.SelectRows(Source, each [Finance_Sub_Status__c] = "Booked"),
@@ -28,28 +28,45 @@ let
   #"Replaced value" = Table.ReplaceValue(#"Changed column type 6", null, 0, Replacer.ReplaceValue, {"Billing Agent Discount %", "Distributor Commission %", "SPIFF_Commission__c"}),
   #"Changed column type 7" = Table.TransformColumnTypes(#"Replaced value", {{"Billing Agent Discount %", Percentage.Type}, {"Distributor Commission %", Percentage.Type}, {"SPIFF_Commission__c", Percentage.Type}}),
   #"Added custom TCV Local (NBV less Billing Agent Discount)" = Table.AddColumn(#"Changed column type 7", "TCV Booking Local", each [Net_Bookings_Value__c] * ( 1 - [#"Billing Agent Discount %"] )),
+  
+  
   #"Changed column type 15" = Table.TransformColumnTypes(#"Added custom TCV Local (NBV less Billing Agent Discount)", {{"TCV Booking Local", type number}}),
+  
+  
   #"Added custom ACV Local" = Table.AddColumn(#"Changed column type 15", "ACV Booking Local", each if [Contract_Length__c] < 13 then
     [TCV Booking Local]
     else
     Value.Divide( [TCV Booking Local]*12,[Contract_Length__c])),
+  
   #"Changed column type 8" = Table.TransformColumnTypes(#"Added custom ACV Local", {{"ACV Booking Local", type number}}),
-  #"Added custom ACV Expansion: MRR Change Local  >0 and NBV >0" = Table.AddColumn(#"Changed column type 8", "ACV Booking Expansion+ Local", each if ([Current_Monthly_Subscription_Fee__c]-[Previous_Monthly_Subscription_Fee__c]) > 0 and [Contract_Length__c] < 13 and [Net_Bookings_Value__c] > 0
+  
+  #"Added custom ACV Expansion: MRR Change Local  >0 and NBV >0" = Table.AddColumn(#"Changed column type 8", "ACV Booking Expansion+ Local", 
+  
+    each
+    
+    if ([Current_Monthly_Subscription_Fee__c]-[Previous_Monthly_Subscription_Fee__c]) > 0 and [Contract_Length__c] < 13 and [Net_Bookings_Value__c] > 0
     then
     ([Current_Monthly_Subscription_Fee__c]-[Previous_Monthly_Subscription_Fee__c]) * [Contract_Length__c]
+    
     else if ([Current_Monthly_Subscription_Fee__c]-[Previous_Monthly_Subscription_Fee__c]) > 0 and [Net_Bookings_Value__c] > 0 and [Contract_Length__c] > 12
     then
     ([Current_Monthly_Subscription_Fee__c]-[Previous_Monthly_Subscription_Fee__c]) * 12
+    
     else
     0),
+  
   #"Changed column type 10" = Table.TransformColumnTypes(#"Added custom ACV Expansion: MRR Change Local  >0 and NBV >0", {{"ACV Booking Expansion+ Local", type number}}),
+  
   // ACV Override Correction
-  #"Added custom ACV Local Expansion+ override corrections" = Table.AddColumn(#"Changed column type 10", "ACV Booking Expansion+ Local override", each if [#"ACV Booking Expansion+ Local"] > [ACV Booking Local] and [ACV Booking Local] > 0
+  #"Added custom ACV Local Expansion+ override corrections" = Table.AddColumn(#"Changed column type 10", "ACV Booking Expansion+ Local override", 
+  
+  each if [#"ACV Booking Expansion+ Local"] > [ACV Booking Local] and [ACV Booking Local] > 0
     then [ACV Booking Local]
     else if [ACV Booking Local] < 0
     then 0
     else
     [#"ACV Booking Expansion+ Local"]),
+  
   #"Changed column type 14" = Table.TransformColumnTypes(#"Added custom ACV Local Expansion+ override corrections", {{"ACV Booking Expansion+ Local override", type number}}),
   #"Added ACV Non Expansion+ Local" = Table.AddColumn(#"Changed column type 14", "ACV Non Expansion+ Local", each [ACV Booking Local] - [#"ACV Booking Expansion+ Local override"], Currency.Type),
   #"Changed column type 11" = Table.TransformColumnTypes(#"Added ACV Non Expansion+ Local", {{"ACV Non Expansion+ Local", type number}}),
