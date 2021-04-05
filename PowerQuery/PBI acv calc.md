@@ -1,4 +1,4 @@
-```m
+```powerquery
 let
   Source = #"ref Case Bookings dedup",
   #"Filtered rows: Booked Finance Sub Status" = Table.SelectRows(Source, each [Finance_Sub_Status__c] = "Booked"),
