@@ -1,5 +1,5 @@
 ---
-View: '"commissions"."invoice-w001-t003-joins-on-base"'
+View: '"commissions"."invoice-w001-t003-joins"'
 ---
 
 ```sql
@@ -42,11 +42,16 @@ a.salesrep_name,
 b.sub_territory_dm,
 b.sub_territory_kam,
 b.sub_territory_safer,
-b.sub_territory_fixed
+b.sub_territory_fixed,
+b.sub_territory_amer_rent,
+coalesce( b.sub_territory_gam, b.sub_territory_safer ) as sub_territory_gam,   -- Catch both SAFER and GAM for Kent
+b.sub_territory_psm_named,
+b.sub_territory_psm_geo,
+b.flag_pos_exclusion
 
 
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
-LEFT JOIN "commissions"."invoice-w001-t003-asia-china-attribution" as b ON a.identifier = b.identifier
+LEFT JOIN "commissions"."invoice-w001-t003-attribution" as b ON a.identifier = b.identifier
 
 
 ```
