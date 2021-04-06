@@ -127,7 +127,7 @@ CASE WHEN
         )
     )
     and h.__distributor_roll_up_id IN ('D012-CONN',
-                                       'D011-DNOW','
+                                       'D011-DNOW',
                                        'D002-DXP',
                                        'D004-HAZ',
                                        'D005-LEV',
