@@ -1,5 +1,6 @@
 ---
 view:
+note: Invoice, POS, Pronto
 ---
 
 ```sql
@@ -126,7 +127,7 @@ null::character varying (200) as key_account,
 salesrep_name::character varying (200) as salesrep_name,
 geo_sub_territory_id::bigint as sub_territory_dm     
 
-from "commissions"."pronto-w001-t001-base"  -- Pronto Brazil
+from "commissions"."pronto-w001-t001-base"
 
 
 ```
