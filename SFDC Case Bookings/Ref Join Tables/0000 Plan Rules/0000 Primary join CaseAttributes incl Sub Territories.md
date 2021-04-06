@@ -80,7 +80,7 @@ SELECT
       k.__sub_territory_id as kam_sub_territory_id,
       
       
-      !!! Plan override to allocate credit to Troy for APAC SAFER Launch Deals
+      -- !!! Plan override to allocate credit to Troy for APAC SAFER Launch Deals
       case
        when l.__sub_territory_id = 7013 and a.type IN ('Launch', 'Amendment') then 6667013::bigint
        else l.__sub_territory_id
