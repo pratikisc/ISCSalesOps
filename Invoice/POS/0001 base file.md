@@ -5,9 +5,9 @@ view: '"commissions"."pos-w001-t001-base-import"'
 
 select
 identifier,
-source_of_data
+source_of_data,
 customer_name,
-
+ship_to_country || ' ' || left(ship_to_postal_code, 3) AS ship_to_USCA,
 ship_to_customer,
 ship_to_postal_code,
 ship_to_state,
