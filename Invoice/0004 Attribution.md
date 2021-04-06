@@ -98,7 +98,18 @@ CASE WHEN
     THEN
     b.geo_sub_territory_id
     END AS sub_territory_psm_geo
- 
+
+-- Americas POS Re-Distribution
+
+CASE WHEN
+    (
+        b.geo_sub_territory_id IN (
+        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
+        )
+    )
+    and
+    
+
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
 LEFT JOIN "commissions"."invoice-w001-t003-geo-attribution" AS b ON a.identifier = b.identifier
 LEFT JOIN "territory"."sheets_join_territory_join oracle key_account" as c ON a.key_account = c.__key_account
