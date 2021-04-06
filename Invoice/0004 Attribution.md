@@ -78,18 +78,17 @@ CASE WHEN
 -- PSM Americas Named Accounts
 CASE WHEN
     b.geo_sub_territory_id IN (
-        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 
-        Latin America'
+        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
         )
      THEN
-    h.__sub_territory_id AS sub_territory_psm_named  -- PSM Named Accounts in Americas
+    h.__sub_territory_id AS sub_territory_psm_named,  -- PSM Named Accounts in Americas
 
 -- PSM Americas Geo
 CASE WHEN
     (
         b.geo_sub_territory_id IN (
         select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 
-        Latin America'
+        'Latin America'
         )
     )
     and
