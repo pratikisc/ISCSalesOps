@@ -107,7 +107,20 @@ CASE WHEN
         select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
         )
     )
+    and h.__distributor_roll_up_id = 'D001-AGI'
     and
+    (
+        a.lob_allocation = 'Hardware'
+        or
+        (
+            a.lob_allocation = 'Service/Parts/Accessories'
+            and
+            a.line_of_business <> 'SERVICE'
+        )
+    )
+    THEN
+    
+    
     
 
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
