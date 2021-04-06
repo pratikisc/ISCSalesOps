@@ -47,8 +47,9 @@ CASE
     WHEN
     line_of_business = 'Rent' and
     b.geo_sub_territory_id IN (
-        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> Latin America'
-        THEN 7036::bigint -- Americas Rental to Jason Wright Sub Territory Number
+        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
+        )
+    THEN 7036::bigint -- Americas Rental to Jason Wright Sub Territory Number
     END AS sub_territory_amer_rent,
     
 -- DM Sub Territory join    
@@ -72,7 +73,7 @@ CASE WHEN
         )
     THEN
     coalesce( d.__gam_sub_territory_id, e.__gam_sub_territory_id)
-    END  AS sub_territory_gam, -- GAM Account joins
+    END AS sub_territory_gam, -- GAM Account joins
 
 
 -- PSM Americas Named Accounts
@@ -81,14 +82,13 @@ CASE WHEN
         select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
         )
      THEN
-    h.__sub_territory_id AS sub_territory_psm_named,  -- PSM Named Accounts in Americas
-
+    h.__sub_territory_id
+    END AS sub_territory_psm_named,  -- PSM Named Accounts in Americas
 -- PSM Americas Geo
 CASE WHEN
     (
         b.geo_sub_territory_id IN (
-        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 
-        'Latin America'
+        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
         )
     )
     and
@@ -96,7 +96,8 @@ CASE WHEN
         h.__sub_territory_id is not null    -- Only Distributor Accounts   
     )
     THEN
-    b.geo_sub_territory_id AS sub_territory_psm_geo
+    b.geo_sub_territory_id
+    END  AS sub_territory_psm_geo
  
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
 LEFT JOIN "commissions"."invoice-w001-t003-geo-attribution" AS b ON a.identifier = b.identifier
