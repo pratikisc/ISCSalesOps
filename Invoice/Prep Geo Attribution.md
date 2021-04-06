@@ -1,5 +1,5 @@
 ---
-View: "commissions"."invoice-w001-t003-geo-attribution"
+View: '"commissions"."invoice-w001-t003-geo-attribution"'
 ---
 
 ```sql
