@@ -1,5 +1,5 @@
 ---
-View: '"commissions"."invoice-w001-t003-asia-china-attribution"' - rename
+View: '"commissions"."invoice-w001-t003-attribution"'
 ---
 ```sql
 
