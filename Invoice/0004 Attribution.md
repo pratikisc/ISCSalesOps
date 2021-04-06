@@ -97,7 +97,7 @@ CASE WHEN
     )
     THEN
     b.geo_sub_territory_id
-    END  AS sub_territory_psm_geo
+    END AS sub_territory_psm_geo
  
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
 LEFT JOIN "commissions"."invoice-w001-t003-geo-attribution" AS b ON a.identifier = b.identifier
