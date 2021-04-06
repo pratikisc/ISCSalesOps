@@ -1,6 +1,7 @@
 ---
 View: '"commissions"."reference-sfdc-case-attributes-with-plan-attributes"'
 Note: !!! Plan overrides / sub territory allocation applied here
+PK: casenumber
 ---
 
 ```sql
