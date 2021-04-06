@@ -45,7 +45,7 @@ b.__sub_territory_id AS sub_territory_dm,
 c.__sub_territory_id AS sub_territory_kam -- KEY_ACCOUNT field in Oracle Invoice
 
 FROM "commissions"."invoice-w001-t002-base-invoices" as a
-LEFT JOIN "territory"."sheets_join_territory_join oracle sales rep name" as b ON a.salesrep_name = b.__sales_rep_name
+LEFT JOIN "commissions"."invoice-w001-t003-geo-attribution" AS b ON a.identifier = b.identifier
 LEFT JOIN "territory"."sheets_join_territory_join oracle key_account" as c ON a.key_account = c.__key_account
 
 ```
