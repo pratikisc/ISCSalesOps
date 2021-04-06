@@ -97,7 +97,7 @@ CASE WHEN
     )
     THEN
     b.geo_sub_territory_id
-    END AS sub_territory_psm_geo
+    END AS sub_territory_psm_geo,
 
 -- Americas POS Re-Distribution
 
@@ -118,7 +118,38 @@ CASE WHEN
             a.line_of_business <> 'SERVICE'
         )
     )
-    THEN
+    THEN 'POS-Exclude'
+    
+    WHEN
+    (
+        b.geo_sub_territory_id IN (
+        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
+        )
+    )
+    and h.__distributor_roll_up_id IN ('D012-CONN',
+                                       'D011-DNOW','
+                                       'D002-DXP',
+                                       'D004-HAZ',
+                                       'D005-LEV',
+                                       'D003-MES',
+                                       'D006-NSI',
+                                       'D007-ORR',
+                                       'D008-UCIS',
+                                       'D010-VACA',
+                                       'D009-VAUS'
+                                       )
+    and
+    (
+        a.lob_allocation IN ('Hardware', 'Rent')
+        or
+        (
+            a.lob_allocation = 'Service/Parts/Accessories'
+            and
+            a.line_of_business <> 'SERVICE'
+        )
+    )
+    THEN 'POS-Exclude'
+    END AS flag_pos_exclusion
     
     
     
