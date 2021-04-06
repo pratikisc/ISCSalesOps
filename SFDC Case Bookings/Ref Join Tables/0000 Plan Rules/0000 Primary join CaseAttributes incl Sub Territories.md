@@ -78,7 +78,15 @@ SELECT
       i.__sub_territory_id as dm_sub_territory_id,
       j.__sub_territory_id as gam_sub_territory_id,
       k.__sub_territory_id as kam_sub_territory_id,
-      l.__sub_territory_id as safer_sub_territory_id,
+      
+      
+      !!! Plan override to allocate credit to Troy for APAC SAFER Launch Deals
+      case
+       when l.__sub_territory_id = 7013 and a.type IN ('Launch', 'Amendment') then 6667013::bigint
+       else l.__sub_territory_id
+       end as safer_sub_territory_id,
+      
+      
       coalesce(m.__partner_sub_territory_id::integer, h.amer_psm_sub_territory::integer) as amer_psm_sub_territory_id_named,
       
       
