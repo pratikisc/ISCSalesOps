@@ -6,7 +6,7 @@ View: '"commissions"."invoice-w001-t003-asia-china-attribution"'
 SELECT
 a.identifier,
 a.operating_unit,
-lob_allocation,
+a.lob_allocation,
 a.line_of_business,
 a.family,
 a.product_group,
