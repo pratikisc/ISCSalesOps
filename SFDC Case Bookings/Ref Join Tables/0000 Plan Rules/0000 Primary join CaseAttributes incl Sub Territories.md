@@ -114,7 +114,7 @@ SELECT
       case billing_agent__c when true 
             then 'true'
             else 'false'
-        end as billing_agent__c__text,
+        end as billing_agent__c__text::character varying (5) as billing_agent__c__text,
       inet_safer_synergy__c,
       case inet_safer_synergy__c when true 
             then 'true'
