@@ -81,9 +81,12 @@ SELECT
       k.__sub_territory_id as kam_sub_territory_id,
       
       
-      -- !!! Plan override to allocate credit to Troy for APAC SAFER Launch Deals
+      -- !!! Plan override to allocate credit to Troy 
       case
-       when l.__sub_territory_id = 7013 and a.type IN ('Launch', 'Amendment') then 6667013::bigint
+       when l.__sub_territory_id = 7013 and a.type IN ('Launch', 'Amendment') then 6667013::bigint  --  for APAC SAFER Launch Deals
+       when l.__sub_territory_id is null and a.type IN ('Launch', 'Amendment') and inet_type__c = 'SAFER' then 6667069::bigint  -- for other Launch / Amendment catch alls
+       when l.__sub_territory_id is null and inet_type__c = 'SAFER' then 7070::bigint
+       
        else l.__sub_territory_id
        end as safer_sub_territory_id,
       
