@@ -1,5 +1,7 @@
 ---
 view: '"commissions"."invoice-w002-t001-anz-split-prep"'
+PK: identifier
+Join on: idjoin (will create known duplicate rows)
 ---
 
 ```sql
