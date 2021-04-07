@@ -44,7 +44,7 @@ b.sub_territory_kam,
 b.sub_territory_safer,
 b.sub_territory_fixed,
 b.sub_territory_amer_rent,
-coalesce( b.sub_territory_gam, b.sub_territory_safer ) as sub_territory_gam,   -- Catch both SAFER and GAM for Kent
+b.sub_territory_gam,
 b.sub_territory_psm_named,
 b.sub_territory_psm_geo,
 b.flag_pos_exclusion
