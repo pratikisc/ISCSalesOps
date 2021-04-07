@@ -1,0 +1,38 @@
+---
+view: '"commissions"."invoice-w002-t003-splits-order-number-prep"'
+PK: identifier
+Join on: idjoin (will create known duplicate rows)
+---
+
+```sql
+WITH dealdata AS (
+      SELECT
+      identifier,
+      ref_sales_order_number::character varying(200) AS ref_sales_order_number
+      ,invoice_amount_local_currency
+      FROM
+      "public"."sheets_invoice details_jan"
+  ),
+  splitdata AS (
+      SELECT DISTINCT
+      order_number::character varying(200) as order_number,
+      sub_territory_id_dm,
+      allocation
+
+      FROM "override"."sheets_join invoice overrides_join_inv split order number"
+      WHERE
+      "QC Check unique PK" is true
+      and sub_territory_id_dm is not null
+  )
+select
+a.identifier::character varying (200) || ' - ' || c.sub_territory_id_dm::character varying (200) AS identifier,
+a.identifier,
+a.ref_sales_order_number,
+b.sub_territory_id_dm
+,a.invoice_amount_local_currency
+,b.allocation
+,a.invoice_amount_local_currency * b.allocation AS invoice_amount_local_currency_ov
+from
+dealdata as a
+inner join splitdata as b ON a.ref_sales_order_number = b.order_number
+```
