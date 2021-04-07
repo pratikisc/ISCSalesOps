@@ -18,7 +18,7 @@ b.kam,
 b.safer_rep,
 b.dm_sub_territory_id,
 
-!!! Special formula to arrange for Kent's plan. SAFER and GAM fall into same bucket for Kent
+--!!! Special formula to arrange for Kent's plan. SAFER and GAM fall into same bucket for Kent
 
 coalesce( b.safer_sub_territory_id, b.gam_sub_territory_id) AS gam_sub_territory_id,
 
