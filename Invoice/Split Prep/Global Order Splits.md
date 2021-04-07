@@ -25,7 +25,7 @@ WITH dealdata AS (
       and sub_territory_id_dm is not null
   )
 select
-a.identifier::character varying (200) || ' - ' || c.sub_territory_id_dm::character varying (200) AS identifier,
+a.identifier::character varying (200) || ' - ' || b.sub_territory_id_dm::character varying (200) AS identifier,
 a.identifier,
 a.ref_sales_order_number,
 b.sub_territory_id_dm
