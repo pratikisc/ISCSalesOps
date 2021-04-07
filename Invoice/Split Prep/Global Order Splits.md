@@ -26,7 +26,7 @@ WITH dealdata AS (
   )
 select
 a.identifier::character varying (200) || ' - ' || b.sub_territory_id_dm::character varying (200) AS identifier,
-a.identifier,
+a.identifier as idjoin,
 a.ref_sales_order_number,
 b.sub_territory_id_dm
 ,a.invoice_amount_local_currency
