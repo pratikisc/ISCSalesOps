@@ -1,6 +1,7 @@
 ---
 view: '"commissions"."invoice-w001-t006-dm-union"'
-note: Invoice, POS, Pronto
+note: Invoice, POS, Pronto; POS is excluded
+
 ---
 
 ```sql
