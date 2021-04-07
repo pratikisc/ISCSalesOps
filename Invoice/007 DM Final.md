@@ -2,11 +2,14 @@
 View:
 ---
 
+### Notes:
+- Do not use Invoice Amount USD (Splits not accounted for) 
+
 ```sql
 
 SELECT
 
-coalesce( b.identifier, a.identifier) AS identifier,
+coalesce( d.identifier, b.identifier, a.identifier) AS identifier,
 a.source_of_data,
 a.operating_unit,
 a.lob_allocation,
@@ -33,17 +36,18 @@ a.ship_to_state,
 a.ship_to_province,
 a.ship_to_postal_code,
 a.transaction_date_date,
-coalesce ( b.invoice_amount_local_currency_ovr, a.invoice_amount_local_currency) AS invoice_amount_local_currency,
+coalesce ( d.invoice_amount_local_currency_ov,b.invoice_amount_local_currency_ovr, a.invoice_amount_local_currency) AS invoice_amount_local_currency,
 a.invoice_amount_usd,
 a.invoice_currency_code,
 a.total_units_sold,
 a.key_account,
 a.salesrep_name,
-coalesce( c.sub_territory_id_dm, b.__sub_territory_id, a.sub_territory_dm) as sub_territory_dm
+coalesce( d.sub_territory_id_dm, c.sub_territory_id_dm, b.__sub_territory_id, a.sub_territory_dm) as sub_territory_dm
 
 from
 "commissions"."invoice-w001-t006-dm-union" AS a
 LEFT JOIN "commissions"."invoice-w002-t001-anz-split-prep" AS b ON a.identifier = b.idjoin
 LEFT JOIN "commissions"."invoice-w002-t002-order-number-override-prep" AS c ON a.identifier = c.identifier
+LEFT JOIN "commissions"."invoice-w002-t003-splits-order-number-prep" AS d ON a.identifier = d.idjoin
 
 ```
