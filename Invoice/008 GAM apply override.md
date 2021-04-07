@@ -45,7 +45,7 @@ a.sub_territory_kam,
 a.sub_territory_safer,
 a.sub_territory_fixed,
 a.sub_territory_amer_rent,
-coalesce( b.sub_territory_id_gam, a.sub_territory_gam) as sub_territory_gam,
+coalesce( b.sub_territory_id_gam, a.sub_territory_gam, a.sub_territory_safer) as sub_territory_gam,
 a.sub_territory_psm_named,
 a.sub_territory_psm_geo,
 a.flag_pos_exclusion
