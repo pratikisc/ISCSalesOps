@@ -1,5 +1,5 @@
 ---
-view:'"commissions"."sfdc-case-w0001v2-t0005-gam-kam-vertical-join"'
+view: '"commissions"."sfdc-case-w0001v2-t0005-gam-kam-vertical-join"'
 ---
 
 ### Note
