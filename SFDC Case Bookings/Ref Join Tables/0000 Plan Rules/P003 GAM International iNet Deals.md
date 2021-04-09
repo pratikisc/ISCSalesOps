@@ -18,7 +18,7 @@ PK: opportunity_number__c
               CASE
                   when a.presented_solution_gam__c::integer = 1 then 1::float
                   when a.deal_support__c::integer = 1 then 0.5::float
-                  when a.solution_type__c::integer = 1 then 0.15::float
+                  when a.Qualification__c::integer = 1 then 0.15::float
                   END as allocation
               from
               sfdc_opportunity a
