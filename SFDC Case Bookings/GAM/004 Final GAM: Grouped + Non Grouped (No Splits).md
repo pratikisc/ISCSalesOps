@@ -5,6 +5,7 @@ view: '"commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attri
 
 - _The commission processing flag is a moot field. All 'non null' values have already been excluded_
 - _The Contract Length override for instances when booking value of case is negative is applied here_
+- _Attribution part of inet GAM International Deals applied here. Allocation applied at the vertical join_
 
 ```sql
 select
@@ -20,7 +21,7 @@ b.dm_sub_territory_id,
 
 --!!! Special formula to arrange for Kent's plan. SAFER and GAM fall into same bucket for Kent
 
-coalesce( b.gam_sub_territory_id, b.safer_sub_territory_id) AS gam_sub_territory_id,
+coalesce( b.gam_sub_territory_id, d.__sub_territory_id, b.safer_sub_territory_id) AS gam_sub_territory_id,
 
 b.kam_sub_territory_id,
 b.safer_sub_territory_id,
@@ -83,5 +84,6 @@ from
 "commissions"."sfdc-case-w0001v2-t0003-grouped-and-non-grouped-fact" AS a
 left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b ON a.casenumber = b.casenumber
 left join "commissions"."sfdc-case-w0001v2-t0001ref-grouped-cases" as c ON a.id_h = c.id_h
+left join "commissions"."plan-rule-2021-003-t001-gam-international-deals-subscriptions" as d ON b.opportunity_number = d.opportunity_number__c
 
 ```
