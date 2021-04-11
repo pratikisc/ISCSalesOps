@@ -54,7 +54,7 @@ select
 identifier::character varying (200),
 source_of_data::character varying (200),
 null::character varying (200) as operating_unit,
-null::character varying (200) as lob_allocation,
+'Hardware - POS'::character varying (200) as lob_allocation,
 null::character varying (200) as high_level_lob_allocation,
 null::character varying (200) as low_level_lob_allocation,
 null::character varying (200) as line_of_business,
