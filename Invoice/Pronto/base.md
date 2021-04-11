@@ -18,5 +18,6 @@ transaction_date_date
     
 from
 "public"."sheets_pronto_pronto"
-
+WHERE
+lob_allocation not in ('iNet', 'SAFER')
 ```
