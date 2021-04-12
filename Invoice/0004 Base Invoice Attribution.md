@@ -52,17 +52,23 @@ CASE
     THEN 7036::bigint -- Americas Rental to Jason Wright Sub Territory Number
     END AS sub_territory_amer_rent,
     
--- DM Sub Territory join    
+-- DM Sub Territory join
 b.geo_sub_territory_id AS sub_territory_dm,
 
 
 -- KAM Join
 CASE WHEN 
-    b.geo_sub_territory_id IN (
-        select id from "territory"."sheets_join_territory_territories" where region = 'EMEA'
+        b.geo_sub_territory_id IN (
+            select id from "territory"."sheets_join_territory_territories" where region = 'EMEA'
         )
      THEN
      coalesce( c.__sub_territory_id, f.__kam_sub_territory_id, g.__kam_sub_territory_id)
+     
+     WHEN
+        a.operating_unit like '%APAC%'
+     THEN
+     c.__sub_territory_id
+     
      END AS sub_territory_kam,  -- KAM logic
 
 
