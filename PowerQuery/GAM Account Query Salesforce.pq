@@ -1,6 +1,6 @@
-```SQL
+```
 let
-    Source = #"GAM Accounts SFDC extract 2021 03 10",
+    Source = #"Account",
     #"Filtered Rows" = Table.SelectRows(Source, each not Text.Contains( Text.Lower ( [ACCOUNT NAME] ) , "industrial scientific")),
     #"Lowercased Text" = Table.TransformColumns(#"Filtered Rows",{{"ACCOUNT NAME", Text.Lower, type text}}),
    
@@ -205,10 +205,9 @@ let
         else if Text.Contains([ACCOUNT NAME], "valero ") then 0
         else if Text.Contains([ACCOUNT NAME], "vale ") then "VALE" 
         else 0),
-    #"Unpivoted Other Columns1" = Table.UnpivotOtherColumns(#"Added Matson Column", {"Account Owner", "ACCOUNT NAME", "Type", "GAM", "Industry", "D&B Hoovers Industry Description", "Billing Country", "Shipping Country", "ACCOUNT NUMBER", "ID-Safe"}, "Attribute", "Value"),
-   
-   
-    #"Sorted Rows" = Table.Sort(#"Unpivoted Other Columns1",{{"ACCOUNT NUMBER", Order.Ascending}}),
-    #"Filtered Rows1" = Table.SelectRows(#"Sorted Rows", each ([Value] <> 0))
+    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Added Matson Column", {"Id", "ACCOUNT NAME", "Site", "Informal_Name__c", "Type", "BillingCountry", "ShippingCountry", "OwnerId", "Account_Name_Correspondence__c", "NAM__c", "ID_Safe__c", "D_B_Hoovers_Industry_Description__c", "SFDC Existing GAM", "Account Owner"}, "Attribute", "Value"),
+    #"Filtered Rows2" = Table.SelectRows(#"Unpivoted Other Columns", each ([Value] <> 0))
 in
-    #"Filtered Rows1"
+    #"Filtered Rows2"
+    
+    ```
