@@ -34,6 +34,9 @@ PK: opportunity_number__c
                 closedate > '2021-01-01'
               and
                 iswon is true
+              and
+                c.__sub_territory_id is not null
+                
 
 
 
