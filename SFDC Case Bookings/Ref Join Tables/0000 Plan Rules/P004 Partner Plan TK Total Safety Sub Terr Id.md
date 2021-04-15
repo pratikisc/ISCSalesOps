@@ -4,8 +4,8 @@ view: '"commissions"."plan-rule-2021-004-t001-amer-tk-total-safety"'
 
 ```sql
 select
-a.casenumber,
-c.name,
+a.casenumber AS caseid
+a.casenumber :: text || ' - PSM Total Safety Amer' :: text AS casenumber,c.name,
 7011::bigint as tk_total_safety_sub_terr_id
 from
 salesforce_case as a
