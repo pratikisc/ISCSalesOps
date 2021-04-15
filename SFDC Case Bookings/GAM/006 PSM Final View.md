@@ -9,7 +9,7 @@ view: '"commissions"."sfdc-case-w0001v2-t0006-psm"'
 SELECT
 
 a.recordtype,
-a.casenumber || ' - GAM' AS casenumber,
+a.casenumber,
 a.case_list,
 a.nbvlocal_list,
 a.dm,
@@ -72,14 +72,14 @@ UNION
 SELECT
 
 a.recordtype,
-a.casenumber || ' - GAM' AS casenumber,
+b.casenumber,
 a.case_list,
 a.nbvlocal_list,
 a.dm,
 a.gam,
 a.kam,
 a.safer_rep,
-a.amer_psm_sub_territory_id_named,
+b.tk_total_safety_sub_terr_id as amer_psm_sub_territory_id_named,
 a.calculationflag,
 a.allocation,
 a.exchange_rate_to_usd__c,
@@ -127,7 +127,7 @@ a.msanumber
 
 FROM
 "commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attributes-final" AS a
-INNER JOIN "commissions"."plan-rule-2021-004-t001-amer-tk-total-safety" as b ON a.casenumber = b.caseid  (!!! fix issue in plan rules)
+INNER JOIN "commissions"."plan-rule-2021-004-t001-amer-tk-total-safety" as b ON a.casenumber = b.caseid
 where amer_psm_sub_territory_id_named is not null
 
 ```
