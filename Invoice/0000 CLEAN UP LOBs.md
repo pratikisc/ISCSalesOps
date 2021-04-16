@@ -18,6 +18,9 @@ CASE
     WHEN b.__product_category = 'SAFER' then 'Hardware'::character varying(25)
     WHEN report_type_secondary = 'NON-INET' then 'Hardware'::character varying(25)
     WHEN report_type_secondary = 'SERVICE' then 'Service/Parts/Accessories'::character varying(25)
+    WHEN report_type_secondary = 'ATO' then 'Hardware'::character varying(25)
+    WHEN report_type_secondary = 'RENTAL' then 'Rent'::character varying(25)
+    WHEN report_type_secondary = 'INET' then 'iNet'::character varying(25)
     END as lob_allocation_override
     
 
