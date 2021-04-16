@@ -7,17 +7,17 @@ View: '"commissions"."invoice-w001-t0000-lob-cleanup"'
 SELECT
 identifier,
 CASE
-    WHEN lower(invoice_description) like '%rent%' then 'Rent'
-    WHEN lower(invoice_description) like '%distributor%' then 'Distributor Commissions'
-    WHEN lower(invoice_description) like '%rebate%' then 'Distributor Commissions'
-    WHEN lower(invoice_description) like '%repair%' then 'Service/Parts/Accessories'
-    WHEN lower(invoice_description) like '%support%' then 'Service/Parts/Accessories'
-    WHEN lower(invoice_description) like '%sensors%' then 'Service/Parts/Accessories'
-    WHEN lower(invoice_description) like '%period%' then 'iNet'
-    WHEN product_group = 'SAFER' then 'Hardware'
-    WHEN b.__product_category = 'SAFER' then 'Hardware'
-    WHEN report_type_secondary = 'NON-INET' then 'Hardware'
-    WHEN report_type_secondary = 'SERVICE' then 'Service/Parts/Accessories'
+    WHEN lower(invoice_description) like '%rent%' then 'Rent'::character varying(25)
+    WHEN lower(invoice_description) like '%distributor%' then 'Distributor Commissions'::character varying(25)
+    WHEN lower(invoice_description) like '%rebate%' then 'Distributor Commissions'::character varying(25)
+    WHEN lower(invoice_description) like '%repair%' then 'Service/Parts/Accessories'::character varying(25)
+    WHEN lower(invoice_description) like '%support%' then 'Service/Parts/Accessories'::character varying(25)
+    WHEN lower(invoice_description) like '%sensors%' then 'Service/Parts/Accessories'::character varying(25)
+    WHEN lower(invoice_description) like '%period%' then 'iNet'::character varying(25)
+    WHEN product_group = 'SAFER' then 'Hardware'::character varying(25)
+    WHEN b.__product_category = 'SAFER' then 'Hardware'::character varying(25)
+    WHEN report_type_secondary = 'NON-INET' then 'Hardware'::character varying(25)
+    WHEN report_type_secondary = 'SERVICE' then 'Service/Parts/Accessories'::character varying(25)
     END as lob_allocation_override
     
 
@@ -25,6 +25,7 @@ FROM "public"."sheets_invoice details_jan" as a
 LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
 
 WHERE
-lob_allocation = 'Unknown'
+lob_allocation = 'Unknown' or
+lob_allocation is null
 
 ```
