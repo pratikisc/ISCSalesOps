@@ -48,38 +48,8 @@ WHERE
 lower(a.customer_name) like '%industrial scientific%'
 or a.product_type_group = 'PSC'
 or b.id is not null
-or a.lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions', 'Not Margin Account')
-or c.lob_allocation_override = 'Distributor Commissions'
-or (
-    a.lob_allocation = 'iNet' and
-    a.line_of_business = 'SERVICE'
-    )
-or (
-    c.lob_allocation_override = 'iNet' and
-    a.line_of_business = 'SERVICE'
-    )
-or
-    (
-    a.lob_allocation = 'iNet' and
-    a.line_of_business = 'NO_LOB' and
-    lower(a.invoice_description) not like '%termination%'
-    )
- or
-    (
-    c.lob_allocation_override = 'iNet' and
-    a.line_of_business = 'NO_LOB' and
-    lower(a.invoice_description) not like '%termination%'
-    )
- or (
-    a.lob_allocation = 'iNet' and
-    a.contract_group is not null
-    )
- or (
-    c.lob_allocation_override = 'iNet' and
-    a.contract_group is not null
-    )
-    
- 
+or a.lob_allocation in ('PSC', 'Intercompany', 'Distributor Commissions', 'Not Margin Account', 'iNet')
+or c.lob_allocation_override in ('Distributor Commissions', 'iNet')
 
 
 
