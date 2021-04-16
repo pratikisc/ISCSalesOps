@@ -52,8 +52,8 @@ CASE
     THEN 7036::bigint -- Americas Rental to Jason Wright Sub Territory Number
     END AS sub_territory_amer_rent,
     
--- DM Sub Territory join
-b.geo_sub_territory_id AS sub_territory_dm,
+-- DM Sub Territory join, includes Territory Overrides for Known Named Accounts (ex: Neumann Meridian Trading)
+coalesce(i.sub_territory_id, b.geo_sub_territory_id) AS sub_territory_dm,
 
 
 -- KAM Join
@@ -124,7 +124,7 @@ CASE WHEN
             a.line_of_business <> 'SERVICE'
         )
     )
-    THEN 'POS-Exclude'
+    THEN 'POS-Exclude'::character varying (11)
     
     WHEN
     (
@@ -154,7 +154,7 @@ CASE WHEN
             a.line_of_business <> 'SERVICE'
         )
     )
-    THEN 'POS-Exclude'
+    THEN 'POS-Exclude'::character varying (11)
     END AS flag_pos_exclusion
     
     
@@ -168,5 +168,6 @@ LEFT JOIN "territory"."sheets_join_territory_join_inv gam accounts" as e ON a.sh
 LEFT JOIN "territory"."sheets_join_territory_join kam accounts" as f ON a.customer_number = f.__account_number
 LEFT JOIN "territory"."sheets_join_territory_join kam accounts" as g ON a.ship_to_customer_number = g.__account_number
 LEFT JOIN "territory"."sheets_join_territory_join_inv named distributor accounts" as h ON a.customer_number = h.__oracle_account_number
+LEFT JOIN "territory"."sheets_join_territory_ship to territory override named account" as i ON a.customer_number = i.account_number
 
 ```
