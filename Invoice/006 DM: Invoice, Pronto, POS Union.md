@@ -86,7 +86,7 @@ null::character varying (200) as key_account,
 null::character varying (200) as salesrep_name,
 sub_territory_dm::bigint as sub_territory_dm     
 
-from "commissions"."pos-w001-t002-geo-attr"  -- POS
+from "commissions"."pos-w001-t002-geo-attr-v2"  -- POS
 
 
 UNION
