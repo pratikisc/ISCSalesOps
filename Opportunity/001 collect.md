@@ -25,6 +25,9 @@ a.id
 , a.solution_type__c
 , a.converted_amount__c as total_converted_amount_corporate
 , a.term_length__c
+, case when a.solution_type__c like '%iNet%' then 'iNet'
+       else 'Non-iNet'
+       END AS mdr_plan_category
 , case when coalesce(a.Term_Length__c, 1) <= 12 then a.converted_amount__c
        else ( a.converted_amount__c / coalesce(a.Term_Length__c, 1) ) * 12
        END AS annual_value_usd_corporate
