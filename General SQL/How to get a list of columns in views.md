@@ -1,6 +1,6 @@
 ### How to get a list of columns in views
 
-```
+```sql
 select t.table_schema as schema_name,
        t.table_name as view_name,
        c.column_name,
