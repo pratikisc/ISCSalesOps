@@ -33,6 +33,7 @@ a.id
        END AS annual_value_usd_corporate
 , a.Annual_Value2__c as annual_amount_local_currency
 , a.CurrencyIsoCode
+, stagename
 from sfdc_opportunity as a
 left join salesforce_user as b ON b.id = a.mdr__c
 left join salesforce_user as c ON c.id = a.ownerid
