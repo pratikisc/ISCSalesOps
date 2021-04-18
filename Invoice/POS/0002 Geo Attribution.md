@@ -1,5 +1,5 @@
 ---
-View: '"commissions"."pos-w001-t002-geo-attr"'
+View: '"commissions"."pos-w001-t002-geo-attr-v2"'
 ---
 
 ```sql
@@ -21,7 +21,7 @@ WITH data AS (
       a.transaction_date_date,
       a.item_number,
       a.item_description
-      from "commissions"."pos-w001-t001-base-import" as a
+      from "commissions"."pos-w001-t001-base-import-v2" as a
 )
 
 select
