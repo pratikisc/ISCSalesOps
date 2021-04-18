@@ -9,7 +9,7 @@ a.id
 , d.sub_territory_id
 , a.mdr__c
 , b.full_name__c as mdr
-, a.name
+, a.name as opp_name
 , a.createddate
 , a.closedate
 , a.lastmodifieddate
