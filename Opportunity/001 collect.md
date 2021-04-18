@@ -1,5 +1,5 @@
 ---
-view:
+view: '"commissions"."opp-w001-t001-mdr"'
 ---
 
 ```sql
