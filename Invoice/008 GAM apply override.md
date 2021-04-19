@@ -1,5 +1,5 @@
 ---
-view: '"commissions"."invoice-w001-t008-gam-apply-override"'
+view: '"commissions"."invoice-w001-t008-gam-apply-override-v2"'
 ---
 
 
@@ -51,7 +51,7 @@ a.sub_territory_psm_geo,
 a.flag_pos_exclusion
 
 
-FROM "commissions"."invoice-w001-t003-joins" a
+FROM "commissions"."invoice-w001-t003-joins-v2" a
 LEFT JOIN "commissions"."invoice-w002-t002-gam-order-number-override-prep" b ON a.identifier = b.identifier
 
 
