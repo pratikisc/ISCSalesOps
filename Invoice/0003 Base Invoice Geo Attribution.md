@@ -31,7 +31,7 @@ WITH geo_data AS (
             END AS salesrep_name_asia_china
             
         
-        FROM "commissions"."invoice-w001-t002-base-invoices" as a
+        FROM "commissions"."invoice-w001-t002-base-invoices-v2" as a
     )
 
 select
