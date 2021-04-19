@@ -41,7 +41,7 @@ a.key_account,
 a.salesrep_name
 
 
-FROM "public"."sheets_invoice details_jan" as a
+FROM "commissions"."invoice-w001-t0000-a-union-invoices" as a
 LEFT JOIN "territory"."sheets_join_territory_exclude_inv account exclusion list" AS b ON a.customer_number = b.__account_number
 LEFT JOIN "commissions"."invoice-w001-t0000-lob-cleanup" AS c ON a.identifier = c.identifier
 WHERE
