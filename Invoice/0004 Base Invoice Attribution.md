@@ -160,7 +160,7 @@ CASE WHEN
     
     
 
-FROM "commissions"."invoice-w001-t002-base-invoices" as a
+FROM "commissions"."invoice-w001-t002-base-invoices-v2" as a
 LEFT JOIN "commissions"."invoice-w001-t003-geo-attribution" AS b ON a.identifier = b.identifier
 LEFT JOIN "territory"."sheets_join_territory_join oracle key_account" as c ON a.key_account = c.__key_account
 LEFT JOIN "territory"."sheets_join_territory_join_inv gam accounts" as d ON a.customer_number = d.__account_number
