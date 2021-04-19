@@ -24,7 +24,7 @@ CASE
     END as lob_allocation_override
     
 
-FROM "public"."sheets_invoice details_jan" as a
+FROM "commissions"."invoice-w001-t0000-a-union-invoices" as a
 LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
 
 WHERE
