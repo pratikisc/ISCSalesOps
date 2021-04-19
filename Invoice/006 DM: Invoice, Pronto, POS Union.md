@@ -43,7 +43,7 @@ salesrep_name::character varying (200),
 sub_territory_dm::bigint
 
 from
-"commissions"."invoice-w001-t003-joins"  -- Invoice 
+"commissions"."invoice-w001-t003-joins-v2"  -- Invoice 
 where flag_pos_exclusion is null   -- POS Excluded
 
 
