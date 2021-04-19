@@ -1,5 +1,5 @@
 ---
-View: '"commissions"."invoice-w001-t003-joins"'
+View: '"commissions"."invoice-w001-t003-joins-v2"'
 ---
 
 ```sql
@@ -50,7 +50,7 @@ b.sub_territory_psm_geo,
 b.flag_pos_exclusion
 
 
-FROM "commissions"."invoice-w001-t002-base-invoices" as a
+FROM "commissions"."invoice-w001-t002-base-invoices-v2" as a
 LEFT JOIN "commissions"."invoice-w001-t003-attribution" as b ON a.identifier = b.identifier
 
 
