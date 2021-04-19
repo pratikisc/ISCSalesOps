@@ -1,5 +1,5 @@
 ---
-View: '"commissions"."invoice-w001-t002-base-invoices"'
+View: '"commissions"."invoice-w001-t002-base-invoices-v2"'
 ---
 
 ```sql
@@ -40,9 +40,9 @@ a.key_account,
 a.salesrep_name
 
 
-FROM "public"."sheets_invoice details_jan" as a
+FROM "commissions"."invoice-w001-t0000-a-union-invoices" as a
 LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
-LEFT JOIN "commissions"."invoice-w001-t001-exclusions" as c on a.identifier = c.identifier
+LEFT JOIN "commissions"."invoice-w001-t001-exclusions-v2" as c on a.identifier = c.identifier
 LEFT JOIN "commissions"."invoice-w001-t0000-lob-cleanup" AS d on a.identifier = d.identifier
 
 WHERE c.identifier is null
