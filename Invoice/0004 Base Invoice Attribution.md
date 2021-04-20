@@ -45,7 +45,7 @@ CASE
 -- Americas Rental Sales as 7036
 CASE
     WHEN
-    line_of_business = 'Rent' and
+    a.lob_allocation = 'Rent' and
     b.geo_sub_territory_id IN (
         select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
         )
