@@ -28,13 +28,22 @@ with dim_account as (
     salesforce_account a
     
     )
+
 select
 a.id,
-a.geocategory,
+coalesce (b.__sub_territory_id, c.__sub_territory_id, d.__sub_territory_id, e.__sub_territory_id, g.__sub_territory_id) as geo_sub_territory_id,
+a.country,
+a.ship_to_USCA,
+a.ship_to_USCA_backup,
+a.ship_to_AU,
+a.ship_to_CH,
 b.__sub_territory_id as st_id_amer
 from
 dim_account a
-inner join "territory"."sheets_join_territory_join_geo_us  ca postal" b
-on a.geocategory = b.__geo_category
+LEFT JOIN "territory"."sheets_join_territory_join_geo_us  ca postal" AS b ON a.ship_to_USCA = b.__geo_category
+LEFT JOIN "territory"."sheets_join_territory_join_geo_country" AS c ON a.country = c.__country_code
+LEFT JOIN "territory"."sheets_join_territory_join_geo_anz postal" AS d ON a.ship_to_AU = d.__country_postal4
+LEFT JOIN "territory"."sheets_join_territory_join_geo_switzerland postal" AS e ON a.ship_to_CH = e.__geo_category
+LEFT JOIN "territory"."sheets_join_territory_join_geo_us  ca full states" as g ON a.ship_to_USCA_backup = g.__geo_category
 
 ```
