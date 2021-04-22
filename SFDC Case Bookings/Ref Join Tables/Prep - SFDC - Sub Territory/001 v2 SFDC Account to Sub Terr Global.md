@@ -1,5 +1,5 @@
 ---
-view: '"commissions"."reference-v2-all-sfdc-accounts-geo"'
+view: '"territory"."reference-v2-all-sfdc-accounts-geo"'
 ---
 
 ```sql
