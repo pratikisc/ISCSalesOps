@@ -7,16 +7,7 @@ PK: casenumber
 ```sql
  
  
-WITH casecountry AS (
-        select distinct
-        a.casenumber,
-        coalesce(b.shippingcountry, b.billingcountry) as country
-        from
-        salesforce_case a
-        left join salesforce_account b ON a.accountid = b.id
-        where a.finance_sub_status__c = 'Booked'
-    ),
-    dim_opportunity AS (
+WITH    dim_opportunity AS (
         select distinct
         id,
         name,
@@ -95,124 +86,6 @@ SELECT
        when l.__sub_territory_id = 7013 and a.type IN ('Launch', 'Amendment') then 6667013::bigint  --  for Troy APAC SAFER Launch Deals
        when l.__sub_territory_id is null and a.type IN ('Launch', 'Amendment') and inet_type__c = 'SAFER' then 6667069::bigint  -- for other Troy Launch / Amendment catch alls
        when l.__sub_territory_id is null and inet_type__c = 'SAFER' then 7070::bigint -- For Fred All Safer
-       when l.__sub_territory_id = 7073 and p.country IN
-                                                                              (
-                                                                               'AS',
-                                                                               'AU',
-                                                                               'BD',
-                                                                               'BT',
-                                                                               'IO',
-                                                                               'BN',
-                                                                               'KH',
-                                                                               'CN',
-                                                                               'CX',
-                                                                               'CC',
-                                                                               'CK',
-                                                                               'FJ',
-                                                                               'PF',
-                                                                               'GU',
-                                                                               'HM',
-                                                                               'HK',
-                                                                               'IN',
-                                                                               'ID',
-                                                                               'JP',
-                                                                               'KI',
-                                                                               'LA',
-                                                                               'MO',
-                                                                               'MY',
-                                                                               'MV',
-                                                                               'MH',
-                                                                               'FM',
-                                                                               'MN',
-                                                                               'MM',
-                                                                               'NR',
-                                                                               'NP',
-                                                                               'NC',
-                                                                               'NZ',
-                                                                               'NU',
-                                                                               'NF',
-                                                                               'KP',
-                                                                               'MP',
-                                                                               'PW',
-                                                                               'PG',
-                                                                               'PH',
-                                                                               'PN',
-                                                                               'WS',
-                                                                               'SG',
-                                                                               'SB',
-                                                                               'KR',
-                                                                               'LK',
-                                                                               'TW',
-                                                                               'TH',
-                                                                               'TL',
-                                                                               'TK',
-                                                                               'TO',
-                                                                               'TV',
-                                                                               'UM',
-                                                                               'VU',
-                                                                               'VN',
-                                                                               'WF'
-                                                                               )
-                   then 6667073::bigint -- Credit to Robin Kang when it is a C Golden SAFER Renewal in APAC
-       when (l.__sub_territory_id = 7072) and p.country IN
-                                                                              (
-                                                                               'AS',
-                                                                               'AU',
-                                                                               'BD',
-                                                                               'BT',
-                                                                               'IO',
-                                                                               'BN',
-                                                                               'KH',
-                                                                               'CN',
-                                                                               'CX',
-                                                                               'CC',
-                                                                               'CK',
-                                                                               'FJ',
-                                                                               'PF',
-                                                                               'GU',
-                                                                               'HM',
-                                                                               'HK',
-                                                                               'IN',
-                                                                               'ID',
-                                                                               'JP',
-                                                                               'KI',
-                                                                               'LA',
-                                                                               'MO',
-                                                                               'MY',
-                                                                               'MV',
-                                                                               'MH',
-                                                                               'FM',
-                                                                               'MN',
-                                                                               'MM',
-                                                                               'NR',
-                                                                               'NP',
-                                                                               'NC',
-                                                                               'NZ',
-                                                                               'NU',
-                                                                               'NF',
-                                                                               'KP',
-                                                                               'MP',
-                                                                               'PW',
-                                                                               'PG',
-                                                                               'PH',
-                                                                               'PN',
-                                                                               'WS',
-                                                                               'SG',
-                                                                               'SB',
-                                                                               'KR',
-                                                                               'LK',
-                                                                               'TW',
-                                                                               'TH',
-                                                                               'TL',
-                                                                               'TK',
-                                                                               'TO',
-                                                                               'TV',
-                                                                               'UM',
-                                                                               'VU',
-                                                                               'VN',
-                                                                               'WF'
-                                                                               )
-                   then 6667072::bigint -- Credit to Robin Kang when it is a F Thomas SAFER Renewal in APAC
                    
        else l.__sub_territory_id
        end as safer_sub_territory_id,
