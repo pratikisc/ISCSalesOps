@@ -99,7 +99,7 @@ CASE WHEN
     )
     and
     (
-        h.__sub_territory_id is not null    -- Only Distributor Accounts   
+        h.__oracle_account_number is not null    -- Only Distributor Accounts   
     )
     THEN
     b.geo_sub_territory_id
