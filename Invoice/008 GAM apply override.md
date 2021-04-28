@@ -34,7 +34,7 @@ a.ship_to_state,
 a.ship_to_province,
 a.ship_to_postal_code,
 a.transaction_date_date,
-a.invoice_amount_local_currency,
+coalesce(d.invoice_amount_local_currency, a.invoice_amount_local_currency) AS invoice_amount_local_currency,
 a.invoice_amount_usd,
 a.invoice_currency_code,
 a.total_units_sold,
@@ -46,7 +46,7 @@ coalesce(c.sub_territory_id_kam, a.sub_territory_kam) AS sub_territory_kam,
 a.sub_territory_safer,
 a.sub_territory_fixed,
 a.sub_territory_amer_rent,
-coalesce( b.sub_territory_id_gam, a.sub_territory_gam, a.sub_territory_safer) as sub_territory_gam,
+coalesce( d.sub_territory_id_gam, b.sub_territory_id_gam, a.sub_territory_gam, a.sub_territory_safer) as sub_territory_gam,
 a.sub_territory_psm_named,
 a.sub_territory_psm_geo,
 a.flag_pos_exclusion
@@ -55,5 +55,6 @@ a.flag_pos_exclusion
 FROM "commissions"."invoice-w001-t003-joins-v2" a
 LEFT JOIN "commissions"."invoice-w002-t002-gam-order-number-override-prep" b ON a.identifier = b.identifier
 LEFT JOIN "commissions"."invoice-w002-t002-kam-order-number-override-prep" c ON a.identifier = c.identifier
+LEFT JOIN "commissions"."invoice-w002-t002-gam-international-deals-order-number-override" d ON a.identifier = d.identifier
 
 ```
