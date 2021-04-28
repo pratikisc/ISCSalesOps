@@ -41,7 +41,7 @@ a.key_account,
 a.salesrep_name,
 
 a.sub_territory_dm,
-a.sub_territory_kam,
+coalesce(c.sub_territory_id_kam, a.sub_territory_kam) AS sub_territory_kam,
 a.sub_territory_safer,
 a.sub_territory_fixed,
 a.sub_territory_amer_rent,
@@ -53,6 +53,6 @@ a.flag_pos_exclusion
 
 FROM "commissions"."invoice-w001-t003-joins-v2" a
 LEFT JOIN "commissions"."invoice-w002-t002-gam-order-number-override-prep" b ON a.identifier = b.identifier
-
+LEFT JOIN "commissions"."invoice-w002-t002-kam-order-number-override-prep" c ON a.identifier = c.identifier
 
 ```
