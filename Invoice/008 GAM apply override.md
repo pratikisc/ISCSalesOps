@@ -3,6 +3,8 @@ view: '"commissions"."invoice-w001-t008-gam-apply-override-v2"'
 PK: identifier
 ---
 
+### Notes
+- Includes overrides for International Deals (with allocation %) already baked in, KAM and GAM order number overrides
 
 ```sql
 
