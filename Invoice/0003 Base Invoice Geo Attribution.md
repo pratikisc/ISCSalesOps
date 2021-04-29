@@ -36,7 +36,7 @@ WITH geo_data AS (
 
 select
 a.identifier,
-coalesce (b.__sub_territory_id, f.__sub_territory_id, c.__sub_territory_id, d.__sub_territory_id, e.__sub_territory_id, g.__sub_territory_id, h.__sub_territory_id) as geo_sub_territory_id,
+coalesce (b.__sub_territory_id, d.__sub_territory_id, f.__sub_territory_id, e.__sub_territory_id, c.__sub_territory_id, g.__sub_territory_id, h.__sub_territory_id) as geo_sub_territory_id,
 b.__sub_territory_id as id_usca,
 c.__sub_territory_id as id_country,
 d.__sub_territory_id as id_au,
