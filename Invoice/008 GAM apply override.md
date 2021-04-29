@@ -45,7 +45,7 @@ a.salesrep_name,
 
 a.sub_territory_dm,
 coalesce(c.sub_territory_id_kam, a.sub_territory_kam) AS sub_territory_kam,
-a.sub_territory_safer,
+coalesce(e.sub_territory_id_safer, a.sub_territory_safer) as sub_territory_safer,
 a.sub_territory_fixed,
 a.sub_territory_amer_rent,
 coalesce( d.sub_territory_id_gam, b.sub_territory_id_gam, a.sub_territory_gam, a.sub_territory_safer) as sub_territory_gam,
@@ -58,5 +58,5 @@ FROM "commissions"."invoice-w001-t003-joins-v2" a
 LEFT JOIN "commissions"."invoice-w002-t002-gam-order-number-override-prep" b ON a.identifier = b.identifier
 LEFT JOIN "commissions"."invoice-w002-t002-kam-order-number-override-prep" c ON a.identifier = c.identifier
 LEFT JOIN "commissions"."invoice-w002-t002-gam-international-deals-order-number-override" d ON a.identifier = d.identifier
-
+LEFT JOIN "commissions"."invoice-w002-t002-safer-order-number-override-prep" e ON a.identifier = e.identifier
 ```
