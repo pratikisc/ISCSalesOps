@@ -47,7 +47,7 @@ CASE
     WHEN
     a.lob_allocation = 'Rent' and
     b.geo_sub_territory_id IN (
-        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
+        select id from "territory"."sheets_join_territory_territories" where region = 'AMER'
         )
     THEN 7036::bigint -- Americas Rental to Jason Wright Sub Territory Number
     END AS sub_territory_amer_rent,
