@@ -4,6 +4,12 @@ Note: !!! Plan overrides / sub territory allocation applied here
 PK: casenumber
 ---
 
+Note
+- Contract Length override applied
+- Booked Date override applied
+- PSM Opportunity # override applied
+
+
 ```sql
  
  
@@ -102,7 +108,10 @@ SELECT
       contract_length__c,
       coalesce(current_monthly_subscription_fee__c,0) as currentmrrlocal,
       coalesce(previous_monthly_subscription_fee__c,0) as prevmrrlocal,
-      coalesce(current_monthly_subscription_fee__c,0) - coalesce(previous_monthly_subscription_fee__c,0) as mrrchangelocal,
+      coalesce(q.override_mrrchangelocal,
+               coalesce(current_monthly_subscription_fee__c,0) - coalesce(previous_monthly_subscription_fee__c,0)
+               )
+               as mrrchangelocal,
       coalesce(distributor_commission__c,0) as distributor_commission__c,
       coalesce(spiff_commission__c,0) as spiff_commission__c,
       type,
@@ -164,7 +173,7 @@ from
       left join dim_recordtype as n ON a.recordtypeid = n.id
       -- !!! Greater China FP Date override for fiscal / payout date adjustment
       left join "commissions"."reference-sfdc-case-date-override-greater-china" as o ON a.casenumber = o.casenumber
-      left join "commissions"."reference-sfdc-case-details-override" AS q ON a.casenumber = q.casenumber
+      left join "commissions"."reference-sfdc-case-details-override-v2" AS q ON a.casenumber = q.casenumber
 
       where
       finance_sub_status__c = 'Booked' 
