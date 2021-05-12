@@ -7,6 +7,7 @@ PK: casenumber
 Note
 - Contract Length override applied
 - Booked Date override applied
+- MRR Change override applied (but needs to applied separately for DM and GAM plan for grouping logic as well)
 - PSM Opportunity # override applied
 
 
@@ -105,7 +106,7 @@ SELECT
       coalesce(q.override_bookeddate, o.booked_date__c_override, a.booked_date__c) as booked_date__c,
       casecurrency__c,
       contract__c,
-      contract_length__c,
+      coalesce(q.override_contractlength, a.contract_length__c) as contract_length__c,
       coalesce(current_monthly_subscription_fee__c,0) as currentmrrlocal,
       coalesce(previous_monthly_subscription_fee__c,0) as prevmrrlocal,
       coalesce(q.override_mrrchangelocal,
