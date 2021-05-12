@@ -5,6 +5,8 @@ View Name: '"commissions"."sfdc-case-w0001v2-t0000-a1-base-table"'
 Status: Interim View.
 ---
 
+Note:
+- MRR Change override has been applied here.
 ```sql
 
 SELECT
