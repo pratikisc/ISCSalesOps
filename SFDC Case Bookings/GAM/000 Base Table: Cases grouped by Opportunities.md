@@ -19,6 +19,9 @@ SELECT
 	a.Contract_Length__c,
 	coalesce(a.Current_Monthly_Subscription_Fee__c,0) as current_monthly_subscription_fee__c,
 	coalesce(a.Previous_Monthly_Subscription_Fee__c,0) as previous_monthly_subscription_fee__c,
+	
+	-- !!! MRR Change Override applied here
+	
 	coalesce(b.override_mrrchangelocal,
 		 coalesce(a.Current_Monthly_Subscription_Fee__c,0) - coalesce(a.Previous_Monthly_Subscription_Fee__c,0)
 		 )
