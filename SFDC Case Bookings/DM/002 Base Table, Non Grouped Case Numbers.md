@@ -19,6 +19,9 @@ PK: split_id
     a.Contract_Length__c,
     coalesce(b.allocation* a.Current_Monthly_Subscription_Fee__c,0) as current_monthly_subscription_fee__c,
     coalesce(b.allocation* a.Previous_Monthly_Subscription_Fee__c,0) as previous_monthly_subscription_fee__c,
+    
+    -- !!! MRR Change Override applied here
+    
     coalesce( b.allocation * c.override_mrrchangelocal,
               coalesce(b.allocation* a.Current_Monthly_Subscription_Fee__c,0) - coalesce(b.allocation* a.Previous_Monthly_Subscription_Fee__c,0)
             )
