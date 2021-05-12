@@ -6,6 +6,7 @@ view: '"commissions"."sfdc-case-w0001v2-t0005-grouped-and-non-grouped-with-attri
 - _The commission processing flag is a moot field. All 'non null' values have already been excluded_
 - _The Contract Length override for instances when booking value of case is negative is applied here_
 - _Attribution part of inet GAM International Deals applied here. Allocation applied at the vertical join_
+- _MRR Change Override applied here_
 
 ```sql
 select
@@ -42,7 +43,10 @@ case
 
 
 coalesce (a.nbvlocal, b.net_bookings_value__c) as nbvlocal,
-coalesce (a.mrrchangelocal, b.mrrchangelocal) as mrrchangelocal,
+
+-- !!! MRR Change Override applied here
+
+coalesce (a.mrrchangelocal, e.override_mrrchangelocal, b.mrrchangelocal) as mrrchangelocal,
 coalesce (a.prevmrrlocal, b.prevmrrlocal) as prevmrrlocal,
 coalesce (a.currmrrlocal, b.currentmrrlocal) as currmrrlocal,
 b.distributor_commission__c,
@@ -85,5 +89,6 @@ from
 left join "commissions"."reference-sfdc-case-attributes-with-plan-attributes" AS b ON a.casenumber = b.casenumber
 left join "commissions"."sfdc-case-w0001v2-t0001ref-grouped-cases" as c ON a.id_h = c.id_h
 left join "commissions"."plan-rule-2021-003-t001-gam-international-deals-subscriptions" as d ON b.opportunity_number = d.opportunity_number__c
+left join "commissions"."reference-sfdc-case-details-override-v2" as e ON a.casenumber = e.casenumber
 
 ```
