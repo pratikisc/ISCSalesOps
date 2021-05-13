@@ -32,11 +32,20 @@ WITH geo_data AS (
             
         
         FROM "commissions"."invoice-w001-t002-base-invoices-v2" as a
+    ),
+    countries AS (
+    SELECT
+        __country_code,
+        __sub_territory_id
+
+        FROM "territory"."sheets_join_territory_join_geo_country"
+        where
+        assignmentmode = 'Country'
     )
 
 select
 a.identifier,
-coalesce (b.__sub_territory_id, d.__sub_territory_id, f.__sub_territory_id, e.__sub_territory_id, c.__sub_territory_id, g.__sub_territory_id, h.__sub_territory_id) as geo_sub_territory_id,
+coalesce (b.__sub_territory_id, d.__sub_territory_id, c.__sub_territory_id, f.__sub_territory_id, e.__sub_territory_id, g.__sub_territory_id, h.__sub_territory_id) as geo_sub_territory_id,
 b.__sub_territory_id as id_usca,
 c.__sub_territory_id as id_country,
 d.__sub_territory_id as id_au,
@@ -55,7 +64,7 @@ a.ship_to_AU_backup_salesrep_anz
 from
 geo_data AS a
 LEFT JOIN "territory"."sheets_join_territory_join_geo_us  ca postal" AS b ON a.ship_to_USCA = b.__geo_category
-LEFT JOIN "territory"."sheets_join_territory_join_geo_country" AS c ON a.ship_to_country = c.__country_code
+LEFT JOIN countries AS c ON a.ship_to_country = c.__country_code
 LEFT JOIN "territory"."sheets_join_territory_join_geo_anz postal" AS d ON a.ship_to_AU = d.__country_postal4
 LEFT JOIN "territory"."sheets_join_territory_join_geo_switzerland postal" AS e ON a.ship_to_CH = e.__geo_category
 LEFT JOIN "territory"."sheets_join_territory_join oracle sales rep name" as f ON a.salesrep_name_asia_china = f.__sales_rep_name
