@@ -7,7 +7,7 @@ PK: casenumber
 Note
 - Contract Length override applied
 - Booked Date override applied
-- MRR Change override applied (but needs to applied separately for DM and GAM plan for grouping logic as well)
+- MRR Change override NOT applied here.
 - PSM Opportunity # override applied
 
 
