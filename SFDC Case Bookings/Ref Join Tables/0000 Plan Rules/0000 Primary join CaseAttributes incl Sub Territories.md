@@ -109,10 +109,7 @@ SELECT
       coalesce(q.override_contractlength, a.contract_length__c) as contract_length__c,
       coalesce(current_monthly_subscription_fee__c,0) as currentmrrlocal,
       coalesce(previous_monthly_subscription_fee__c,0) as prevmrrlocal,
-      coalesce(q.override_mrrchangelocal,
-               coalesce(current_monthly_subscription_fee__c,0) - coalesce(previous_monthly_subscription_fee__c,0)
-               )
-               as mrrchangelocal,
+      coalesce(current_monthly_subscription_fee__c,0) - coalesce(previous_monthly_subscription_fee__c,0) as mrrchangelocal,
       coalesce(distributor_commission__c,0) as distributor_commission__c,
       coalesce(spiff_commission__c,0) as spiff_commission__c,
       type,
