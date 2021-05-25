@@ -113,25 +113,6 @@ CASE WHEN
         select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
         )
     )
-    and h.__distributor_roll_up_id = 'D001-AGI'
-    and
-    (
-        a.lob_allocation = 'Hardware'
-        or
-        (
-            a.lob_allocation = 'Service/Parts/Accessories'
-            and
-            a.line_of_business <> 'SERVICE'
-        )
-    )
-    THEN 'POS-Exclude'::character varying (11)
-    
-    WHEN
-    (
-        b.geo_sub_territory_id IN (
-        select id from "territory"."sheets_join_territory_territories" where region = 'AMER' and "sub region" <> 'Latin America'
-        )
-    )
     and h.__distributor_roll_up_id IN ('D012-CONN',
                                        'D011-DNOW',
                                        'D002-DXP',
