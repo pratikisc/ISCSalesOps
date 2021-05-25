@@ -20,7 +20,7 @@ c.__allocation * a.invoice_amount_local_currency AS invoice_amount_local_currenc
 FROM "public"."sheets_invoice details_jan" a
 INNER JOIN "territory"."sheets_join_territory_join_inv named distributor accounts" b ON a.customer_number = b.__oracle_account_number
 LEFT JOIN "override"."sheets_join invoice overrides_join anz split" c ON b.__distributor_roll_up_id = c.__dist_id
-WHERE b.__distributor_roll_up_id IN ('D015-AIRMET','D016-GASTECH')
+WHERE b.__distributor_roll_up_id IN ('D015-AIRMET','D016-GASTECH', 'D001-AGI')
 ORDER BY 1
 
 
