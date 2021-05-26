@@ -42,12 +42,13 @@ a.invoice_currency_code,
 a.total_units_sold,
 a.key_account,
 a.salesrep_name,
-coalesce( d.sub_territory_id_dm, c.sub_territory_id_dm, b.__sub_territory_id, a.sub_territory_dm) as sub_territory_dm
+coalesce( d.sub_territory_id_dm, c.sub_territory_id_dm, e.sub_territory_id_dm, b.__sub_territory_id, a.sub_territory_dm) as sub_territory_dm
 
 from
 "commissions"."invoice-w001-t006-dm-union" AS a
 LEFT JOIN "commissions"."invoice-w002-t001-anz-split-prep-v2" AS b ON a.identifier = b.idjoin
 LEFT JOIN "commissions"."invoice-w002-t002-order-number-override-prep-v2" AS c ON a.identifier = c.identifier
 LEFT JOIN "commissions"."invoice-w002-t003-splits-order-number-prep-v2" AS d ON a.identifier = d.idjoin
+LEFT JOIN "commissions"."invoice-w002-t004-invoice-number-override-prep" AS e ON a.identifier = e.identifier
 
 ```
