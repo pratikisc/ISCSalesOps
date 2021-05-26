@@ -1,5 +1,5 @@
 ---
-view: '"commissions"."invoice-w002-t003-splits-order-number-prep"'
+view: '"commissions"."invoice-w002-t003-splits-order-number-prep-v2"'
 PK: identifier
 Join on: idjoin (will create known duplicate rows)
 ---
