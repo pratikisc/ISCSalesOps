@@ -1,5 +1,5 @@
 ---
-view: '"commissions"."invoice-w001-t009-gam-kam-vertical-union-v2"'
+view: '"commissions"."invoice-w001-t009-gam-kam-vertical-union-v3"'
 ---
 
 ```sql
@@ -42,7 +42,7 @@ salesrep_name,
 
 sub_territory_gam AS sub_territory_gam_kam
 from
-"commissions"."invoice-w001-t008-gam-apply-override-v2"
+"commissions"."invoice-w001-t008-gam-apply-override-v3"
 where sub_territory_gam is not null
 
 UNION
@@ -84,6 +84,6 @@ salesrep_name,
 
 sub_territory_kam AS sub_territory_gam_kam
 from
-"commissions"."invoice-w001-t008-gam-apply-override-v2"
+"commissions"."invoice-w001-t008-gam-apply-override-v3"
 where sub_territory_kam is not null
 ```
