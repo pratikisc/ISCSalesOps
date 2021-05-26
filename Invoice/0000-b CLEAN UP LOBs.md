@@ -2,6 +2,7 @@
 Old View: '"commissions"."invoice-w001-t0000-lob-cleanup"'
 New View: '"commissions"."invoice-w001-t0000-lob-cleanup-v2"'
 ---
+new
 ```sql
 
 -- Clean up Unknown LOBs
