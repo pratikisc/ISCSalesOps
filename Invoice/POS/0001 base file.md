@@ -22,6 +22,7 @@ item_number,
 item_description
 from
 "public"."sheets_pos master_pos master"
+where invoice_amount_local_currency <> 0
 
 UNION
 
@@ -42,6 +43,7 @@ item_number,
 null::character varying as item_description
 
 FROM "public"."sheets_pos historical_pos hist"
+where invoice_amount_local_currency <> 0
 ```
 
 
