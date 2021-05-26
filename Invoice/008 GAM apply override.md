@@ -59,10 +59,10 @@ a.flag_pos_exclusion
 
 
 FROM "commissions"."invoice-w001-t003-joins-v4" a
-LEFT JOIN "commissions"."invoice-w002-t002-gam-order-number-override-prep" b ON a.identifier = b.identifier
-LEFT JOIN "commissions"."invoice-w002-t002-kam-order-number-override-prep" c ON a.identifier = c.identifier
-LEFT JOIN "commissions"."invoice-w002-t002-gam-international-deals-order-number-override" d ON a.identifier = d.identifier
-LEFT JOIN "commissions"."invoice-w002-t002-safer-order-number-override-prep" e ON a.identifier = e.identifier
+LEFT JOIN "commissions"."invoice-w002-t002-gam-order-number-override-prep-v2" b ON a.identifier = b.identifier
+LEFT JOIN "commissions"."invoice-w002-t002-kam-order-number-override-prep-v2" c ON a.identifier = c.identifier
+LEFT JOIN "commissions"."invoice-w002-t002-gam-international-deals-order-number-override-v2" d ON a.identifier = d.identifier
+LEFT JOIN "commissions"."invoice-w002-t002-safer-order-number-override-prep-v2" e ON a.identifier = e.identifier
 ```
 
 
