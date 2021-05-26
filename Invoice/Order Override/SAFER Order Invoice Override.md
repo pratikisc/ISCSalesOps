@@ -1,5 +1,5 @@
 ---
-view: '"commissions"."invoice-w002-t002-safer-order-number-override-prep"'
+view: '"commissions"."invoice-w002-t002-safer-order-number-override-prep-v2"'
 PK: identifier
 Join on: idjoin (will create known duplicate rows)
 ---
@@ -14,7 +14,7 @@ WITH dealdata AS (
       ref_sales_order_number::character varying(200) AS ref_sales_order_number
       ,invoice_amount_local_currency
       FROM
-      "public"."sheets_invoice details_jan"
+      "public"."adwc_xxisc_invoice_order_details"
   ),
   
   ovdata AS (
