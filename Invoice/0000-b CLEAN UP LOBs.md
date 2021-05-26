@@ -5,6 +5,7 @@ New View: '"commissions"."invoice-w001-t0000-lob-cleanup-v2"'
 new
 ```sql
 
+
 -- Clean up Unknown LOBs
 SELECT
 identifier,
@@ -26,12 +27,20 @@ CASE
     END as lob_allocation_override
     
 
-FROM "commissions"."invoice-w001-t0000-a-union-invoices" as a
+FROM "public"."adwc_xxisc_invoice_order_details" as a
 LEFT JOIN "territory"."sheets_join_territory_join safer hw part numbers" as b on a.item_number = b.__item_number
 
 WHERE
+(
 lob_allocation = 'Unknown' or
 lob_allocation is null
+)
+
+and
+(
+source_of_data = 'Invoice' and
+invoice_amount_usd <> 0
+)
 
 
 ```
