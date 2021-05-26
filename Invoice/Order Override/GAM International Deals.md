@@ -22,7 +22,7 @@ WITH dealdata AS (
       order_number::character varying(200) as order_number,
       sub_territory_id_gam
 
-      FROM "override"."sheets_join invoice overrides_join_inv order ov gam int'l deals"
+      FROM "override"."sheets_join invoice overrides_join_inv order ov gam intl deals"
       WHERE
       "QC Check unique PK" is true
       and sub_territory_id_gam is not null
