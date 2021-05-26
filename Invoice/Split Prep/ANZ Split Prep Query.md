@@ -9,7 +9,7 @@ Included:
 - AGI
 - Airmet
 - Gastech
-- 
+
 ```sql
 
 SELECT 
