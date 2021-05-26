@@ -1,5 +1,5 @@
 ---
-view: '"commissions"."invoice-w002-t001-anz-split-prep"'
+view: '"commissions"."invoice-w002-t001-anz-split-prep-v2"'
 PK: identifier
 Join on: idjoin (will create known duplicate rows)
 ---
